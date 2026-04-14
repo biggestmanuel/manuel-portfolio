@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: whitesmoke;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background: rgb(0, 0, 0);
+      padding: 40px;
+      border-radius: 12px;
+      width: 360px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.6s ease;
+    }
+
+    h2 {
+      color: #3d63e1;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      background: #0f3460;
+      color: white;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    input:focus {
+      border: 2px solid #4584e9;
+      background: #1a1a5e;
+    }
+
+    .password-wrapper {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .password-wrapper input {
+      margin-bottom: 0;
+      padding-right: 42px;
+    }
+
+    #togglePassword {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 16px;
+      user-select: none;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #237ac7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      background: #000000;
+      transform: scale(1.03);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    p {
+      color: #aaa;
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    a {
+      color: #4592e9;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .shake {
+      animation: shake 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Welcome Back</h2>
+    <input type="email" placeholder="Email address" id="emailInput" />
+    <div class="password-wrapper">
+      <input type="password" placeholder="Password" id="passwordInput" />
+      <span id="togglePassword">👁️</span>
+    </div>
+    <button>Login</button>
+    <p>Don't have an account? <a href="#">Sign up</a></p>
+  </div>
+
+  <script>
+    const btn = document.querySelector("button");
+    const emailInput = document.getElementById("emailInput");
+    const passwordInput = document.getElementById("passwordInput");
+    const togglePassword = document.getElementById("togglePassword");
+    const inputs = [emailInput, passwordInput];
+
+    const users = {
+      "qwerty@gmail.com": "12345"
+    };
+
+    emailInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        passwordInput.focus();
+      }
+    });
+
+    passwordInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        tryLogin();
+      }
+    });
+
+    btn.addEventListener("click", function () {
+      tryLogin();
+    });
+
+    togglePassword.addEventListener("click", function () {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        togglePassword.textContent = "🙈";
+      } else {
+        passwordInput.type = "password";
+        togglePassword.textContent = "👁️";
+      }
+    });
+
+    function tryLogin() {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (email === "" || password === "") {
+        showMessage("Please fill in all fields.", "red");
+        return;
+      }
+
+      if (users[email] && users[email] === password) {
+        showMessage("Login successful! Welcome back.", "green");
+      } else {
+        showMessage("Invalid email or password.", "red");
+      }
+    }
+
+    function showMessage(msg, color) {
+      let existing = document.querySelector(".msg");
+      if (existing) existing.remove();
+
+      const p = document.createElement("div");
+      p.textContent = msg;
+      p.className = "msg";
+      p.style.position = "fixed";
+      p.style.top = "20px";
+      p.style.left = "50%";
+      p.style.transform = "translateX(-50%)";
+      p.style.background = color === "green" ? "#237ac7" : "#e94560";
+      p.style.color = "white";
+      p.style.padding = "12px 24px";
+      p.style.borderRadius = "8px";
+      p.style.fontSize = "14px";
+      p.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+      p.style.animation = "fadeIn 0.4s ease";
+      p.style.zIndex = "9999";
+
+      document.body.appendChild(p);
+
+      if (color === "green") {
+        setTimeout(() => p.remove(), 3000);
+      }
+
+      if (color === "red") {
+        inputs.forEach(input => {
+          input.classList.add("shake");
+          setTimeout(() => input.classList.remove("shake"), 400);
+        });
+        setTimeout(() => p.remove(), 3000);
+      }
+    }
+  </script>
+
+</body>
+</html>
