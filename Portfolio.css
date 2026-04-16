@@ -22,7 +22,38 @@ body {
   line-height: 1.6;
 }
 
-/* NAV */
+/* ── SCROLL REVEAL SYSTEM ───────────────────────────────── */
+
+/* Default hidden state — slides up from below */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Slide from left */
+.reveal-from-left {
+  transform: translateX(-50px);
+}
+
+/* Slide from right */
+.reveal-from-right {
+  transform: translateX(50px);
+}
+
+/* Staggered delays for grid items */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Triggered state — JS adds .revealed when element enters viewport */
+.revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ── NAV ────────────────────────────────────────────────── */
 nav {
   position: fixed;
   top: 0;
@@ -35,6 +66,7 @@ nav {
   padding: 16px 60px;
   z-index: 1000;
   border-bottom: 1px solid #222;
+  transition: box-shadow 0.3s ease;
 }
 
 .logo {
@@ -55,11 +87,31 @@ nav {
   text-decoration: none;
   font-size: 14px;
   transition: color 0.3s;
+  position: relative;
+  padding-bottom: 4px;
 }
 
-.nav-links a:hover { color: var(--blue); }
+/* Underline indicator for active nav link */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--blue);
+  transition: width 0.3s ease;
+}
 
-/* HERO */
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--blue); }
+
+/* ── HERO ───────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -70,7 +122,7 @@ nav {
   background: radial-gradient(ellipse at top, #0d1b2e 0%, #0a0a0a 70%);
 }
 
-.hero-content { animation: fadeUp 0.8s ease; }
+.hero-content { animation: fadeUp 0.9s ease both; }
 
 .hero-greeting {
   font-size: 16px;
@@ -78,6 +130,7 @@ nav {
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  animation: fadeUp 0.8s ease 0.1s both;
 }
 
 .hero h1 {
@@ -85,6 +138,7 @@ nav {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 16px;
+  animation: fadeUp 0.8s ease 0.2s both;
 }
 
 .hero h1 span { color: var(--blue); }
@@ -93,6 +147,7 @@ nav {
   font-size: 18px;
   color: var(--muted);
   margin-bottom: 32px;
+  animation: fadeUp 0.8s ease 0.3s both;
 }
 
 .hero-btns {
@@ -100,8 +155,10 @@ nav {
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.4s both;
 }
 
+/* ── BUTTONS ────────────────────────────────────────────── */
 .btn {
   padding: 12px 28px;
   border-radius: 8px;
@@ -134,7 +191,7 @@ nav {
   transform: translateY(-2px);
 }
 
-/* SECTIONS */
+/* ── SECTIONS ───────────────────────────────────────────── */
 section {
   padding: 100px 60px;
   max-width: 1100px;
@@ -155,7 +212,7 @@ section {
   margin-bottom: 50px;
 }
 
-/* ABOUT */
+/* ── ABOUT ──────────────────────────────────────────────── */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -182,6 +239,13 @@ section {
   border-radius: 12px;
   padding: 24px;
   text-align: center;
+  transition: border-color 0.3s, transform 0.3s, opacity 0.7s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(26,115,232,0.15);
 }
 
 .stat-card h3 {
@@ -196,7 +260,7 @@ section {
   margin-top: 4px;
 }
 
-/* PHOTO */
+/* ── PHOTO ──────────────────────────────────────────────── */
 .photo-container {
   display: flex;
   justify-content: center;
@@ -205,8 +269,8 @@ section {
 }
 
 .photo-3d {
-  width: 400px;
-  height: 600px;
+  width: 220px;
+  height: 280px;
   object-fit: cover;
   object-position: top;
   border-radius: 16px;
@@ -218,9 +282,7 @@ section {
   animation: float3d 6s ease-in-out infinite;
 }
 
-.photo-3d:hover {
-  animation: none;
-}
+.photo-3d:hover { animation: none; }
 
 @keyframes float3d {
   0%   { transform: rotateY(-6deg) rotateX(3deg) translateY(0px); }
@@ -230,7 +292,7 @@ section {
   100% { transform: rotateY(-6deg) rotateX(3deg) translateY(0px); }
 }
 
-/* SKILLS */
+/* ── SKILLS ─────────────────────────────────────────────── */
 .skills-section { background: var(--darker); }
 
 .skills-wrapper {
@@ -251,19 +313,19 @@ section {
   border-radius: 12px;
   padding: 28px 20px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s, transform 0.3s, opacity 0.7s;
 }
 
 .skill-card:hover {
   border-color: var(--blue);
-  transform: translateY(-4px);
+  transform: translateY(-4px) !important;
 }
 
 .skill-icon { font-size: 32px; margin-bottom: 12px; }
 .skill-card h4 { font-size: 15px; margin-bottom: 6px; }
 .skill-card p { font-size: 12px; color: var(--muted); }
 
-/* PROJECTS */
+/* ── PROJECTS ───────────────────────────────────────────── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -275,12 +337,12 @@ section {
   border: 1px solid #222;
   border-radius: 12px;
   padding: 32px;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s, transform 0.3s, opacity 0.7s;
 }
 
 .project-card:hover {
   border-color: var(--blue);
-  transform: translateY(-4px);
+  transform: translateY(-4px) !important;
 }
 
 .project-tag {
@@ -296,8 +358,8 @@ section {
 }
 
 .project-card h3 { font-size: 20px; margin-bottom: 10px; }
-.project-card p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
-.project-stack { display: flex; gap: 8px; flex-wrap: wrap; }
+.project-card p  { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+.project-stack   { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .stack-tag {
   background: #1e1e1e;
@@ -308,7 +370,7 @@ section {
   border-radius: 4px;
 }
 
-/* CONTACT */
+/* ── CONTACT ────────────────────────────────────────────── */
 .contact-section { background: var(--darker); }
 
 .contact-wrapper {
@@ -348,6 +410,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .contact-item a {
@@ -379,7 +442,7 @@ section {
 
 .contact-form textarea { resize: vertical; min-height: 120px; }
 
-/* FOOTER */
+/* ── FOOTER ─────────────────────────────────────────────── */
 footer {
   text-align: center;
   padding: 30px;
@@ -388,13 +451,13 @@ footer {
   font-size: 13px;
 }
 
-/* ANIMATIONS */
+/* ── ANIMATIONS ─────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* RESPONSIVE */
+/* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 768px) {
   nav { padding: 16px 24px; }
   .nav-links { gap: 16px; }
