@@ -269,8 +269,8 @@ section {
 }
 
 .photo-3d {
-  width: 400px;
-  height: 500px;
+  width: 220px;
+  height: 280px;
   object-fit: cover;
   object-position: top;
   border-radius: 16px;
