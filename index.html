@@ -164,12 +164,13 @@
             <a href="tel:+2348116920093">+(234) 811 692 0093</a>
           </div>
         </div>
-        <div class="contact-form reveal reveal-from-right">
-          <input type="text" placeholder="Your Name" />
-          <input type="email" placeholder="Your Email" />
-          <textarea placeholder="Your Message"></textarea>
-          <button class="btn btn-primary" style="border:none;">Send Message</button>
-        </div>
+        <form class="contact-form reveal reveal-from-right" id="contactForm" action="https://formspree.io/f/xdarzgev" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn btn-primary" style="border:none;">Send Message</button>
+          <p id="formStatus" class="form-status"></p>
+        </form>
       </div>
     </div>
   </div>

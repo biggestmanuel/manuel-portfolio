@@ -38,6 +38,46 @@
   });
 })();
 
+// ── Contact Form Submission (Formspree) ────────────────────
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector("button[type='submit']");
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+    formStatus.textContent = "";
+    formStatus.className = "form-status";
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        formStatus.textContent = "Message sent! I'll get back to you soon.";
+        formStatus.className = "form-status success";
+        contactForm.reset();
+      } else {
+        formStatus.textContent = "Something went wrong. Please try again or email me directly.";
+        formStatus.className = "form-status error";
+      }
+    } catch (err) {
+      formStatus.textContent = "Network error. Please try again or email me directly.";
+      formStatus.className = "form-status error";
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+}
+
 // ── 3D Photo Tilt ──────────────────────────────────────────
 const photo = document.querySelector(".photo-3d");
 const container = document.querySelector(".photo-container");
