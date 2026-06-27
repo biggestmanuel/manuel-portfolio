@@ -1,3 +1,43 @@
+// ── Theme: system default + manual toggle ─────────────────
+(function () {
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById("themeToggle");
+  const stored = localStorage.getItem("theme"); // "light" | "dark" | null
+  const systemPrefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+
+  function applyTheme(theme) {
+    if (theme === "light") {
+      root.setAttribute("data-theme", "light");
+      if (toggleBtn) toggleBtn.textContent = "☀️";
+    } else {
+      root.removeAttribute("data-theme"); // dark is the base :root, no attribute needed
+      if (toggleBtn) toggleBtn.textContent = "🌙";
+    }
+  }
+
+  // Use saved preference if the user has manually toggled before,
+  // otherwise fall back to the OS-level system theme.
+  let currentTheme = stored || (systemPrefersLight ? "light" : "dark");
+  applyTheme(currentTheme);
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      currentTheme = currentTheme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", currentTheme);
+      applyTheme(currentTheme);
+    });
+  }
+
+  // If the user hasn't manually chosen a theme yet, keep following
+  // the system theme live (e.g. OS switches to dark mode at night).
+  window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("theme")) {
+      currentTheme = e.matches ? "light" : "dark";
+      applyTheme(currentTheme);
+    }
+  });
+})();
+
 // ── 3D Photo Tilt ──────────────────────────────────────────
 const photo = document.querySelector(".photo-3d");
 const container = document.querySelector(".photo-container");

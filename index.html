@@ -16,6 +16,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">🌙</button>
   </nav>
 
   <div class="hero">
@@ -35,9 +36,9 @@
     <h2 class="section-title reveal">About Me</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p class="reveal">I'm a 200-level Computer Engineering student at Rivers State University of Science and Technology, based in Port Harcourt, Rivers State, Nigeria.</p>
-        <p class="reveal">I have a deep passion for technology and I'm actively building my skills across multiple disciplines — from software development to data analysis and financial markets.</p>
-        <p class="reveal">I'm an upcoming forex trader with a strong interest in understanding how global markets work, and I'm continuously learning and growing every day.</p>
+        <p class="reveal">I'm a Full Stack Web Developer and 200-level student at Rivers State University, based in Port Harcourt, Nigeria — building real, deployed projects across the stack: HTML5, CSS3, Tailwind, JavaScript, React, Next.js, Node.js, Django, and PostgreSQL.</p>
+        <p class="reveal">I learn by shipping. Every project below is live, not a tutorial clone — and I'm always looking for the next problem worth solving with code.</p>
+        <p class="reveal">Outside of dev work, I'm into forex/crypto markets, anime, and football — and always down to talk tech, trading, or whatever's trending.</p>
         <div class="about-stats">
           <div class="stat-card reveal reveal-delay-1">
             <h3>200</h3>
@@ -70,24 +71,24 @@
       <h2 class="section-title reveal">Skills & Interests</h2>
       <div class="skills-grid">
         <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-icon">🌐</div>
+          <h4>Full Stack Development</h4>
+          <p>HTML, CSS, Tailwind, JavaScript, React & Next.js</p>
+        </div>
+        <div class="skill-card reveal reveal-delay-2">
+          <div class="skill-icon">🛠️</div>
+          <h4>Backend & Databases</h4>
+          <p>Node.js, Django, PostgreSQL, REST APIs</p>
+        </div>
+        <div class="skill-card reveal reveal-delay-3">
           <div class="skill-icon">🐍</div>
           <h4>Python</h4>
           <p>Foundational knowledge, actively revisiting and expanding</p>
         </div>
-        <div class="skill-card reveal reveal-delay-2">
-          <div class="skill-icon">📊</div>
-          <h4>Data Analysis</h4>
-          <p>Learning the fundamentals of data interpretation and insights</p>
-        </div>
-        <div class="skill-card reveal reveal-delay-3">
-          <div class="skill-icon">💹</div>
-          <h4>Forex Trading</h4>
-          <p>Upcoming trader studying market structure and price action</p>
-        </div>
         <div class="skill-card reveal reveal-delay-4">
-          <div class="skill-icon">🌐</div>
-          <h4>Web Development</h4>
-          <p>Building with HTML, CSS and JavaScript</p>
+          <div class="skill-icon">💹</div>
+          <h4>Forex & Crypto</h4>
+          <p>Studying market structure, price action, and trading methodology</p>
         </div>
       </div>
     </div>
@@ -98,13 +99,45 @@
     <h2 class="section-title reveal">Projects</h2>
     <div class="projects-grid">
       <div class="project-card reveal">
-        <span class="project-tag">Web Development</span>
-        <h3>Login Page</h3>
-        <p>A fully functional login page featuring form validation, password visibility toggle, shake animations on wrong input, and smooth entry animations.</p>
+        <span class="project-tag">AI / Web App</span>
+        <h3>Kindoku</h3>
+        <p>An AI-powered manga, manhwa & manhua recommendation app — pulls live metadata from AniList's GraphQL API and uses Groq for smart, personalized suggestions.</p>
+        <div class="project-stack">
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">Groq API</span>
+          <span class="stack-tag">AniList GraphQL</span>
+          <span class="stack-tag">Vercel</span>
+        </div>
+        <div class="project-links">
+          <a href="https://kindoku.vercel.app" target="_blank" class="btn btn-outline btn-sm">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1">
+        <span class="project-tag">Web App</span>
+        <h3>UniMap</h3>
+        <p>A campus navigation app for Rivers State University — interactive map with real routing so students can find their way around campus.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Leaflet.js</span>
+          <span class="stack-tag">OpenStreetMap</span>
+          <span class="stack-tag">OSRM</span>
+        </div>
+        <div class="project-links">
+          <a href="https://unimap-nine.vercel.app" target="_blank" class="btn btn-outline btn-sm">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <span class="project-tag">Web App</span>
+        <h3>ApexMind</h3>
+        <p>An interactive IQ test site built to deliver quick, engaging cognitive assessments right in the browser.</p>
         <div class="project-stack">
           <span class="stack-tag">HTML</span>
           <span class="stack-tag">CSS</span>
           <span class="stack-tag">JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="https://apexmind-psi.vercel.app" target="_blank" class="btn btn-outline btn-sm">Live Demo</a>
         </div>
       </div>
     </div>
