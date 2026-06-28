@@ -6,31 +6,16 @@
 
 :root {
   --blue: #1a73e8;
-  --dark: #0a0a0a;
-  --darker: #111111;
-  --card: #161616;
-  --text: #e0e0e0;
-  --muted: #888;
-  --border: #222;
-  --border-strong: #333;
-  --nav-bg: rgba(10, 10, 10, 0.95);
-  --shadow-blue: rgba(26, 115, 232, 0.3);
-  --hero-bg: radial-gradient(ellipse at top, #0d1b2e 0%, #0a0a0a 70%);
-}
-
-/* Light theme overrides — applied when html has [data-theme="light"] */
-html[data-theme="light"] {
-  --blue: #1a73e8;
-  --dark: #fafafa;
-  --darker: #f1f3f5;
-  --card: #ffffff;
+  --dark: #FAF8F5;        /* warm off-white / navajo cream */
+  --darker: #F2EDE6;      /* slightly deeper cream for alternate sections */
+  --card: #FFFFFF;
   --text: #1a1a1a;
   --muted: #666;
-  --border: #e2e2e2;
-  --border-strong: #cfcfcf;
-  --nav-bg: rgba(255, 255, 255, 0.95);
+  --border: #E2DDD8;
+  --border-strong: #C8C2BB;
+  --nav-bg: rgba(250, 248, 245, 0.95);
   --shadow-blue: rgba(26, 115, 232, 0.15);
-  --hero-bg: radial-gradient(ellipse at top, #e8f0fe 0%, #fafafa 70%);
+  --hero-bg: radial-gradient(ellipse at top, #dce8fb 0%, #FAF8F5 70%);
 }
 
 html { scroll-behavior: smooth; }
@@ -40,35 +25,29 @@ body {
   color: var(--text);
   font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ── SCROLL REVEAL SYSTEM ───────────────────────────────── */
 
-/* Default hidden state — slides up from below */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-/* Slide from left */
 .reveal-from-left {
   transform: translateX(-50px);
 }
 
-/* Slide from right */
 .reveal-from-right {
   transform: translateX(50px);
 }
 
-/* Staggered delays for grid items */
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* Triggered state — JS adds .revealed when element enters viewport */
 .revealed {
   opacity: 1;
   transform: translate(0, 0);
@@ -88,28 +67,7 @@ nav {
   gap: 24px;
   z-index: 1000;
   border-bottom: 1px solid var(--border);
-  transition: box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-}
-
-/* ── THEME TOGGLE ───────────────────────────────────────── */
-.theme-toggle {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 16px;
-  transition: border-color 0.3s, transform 0.2s, background 0.3s;
-  flex-shrink: 0;
-}
-
-.theme-toggle:hover {
-  border-color: var(--blue);
-  transform: translateY(-2px);
+  transition: box-shadow 0.3s ease;
 }
 
 .logo {
@@ -134,7 +92,6 @@ nav {
   padding-bottom: 4px;
 }
 
-/* Underline indicator for active nav link */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -162,8 +119,7 @@ nav {
   justify-content: center;
   text-align: center;
   padding: 100px 20px 60px;
-  background: var(--hero-bg, radial-gradient(ellipse at top, #0d1b2e 0%, #0a0a0a 70%));
-  transition: background 0.3s ease;
+  background: var(--hero-bg);
 }
 
 .hero-content { animation: fadeUp 0.9s ease both; }
@@ -219,7 +175,7 @@ nav {
 }
 
 .btn-primary:hover {
-  background: var(--blue);
+  background: #1558b0;
   transform: translateY(-2px);
 }
 
@@ -283,7 +239,8 @@ section {
   border-radius: 12px;
   padding: 24px;
   text-align: center;
-  transition: border-color 0.3s, transform 0.3s, opacity 0.7s, box-shadow 0.3s;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
 .stat-card:hover {
@@ -318,22 +275,8 @@ section {
   object-fit: cover;
   object-position: top;
   border-radius: 16px;
-  box-shadow:
-    0 20px 60px rgba(26, 115, 232, 0.3),
-    0 0 0 1px rgba(26, 115, 232, 0.2);
-  transition: transform 0.1s ease, box-shadow 0.3s ease;
-  transform-style: preserve-3d;
-  animation: float3d 6s ease-in-out infinite;
-}
-
-.photo-3d:hover { animation: none; }
-
-@keyframes float3d {
-  0%   { transform: rotateY(-6deg) rotateX(3deg) translateY(0px); }
-  25%  { transform: rotateY(0deg) rotateX(-2deg) translateY(-8px); }
-  50%  { transform: rotateY(6deg) rotateX(3deg) translateY(0px); }
-  75%  { transform: rotateY(0deg) rotateX(-2deg) translateY(8px); }
-  100% { transform: rotateY(-6deg) rotateX(3deg) translateY(0px); }
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border);
 }
 
 /* ── SKILLS ─────────────────────────────────────────────── */
@@ -357,7 +300,8 @@ section {
   border-radius: 12px;
   padding: 28px 20px;
   text-align: center;
-  transition: border-color 0.3s, transform 0.3s, opacity 0.7s;
+  transition: border-color 0.3s, transform 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 .skill-card:hover {
@@ -365,7 +309,21 @@ section {
   transform: translateY(-4px) !important;
 }
 
-.skill-icon { font-size: 32px; margin-bottom: 12px; }
+.skill-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 14px;
+  color: var(--blue);
+}
+
+.skill-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--blue);
+  stroke-width: 1.5;
+}
+
 .skill-card h4 { font-size: 15px; margin-bottom: 6px; }
 .skill-card p { font-size: 12px; color: var(--muted); }
 
@@ -381,7 +339,8 @@ section {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 36px 28px;
-  transition: border-color 0.3s, transform 0.3s, opacity 0.7s;
+  transition: border-color 0.3s, transform 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 .service-card:hover {
@@ -390,8 +349,23 @@ section {
 }
 
 .service-icon {
-  font-size: 30px;
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  color: var(--blue);
+  background: color-mix(in srgb, var(--blue) 8%, transparent);
+}
+
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--blue);
+  stroke-width: 1.5;
 }
 
 .service-card h3 {
@@ -416,8 +390,9 @@ section {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 32px;
-  transition: border-color 0.3s, transform 0.3s, opacity 0.7s;
+  transition: border-color 0.3s, transform 0.3s;
   overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 .project-img {
@@ -437,7 +412,7 @@ section {
 
 .project-tag {
   display: inline-block;
-  background: color-mix(in srgb, var(--blue) 12%, transparent);
+  background: color-mix(in srgb, var(--blue) 10%, transparent);
   color: var(--blue);
   font-size: 11px;
   padding: 4px 10px;
@@ -498,7 +473,6 @@ section {
 }
 
 .contact-icon {
-  font-size: 20px;
   width: 44px;
   height: 44px;
   background: var(--card);
@@ -508,6 +482,14 @@ section {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  color: var(--blue);
+}
+
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--blue);
+  stroke-width: 1.5;
 }
 
 .contact-item a {
