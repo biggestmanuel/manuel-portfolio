@@ -198,6 +198,7 @@ section {
   padding: 100px 60px;
   max-width: 1100px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .section-label {
@@ -283,7 +284,7 @@ section {
 }
 
 /* ── SKILLS ─────────────────────────────────────────────── */
-.skills-section { background: var(--darker); }
+.skills-section { background: var(--darker); overflow: hidden; }
 
 .skills-wrapper {
   max-width: 1100px;
