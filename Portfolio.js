@@ -1,6 +1,3 @@
-// ── Mark JS as loaded ──────────────────────────────────────
-document.documentElement.classList.add("js-loaded");
-
 // ── Hamburger Menu ─────────────────────────────────────────
 const hamburger = document.getElementById("hamburger");
 const mobileNav = document.getElementById("navLinks");
@@ -26,7 +23,7 @@ if (hamburger && mobileNav) {
   });
 }
 
-// ── Contact Form Submission (Web3Forms) ────────────────────
+// ── Contact Form (Web3Forms) ───────────────────────────────
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 
@@ -67,7 +64,7 @@ if (contactForm) {
   });
 }
 
-// ── Scroll Reveal (bidirectional) — desktop only ───────────
+// ── Scroll Reveal — desktop only ──────────────────────────
 if (window.innerWidth > 768) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -79,10 +76,7 @@ if (window.innerWidth > 768) {
         }
       });
     },
-    {
-      threshold: 0.15,
-      rootMargin: "0px 0px -40px 0px",
-    }
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
   );
 
   document.querySelectorAll(".reveal").forEach((el) => {
@@ -101,9 +95,7 @@ const navObserver = new IntersectionObserver(
         const id = entry.target.id;
         navHighlightLinks.forEach((link) => {
           link.classList.remove("active");
-          if (link.getAttribute("href") === `#${id}`) {
-            link.classList.add("active");
-          }
+          if (link.getAttribute("href") === `#${id}`) link.classList.add("active");
         });
       }
     });
@@ -116,9 +108,5 @@ sections.forEach((sec) => navObserver.observe(sec));
 // ── Nav Shadow on Scroll ───────────────────────────────────
 window.addEventListener("scroll", () => {
   const nav = document.querySelector("nav");
-  if (window.scrollY > 20) {
-    nav.style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
-  } else {
-    nav.style.boxShadow = "none";
-  }
+  nav.style.boxShadow = window.scrollY > 20 ? "0 4px 20px rgba(0,0,0,0.08)" : "none";
 });
