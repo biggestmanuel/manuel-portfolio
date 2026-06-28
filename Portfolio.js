@@ -23,12 +23,12 @@ if (hamburger && mobileNav) {
   });
 }
 
-// ── Contact Form (Web3Forms) ───────────────────────────────
+// ── Contact Form Submission (Formspree) ────────────────────
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 
-if (contactForm && formStatus) {
-  contactForm.addEventListener("submit", async (e) => {
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const submitBtn = contactForm.querySelector("button[type='submit']");
@@ -39,23 +39,22 @@ if (contactForm && formStatus) {
     formStatus.className = "form-status";
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch(contactForm.action, {
         method: "POST",
         body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
       });
-
-      const data = await response.json();
 
       if (response.ok) {
         formStatus.textContent = "Message sent! I'll get back to you soon.";
         formStatus.className = "form-status success";
         contactForm.reset();
       } else {
-        formStatus.textContent = "Error: " + (data.message || "Something went wrong.");
+        formStatus.textContent = "Something went wrong. Please try again or email me directly.";
         formStatus.className = "form-status error";
       }
     } catch (err) {
-      formStatus.textContent = "Network error. Please email me directly at emmanuelnwuba1@gmail.com";
+      formStatus.textContent = "Network error. Please try again or email me directly.";
       formStatus.className = "form-status error";
     } finally {
       submitBtn.textContent = originalText;
@@ -64,26 +63,27 @@ if (contactForm && formStatus) {
   });
 }
 
-// ── Scroll Reveal (one-shot, smooth) — desktop only ────────
+// ── Scroll Reveal (bidirectional) — desktop only ───────────
 if (window.innerWidth > 768) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.15,
-      rootMargin: "0px 0px -40px 0px",
-    }
-  );
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+      } else {
+        entry.target.classList.remove("revealed");
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+    rootMargin: "0px 0px -40px 0px",
+  }
+);
 
-  document.querySelectorAll(".reveal").forEach((el) => {
-    revealObserver.observe(el);
-  });
+document.querySelectorAll(".reveal").forEach((el) => {
+  revealObserver.observe(el);
+});
 }
 
 // ── Active Nav Highlight on Scroll ────────────────────────
