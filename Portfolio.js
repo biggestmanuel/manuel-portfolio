@@ -9,24 +9,31 @@ if (rocketWrap && heroSection) {
   const heroObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting && !rocketVisible) {
-          // User scrolled past hero — show rocket bobbing
+        if (!entry.isIntersecting && !rocketVisible && !launched) {
+          // Scrolled DOWN past hero — show rocket then launch
           rocketVisible = true;
-          launched = false;
+          launched = true;
           rocketWrap.classList.remove("launch");
-          void rocketWrap.offsetWidth; // force reflow to reset animation
+          void rocketWrap.offsetWidth; // reset animation
           rocketWrap.classList.add("visible");
+
+          // Brief pause so they see it bob, then launch
+          setTimeout(() => {
+            rocketWrap.classList.add("launch");
+            rocketWrap.addEventListener("animationend", () => {
+              rocketWrap.classList.remove("visible", "launch");
+              rocketVisible = false;
+              launched = false;
+            }, { once: true });
+          }, 400);
         }
 
-        if (entry.isIntersecting && rocketVisible && !launched) {
-          // User scrolled back up toward hero — launch it!
-          launched = true;
-          rocketWrap.classList.add("launch");
-          rocketWrap.addEventListener("animationend", () => {
-            rocketWrap.classList.remove("visible", "launch");
-            rocketVisible = false;
-            launched = false;
-          }, { once: true });
+        if (entry.isIntersecting) {
+          // Scrolled back UP to hero — silently reset so it can fire again
+          rocketWrap.classList.remove("visible", "launch");
+          void rocketWrap.offsetWidth;
+          rocketVisible = false;
+          launched = false;
         }
       });
     },
