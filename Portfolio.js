@@ -1,3 +1,41 @@
+// ── Rocket Launch ──────────────────────────────────────────
+const rocketWrap = document.getElementById("rocketWrap");
+const heroSection = document.querySelector(".hero");
+
+if (rocketWrap && heroSection) {
+  let rocketVisible = false;
+  let launched = false;
+
+  const heroObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting && !rocketVisible) {
+          // User scrolled past hero — show rocket bobbing
+          rocketVisible = true;
+          launched = false;
+          rocketWrap.classList.remove("launch");
+          void rocketWrap.offsetWidth; // force reflow to reset animation
+          rocketWrap.classList.add("visible");
+        }
+
+        if (entry.isIntersecting && rocketVisible && !launched) {
+          // User scrolled back up toward hero — launch it!
+          launched = true;
+          rocketWrap.classList.add("launch");
+          rocketWrap.addEventListener("animationend", () => {
+            rocketWrap.classList.remove("visible", "launch");
+            rocketVisible = false;
+            launched = false;
+          }, { once: true });
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  heroObserver.observe(heroSection);
+}
+
 // ── Hamburger Menu ─────────────────────────────────────────
 const hamburger = document.getElementById("hamburger");
 const mobileNav = document.getElementById("navLinks");

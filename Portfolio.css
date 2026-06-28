@@ -558,6 +558,50 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── ROCKET ─────────────────────────────────────────────── */
+#rocketWrap {
+  position: fixed;
+  bottom: 32px;
+  right: 36px;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(0px) rotate(0deg);
+  transition: opacity 0.4s ease;
+}
+
+#rocketWrap.visible {
+  opacity: 1;
+}
+
+#rocket {
+  width: 48px;
+  height: 48px;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(26,115,232,0.4));
+}
+
+/* The launch keyframe — shoots straight up and off screen */
+@keyframes rocketLaunch {
+  0%   { transform: translateY(0px) rotate(-30deg); opacity: 1; }
+  15%  { transform: translateY(-20px) rotate(-35deg); opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(-40deg); opacity: 0; }
+}
+
+#rocketWrap.launch {
+  animation: rocketLaunch 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Idle hover bob while visible */
+@keyframes rocketBob {
+  0%, 100% { transform: translateY(0px) rotate(-20deg); }
+  50%       { transform: translateY(-8px) rotate(-20deg); }
+}
+
+#rocketWrap.visible:not(.launch) {
+  animation: rocketBob 2s ease-in-out infinite;
+}
+
 /* ── HAMBURGER BUTTON ───────────────────────────────────── */
 .hamburger {
   display: none;
