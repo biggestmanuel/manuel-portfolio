@@ -38,13 +38,14 @@ if (contactForm) {
   });
 }
 
-// ── Scroll Reveal ──────────────────────────────────────────
+// ── Scroll Reveal (bidirectional — animates in AND out every pass) ──
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("revealed");
-        revealObserver.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove("revealed");
       }
     });
   },
