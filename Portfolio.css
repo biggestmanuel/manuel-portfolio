@@ -30,19 +30,20 @@ body {
 
 /* ── SCROLL REVEAL SYSTEM ───────────────────────────────── */
 
-.reveal {
+.js-loaded .reveal {
   opacity: 0;
   transform: translateY(48px);
   transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
-.reveal-from-left {
-  transform: translateX(-60px);
+.js-loaded .reveal-from-left {
+  transform: translateX(-40px);
 }
 
-.reveal-from-right {
-  transform: translateX(60px);
+.js-loaded .reveal-from-right {
+  transform: translateX(40px);
 }
 
 .reveal-delay-1 { transition-delay: 0.08s; }

@@ -1,3 +1,6 @@
+// ── Mark JS as loaded ──────────────────────────────────────
+document.documentElement.classList.add("js-loaded");
+
 // ── Hamburger Menu ─────────────────────────────────────────
 const hamburger = document.getElementById("hamburger");
 const mobileNav = document.getElementById("navLinks");
