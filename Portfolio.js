@@ -1,26 +1,24 @@
 // ── Hamburger Menu ─────────────────────────────────────────
 const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+const mobileNav = document.getElementById("navLinks");
 
-if (hamburger && navLinks) {
+if (hamburger && mobileNav) {
   hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("open");
-    navLinks.classList.toggle("open");
+    mobileNav.classList.toggle("open");
   });
 
-  // Close menu when a link is clicked
-  navLinks.querySelectorAll("a").forEach((link) => {
+  mobileNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       hamburger.classList.remove("open");
-      navLinks.classList.remove("open");
+      mobileNav.classList.remove("open");
     });
   });
 
-  // Close menu when tapping outside
   document.addEventListener("click", (e) => {
-    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
       hamburger.classList.remove("open");
-      navLinks.classList.remove("open");
+      mobileNav.classList.remove("open");
     }
   });
 }
@@ -65,7 +63,7 @@ if (contactForm) {
   });
 }
 
-// ── Scroll Reveal (bidirectional — animates in AND out every pass) ──
+// ── Scroll Reveal (bidirectional) ─────────────────────────
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -88,14 +86,14 @@ document.querySelectorAll(".reveal").forEach((el) => {
 
 // ── Active Nav Highlight on Scroll ────────────────────────
 const sections = document.querySelectorAll("section, .skills-section, .contact-section");
-const navLinks = document.querySelectorAll(".nav-links a");
+const navHighlightLinks = document.querySelectorAll(".nav-links a");
 
 const navObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        navLinks.forEach((link) => {
+        navHighlightLinks.forEach((link) => {
           link.classList.remove("active");
           if (link.getAttribute("href") === `#${id}`) {
             link.classList.add("active");
