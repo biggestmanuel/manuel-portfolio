@@ -63,7 +63,8 @@ if (contactForm) {
   });
 }
 
-// ── Scroll Reveal (bidirectional) ─────────────────────────
+// ── Scroll Reveal (bidirectional) — desktop only ───────────
+if (window.innerWidth > 768) {
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -83,6 +84,7 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll(".reveal").forEach((el) => {
   revealObserver.observe(el);
 });
+}
 
 // ── Active Nav Highlight on Scroll ────────────────────────
 const sections = document.querySelectorAll("section, .skills-section, .contact-section");

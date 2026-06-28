@@ -643,7 +643,13 @@ footer {
 
   .nav-links a::after { display: none; }
 
-  html, body { overflow-x: hidden; }
+  /* Kill scroll animations on mobile — too heavy for low-end devices */
+  .reveal, .reveal-from-left, .reveal-from-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
 
   .hero h1 { font-size: 28px; }
   .hero-title { font-size: 15px; }
