@@ -220,6 +220,7 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
+  overflow: hidden;
 }
 
 .about-text p {
@@ -445,7 +446,7 @@ section {
 }
 
 /* ── CONTACT ────────────────────────────────────────────── */
-.contact-section { background: var(--darker); }
+.contact-section { background: var(--darker); overflow-x: hidden; }
 
 .contact-wrapper {
   max-width: 1100px;
