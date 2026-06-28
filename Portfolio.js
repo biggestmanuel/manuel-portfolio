@@ -23,7 +23,7 @@ if (hamburger && mobileNav) {
   });
 }
 
-// ── Contact Form Submission (Formspree) ────────────────────
+// ── Contact Form Submission (Web3Forms) ────────────────────
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 
@@ -39,11 +39,12 @@ if (contactForm) {
     formStatus.className = "form-status";
 
     try {
-      const response = await fetch(contactForm.action, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: new FormData(contactForm),
-        headers: { Accept: "application/json" },
       });
+
+      const data = await response.json();
 
       if (response.ok) {
         formStatus.textContent = "Message sent! I'll get back to you soon.";

@@ -9,7 +9,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
   <link rel="stylesheet" href="./Portfolio.css">
-
 </head>
 <body>
 
@@ -203,7 +202,8 @@
             <a href="tel:+2348116920093">+(234) 811 692 0093</a>
           </div>
         </div>
-        <form class="contact-form reveal reveal-from-right" id="contactForm" action="https://formspree.io/f/xdarzgev" method="POST">
+        <form class="contact-form reveal reveal-from-right" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="e5cb40f0-d582-455d-ae47-91942243fc54">
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="email" placeholder="Your Email" required />
           <textarea name="message" placeholder="Your Message" required></textarea>
