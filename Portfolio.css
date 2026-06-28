@@ -55,13 +55,6 @@ body {
   transform: translate(0, 0);
 }
 
-/* When leaving viewport, snap back faster than entry */
-.reveal:not(.revealed) {
-  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: 0s !important;
-}
-
 /* ── NAV ────────────────────────────────────────────────── */
 nav {
   position: fixed;
