@@ -23,45 +23,43 @@ if (hamburger && mobileNav) {
   });
 }
 
-// ── Contact Form Submission (Formspree) ────────────────────
-const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
+// ── Contact Form Submission (Web3Forms) ────────────────────
+const form = document.getElementById('form');
+const submitBtn = form.querySelector('button[type="submit"]');
 
-if (contactForm) {
-  contactForm.addEventListener("submit", async function (e) {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const submitBtn = contactForm.querySelector("button[type='submit']");
+    const formData = new FormData(form);
+    formData.append("access_key", "e5cb40f0-d582-455d-ae47-91942243fc54");
+
     const originalText = submitBtn.textContent;
+
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
-    formStatus.textContent = "";
-    formStatus.className = "form-status";
 
     try {
-      const response = await fetch(contactForm.action, {
-        method: "POST",
-        body: new FormData(contactForm),
-        headers: { Accept: "application/json" },
-      });
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
 
-      if (response.ok) {
-        formStatus.textContent = "Message sent! I'll get back to you soon.";
-        formStatus.className = "form-status success";
-        contactForm.reset();
-      } else {
-        formStatus.textContent = "Something went wrong. Please try again or email me directly.";
-        formStatus.className = "form-status error";
-      }
-    } catch (err) {
-      formStatus.textContent = "Network error. Please try again or email me directly.";
-      formStatus.className = "form-status error";
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Success! Your message has been sent.");
+            form.reset();
+        } else {
+            alert("Error: " + data.message);
+        }
+
+    } catch (error) {
+        alert("Something went wrong. Please try again or email me directly at emmanuelnwuba1@gmail.com");
     } finally {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
     }
-  });
-}
+});
 
 // ── Scroll Reveal (bidirectional) — desktop only ───────────
 if (window.innerWidth > 768) {
