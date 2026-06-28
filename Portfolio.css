@@ -18,13 +18,14 @@
   --hero-bg: radial-gradient(ellipse at top, #dce8fb 0%, #FAF8F5 70%);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   background: var(--dark);
   color: var(--text);
   font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* ── SCROLL REVEAL SYSTEM ───────────────────────────────── */

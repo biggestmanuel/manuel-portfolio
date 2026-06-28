@@ -23,65 +23,68 @@ if (hamburger && mobileNav) {
   });
 }
 
-// ── Contact Form Submission (Web3Forms) ────────────────────
-const form = document.getElementById('form');
-const submitBtn = form.querySelector('button[type="submit"]');
+// ── Contact Form (Web3Forms) ───────────────────────────────
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
 
-form.addEventListener('submit', async (e) => {
+if (contactForm && formStatus) {
+  contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(form);
-    formData.append("access_key", "e5cb40f0-d582-455d-ae47-91942243fc54");
-
+    const submitBtn = contactForm.querySelector("button[type='submit']");
     const originalText = submitBtn.textContent;
-
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
+    formStatus.textContent = "";
+    formStatus.className = "form-status";
 
     try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData
-        });
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: new FormData(contactForm),
+      });
 
-        const data = await response.json();
+      const data = await response.json();
 
-        if (response.ok) {
-            alert("Success! Your message has been sent.");
-            form.reset();
-        } else {
-            alert("Error: " + data.message);
-        }
-
-    } catch (error) {
-        alert("Something went wrong. Please try again or email me directly at emmanuelnwuba1@gmail.com");
+      if (response.ok) {
+        formStatus.textContent = "Message sent! I'll get back to you soon.";
+        formStatus.className = "form-status success";
+        contactForm.reset();
+      } else {
+        formStatus.textContent = "Error: " + (data.message || "Something went wrong.");
+        formStatus.className = "form-status error";
+      }
+    } catch (err) {
+      formStatus.textContent = "Network error. Please email me directly at emmanuelnwuba1@gmail.com";
+      formStatus.className = "form-status error";
     } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     }
-});
+  });
+}
 
 // ── Scroll Reveal (bidirectional) — desktop only ───────────
 if (window.innerWidth > 768) {
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("revealed");
-      } else {
-        entry.target.classList.remove("revealed");
-      }
-    });
-  },
-  {
-    threshold: 0.15,
-    rootMargin: "0px 0px -40px 0px",
-  }
-);
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+        } else {
+          entry.target.classList.remove("revealed");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -40px 0px",
+    }
+  );
 
-document.querySelectorAll(".reveal").forEach((el) => {
-  revealObserver.observe(el);
-});
+  document.querySelectorAll(".reveal").forEach((el) => {
+    revealObserver.observe(el);
+  });
 }
 
 // ── Active Nav Highlight on Scroll ────────────────────────
