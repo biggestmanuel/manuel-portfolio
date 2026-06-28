@@ -64,15 +64,14 @@ if (contactForm && formStatus) {
   });
 }
 
-// ── Scroll Reveal (bidirectional) — desktop only ───────────
+// ── Scroll Reveal (one-shot, smooth) — desktop only ────────
 if (window.innerWidth > 768) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("revealed");
-        } else {
-          entry.target.classList.remove("revealed");
+          revealObserver.unobserve(entry.target);
         }
       });
     },
