@@ -1,3 +1,7 @@
+.fraktur {
+  font-family: 'UnifrakturMaguntia', cursive;
+}
+
 * {
   margin: 0;
   padding: 0;
