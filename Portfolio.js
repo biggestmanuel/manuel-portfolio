@@ -4,6 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const mobileNav = document.getElementById("navLinks");
+  const navBackdrop = document.getElementById("navBackdrop");
   const contactForm = document.getElementById("contactForm");
   const formStatus = document.getElementById("formStatus");
   const nav = document.querySelector("nav");
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!hamburger || !mobileNav) return;
     hamburger.classList.remove("open");
     mobileNav.classList.remove("open");
+    navBackdrop?.classList.remove("open");
   };
 
   // ── Hamburger Menu ───────────────────────────────────────
@@ -22,7 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       hamburger.classList.toggle("open");
       mobileNav.classList.toggle("open");
+      navBackdrop?.classList.toggle("open");
     });
+
+    navBackdrop?.addEventListener("click", closeMobileNav);
 
     mobileNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
@@ -107,23 +112,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ── Scroll Reveal — desktop only ────────────────────────
+  // Fixed: previously this toggled `revealed` on/off every time an element
+  // crossed the intersection threshold, which caused rapid re-triggering
+  // (looked like glitching) on fast scrolls. Now each element reveals once
+  // and is then unobserved, so it can't flicker back out.
   if (window.innerWidth > 768 && "IntersectionObserver" in window) {
     const revealItems = document.querySelectorAll(".reveal");
 
     const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("revealed");
-        revealObserver.unobserve(entry.target); // stop watching once revealed
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -40px 0px",
       }
-    });
-  },
-  {
-    threshold: 0.15,
-    rootMargin: "0px 0px -40px 0px",
-  }
-);
+    );
 
     revealItems.forEach((el) => revealObserver.observe(el));
   } else {

@@ -148,6 +148,9 @@ nav {
 
 .nav-links a {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   text-decoration: none;
   color: var(--text);
   font-size: 0.94rem;
@@ -159,13 +162,39 @@ nav {
 .nav-links a::after {
   content: '';
   position: absolute;
-  left: 0;
+  left: 30px; /* offset past the icon square so underline sits under the label */
   bottom: 2px;
   width: 0;
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transition: width 0.3s var(--ease-out);
+}
+
+.nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.10);
+  flex-shrink: 0;
+  transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+
+.nav-icon svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.nav-links a:hover .nav-icon,
+.nav-links a.active .nav-icon {
+  background: rgba(37, 99, 235, 0.14);
+  border-color: rgba(37, 99, 235, 0.20);
 }
 
 .nav-links a:hover,
@@ -198,6 +227,30 @@ nav {
   background: linear-gradient(180deg, transparent, rgba(250, 248, 245, 0.9));
   pointer-events: none;
   z-index: -1;
+}
+
+/* Soft blurred gradient blob — decorative accent, sits behind hero content */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 8%;
+  right: 6%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.22), rgba(37, 99, 235, 0.06) 60%, transparent 75%);
+  filter: blur(60px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .hero::after {
+    width: 240px;
+    height: 240px;
+    top: 4%;
+    right: -8%;
+  }
 }
 
 .hero-content {
@@ -843,6 +896,28 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 998; /* below nav (1000) and its dropdown, above page content */
+    transition:
+      opacity 0.4s var(--ease-out),
+      visibility 0s linear 0.4s;
+  }
+
+  .nav-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 0.4s var(--ease-out),
+      visibility 0s linear 0s;
+  }
+
   nav {
     top: 10px;
     width: calc(100% - 20px);
@@ -865,11 +940,12 @@ footer {
     padding: 0;
     overflow: hidden;
     max-height: 0;
-    background: rgba(255, 255, 255, 0.90);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.55);
     border-radius: 18px;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
+    z-index: 999; /* above backdrop, below nav pill itself */
     transition:
       max-height 0.45s var(--ease-out),
       padding 0.45s var(--ease-out);
@@ -886,7 +962,8 @@ footer {
   }
 
   .nav-links a {
-    display: block;
+    display: flex;
+    justify-content: center;
     padding: 14px 18px;
     font-size: 1rem;
   }
