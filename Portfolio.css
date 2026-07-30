@@ -7,30 +7,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=UnifrakturMaguntia&display=swap');
 
 :root {
-  --accent: #2563eb;
-  --accent-2: #3b82f6;
-  --accent-soft: rgba(37, 99, 235, 0.10);
+  --accent: #3b82f6;
+  --accent-2: #60a5fa;
+  --accent-soft: rgba(59, 130, 246, 0.14);
 
-  --dark: #faf8f5;
-  --darker: #f2ede6;
-  --card: rgba(255, 255, 255, 0.76);
-  --card-solid: #ffffff;
+  --dark: #0b0f17;
+  --darker: #10151f;
+  --card: rgba(255, 255, 255, 0.05);
+  --card-solid: #141926;
 
-  --text: #171717;
-  --muted: #667085;
+  --text: #f1f3f7;
+  --muted: #9aa4b8;
 
-  --border: rgba(17, 24, 39, 0.08);
-  --border-strong: rgba(17, 24, 39, 0.14);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
 
-  --nav-bg: rgba(255, 255, 255, 0.76);
-  --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 16px 40px rgba(15, 23, 42, 0.10);
-  --shadow-lg: 0 24px 70px rgba(37, 99, 235, 0.14);
+  --nav-bg: rgba(16, 20, 30, 0.72);
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 16px 40px rgba(0, 0, 0, 0.36);
+  --shadow-lg: 0 24px 70px rgba(59, 130, 246, 0.22);
 
   --hero-bg:
-    radial-gradient(circle at top, rgba(37, 99, 235, 0.16), transparent 30%),
-    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.10), transparent 24%),
-    linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.16), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.10), transparent 24%),
+    linear-gradient(180deg, #0b0f17 0%, #0b0f17 100%);
 
   --radius-xl: 28px;
   --radius-lg: 22px;
@@ -125,7 +125,7 @@ nav {
   background: var(--nav-bg);
   backdrop-filter: blur(18px) saturate(1.2);
   -webkit-backdrop-filter: blur(18px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 999px;
   box-shadow: var(--shadow-md);
   transition: box-shadow 0.3s var(--ease-out), background 0.3s var(--ease-out);
@@ -159,16 +159,25 @@ nav {
   padding: 6px 0;
 }
 
-.nav-links a::after {
+.nav-label {
+  position: relative;
+}
+
+.nav-label::after {
   content: '';
   position: absolute;
-  left: 30px; /* offset past the icon square so underline sits under the label */
-  bottom: 2px;
+  left: 0;
+  bottom: -4px;
   width: 0;
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transition: width 0.3s var(--ease-out);
+}
+
+.nav-links a:hover .nav-label::after,
+.nav-links a.active .nav-label::after {
+  width: 100%;
 }
 
 .nav-icon {
@@ -202,11 +211,6 @@ nav {
   color: var(--accent);
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 100%;
-}
-
 /* ── HERO ─────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
@@ -224,7 +228,7 @@ nav {
   position: absolute;
   inset: auto 0 0;
   height: 140px;
-  background: linear-gradient(180deg, transparent, rgba(250, 248, 245, 0.9));
+  background: linear-gradient(180deg, transparent, rgba(11, 15, 23, 0.9));
   pointer-events: none;
   z-index: -1;
 }
@@ -335,7 +339,7 @@ nav {
 }
 
 .btn-outline {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--text);
   border-color: var(--border-strong);
 }
@@ -399,7 +403,7 @@ section {
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 22px 18px;
@@ -447,22 +451,22 @@ section {
   object-fit: cover;
   object-position: top;
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 60px rgba(59, 130, 246, 0.08);
   transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
   transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
 }
 
 .photo-3d:hover {
   transform: perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-6px);
-  box-shadow: 0 36px 90px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 36px 90px rgba(0, 0, 0, 0.55), 0 0 80px rgba(59, 130, 246, 0.14);
 }
 
 /* ── SKILLS ───────────────────────────────────────────── */
 .skills-section {
-  background: linear-gradient(180deg, var(--darker), #f7f2eb);
-  border-top: 1px solid rgba(255, 255, 255, 0.75);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  background: linear-gradient(180deg, var(--darker), #0c111c);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .skills-wrapper {
@@ -478,7 +482,7 @@ section {
 }
 
 .skill-card {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px 22px;
@@ -528,6 +532,59 @@ section {
   color: var(--muted);
 }
 
+/* ── TOOLS I BUILD WITH (smaller cards, same visual language) ── */
+.tools-label {
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.tool-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px 10px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition:
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out);
+  backdrop-filter: blur(12px);
+}
+
+.tool-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-md);
+  border-color: rgba(37, 99, 235, 0.16);
+}
+
+.tool-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.tool-card span {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
 /* ── SERVICES ─────────────────────────────────────────── */
 .services-grid {
   display: grid;
@@ -536,7 +593,7 @@ section {
 }
 
 .service-card {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 30px 24px;
@@ -597,7 +654,7 @@ section {
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.80);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: 0 0 24px;
@@ -675,9 +732,9 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(242, 237, 230, 0.9);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
-  color: #5f6672;
+  color: var(--muted);
   font-size: 0.72rem;
   font-weight: 600;
   padding: 6px 10px;
@@ -692,8 +749,8 @@ section {
 
 /* ── CONTACT ──────────────────────────────────────────── */
 .contact-section {
-  background: linear-gradient(180deg, #f8f4ef, #f2ede6);
-  border-top: 1px solid rgba(255, 255, 255, 0.75);
+  background: linear-gradient(180deg, #0d1220, #0b0f17);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .contact-wrapper {
@@ -737,7 +794,7 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.80);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: var(--shadow-sm);
@@ -772,7 +829,7 @@ section {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 15px 16px;
@@ -822,10 +879,10 @@ section {
 footer {
   text-align: center;
   padding: 28px 16px 38px;
-  border-top: 1px solid rgba(17, 24, 39, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--muted);
   font-size: 0.86rem;
-  background: #faf8f5;
+  background: var(--dark);
 }
 
 /* ── ANIMATIONS ───────────────────────────────────────── */
@@ -940,9 +997,9 @@ footer {
     padding: 0;
     overflow: hidden;
     max-height: 0;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(20, 25, 38, 0.90);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 18px;
     box-shadow: var(--shadow-lg);
     z-index: 999; /* above backdrop, below nav pill itself */
@@ -968,7 +1025,7 @@ footer {
     font-size: 1rem;
   }
 
-  .nav-links a::after {
+  .nav-label::after {
     display: none;
   }
 
