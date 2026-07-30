@@ -7,9 +7,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=UnifrakturMaguntia&display=swap');
 
 :root {
-  --blue: #2563eb;
-  --blue-2: #3b82f6;
-  --blue-soft: rgba(37, 99, 235, 0.10);
+  --accent: #2563eb;
+  --accent-2: #3b82f6;
+  --accent-soft: rgba(37, 99, 235, 0.10);
 
   --dark: #faf8f5;
   --darker: #f2ede6;
@@ -134,7 +134,7 @@ nav {
 .logo {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--blue);
+  color: var(--accent);
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
@@ -164,13 +164,13 @@ nav {
   width: 0;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--blue), var(--blue-2));
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transition: width 0.3s var(--ease-out);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--blue);
+  color: var(--accent);
 }
 
 .nav-links a:hover::after,
@@ -207,7 +207,7 @@ nav {
 
 .hero-greeting {
   font-size: 0.82rem;
-  color: var(--blue);
+  color: var(--accent);
   letter-spacing: 0.28em;
   text-transform: uppercase;
   margin-bottom: 16px;
@@ -225,7 +225,7 @@ nav {
 }
 
 .hero h1 span {
-  color: var(--blue);
+  color: var(--accent);
   position: relative;
 }
 
@@ -272,7 +272,7 @@ nav {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: #fff;
   box-shadow: 0 14px 30px rgba(37, 99, 235, 0.20);
 }
@@ -290,7 +290,7 @@ nav {
 .btn-outline:hover {
   background: rgba(37, 99, 235, 0.06);
   border-color: rgba(37, 99, 235, 0.22);
-  color: var(--blue);
+  color: var(--accent);
 }
 
 .btn-sm {
@@ -308,7 +308,7 @@ section {
 
 .section-label {
   font-size: 0.78rem;
-  color: var(--blue);
+  color: var(--accent);
   letter-spacing: 0.28em;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -368,7 +368,7 @@ section {
 .stat-card h3 {
   font-size: 2rem;
   line-height: 1;
-  color: var(--blue);
+  color: var(--accent);
   font-weight: 900;
   letter-spacing: -0.06em;
   margin-bottom: 6px;
@@ -459,7 +459,7 @@ section {
 .skill-icon svg {
   width: 24px;
   height: 24px;
-  stroke: var(--blue);
+  stroke: var(--accent);
   stroke-width: 1.7;
 }
 
@@ -516,7 +516,7 @@ section {
 .service-icon svg {
   width: 24px;
   height: 24px;
-  stroke: var(--blue);
+  stroke: var(--accent);
   stroke-width: 1.7;
 }
 
@@ -586,7 +586,7 @@ section {
   align-items: center;
   justify-content: center;
   background: rgba(37, 99, 235, 0.10);
-  color: var(--blue);
+  color: var(--accent);
   border: 1px solid rgba(37, 99, 235, 0.12);
   font-size: 0.7rem;
   font-weight: 800;
@@ -693,7 +693,7 @@ section {
 .contact-icon svg {
   width: 20px;
   height: 20px;
-  stroke: var(--blue);
+  stroke: var(--accent);
   stroke-width: 1.7;
 }
 
@@ -707,7 +707,7 @@ section {
 }
 
 .contact-item a:hover {
-  color: var(--blue);
+  color: var(--accent);
 }
 
 .contact-form {

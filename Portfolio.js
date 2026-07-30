@@ -111,20 +111,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const revealItems = document.querySelectorAll(".reveal");
 
     const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-          } else {
-            entry.target.classList.remove("revealed");
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: "0px 0px -40px 0px",
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        revealObserver.unobserve(entry.target); // stop watching once revealed
       }
-    );
+    });
+  },
+  {
+    threshold: 0.15,
+    rootMargin: "0px 0px -40px 0px",
+  }
+);
 
     revealItems.forEach((el) => revealObserver.observe(el));
   } else {
