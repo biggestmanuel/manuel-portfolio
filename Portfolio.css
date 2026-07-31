@@ -87,13 +87,20 @@ a {
 }
 
 /* ── SCROLL REVEAL SYSTEM ─────────────────────────────── */
+/* Note: will-change is intentionally NOT set here permanently.
+   It's applied dynamically in JS right before the reveal transition
+   starts, then removed once the transition ends. Leaving will-change
+   on indefinitely for every .reveal element (stat cards, skill cards,
+   15 tool cards, service cards, project cards, contact form, etc.)
+   forces the browser to keep a standing compositor layer for each one
+   even long after the animation is done — this is what was causing
+   desktop scroll to get janky/stuck over time. */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition:
     opacity 0.75s var(--ease-out),
     transform 0.75s var(--ease-out);
-  will-change: transform, opacity;
 }
 
 .reveal-from-left {

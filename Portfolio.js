@@ -112,10 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ── Scroll Reveal — desktop only ────────────────────────
-  // Fixed: previously this toggled `revealed` on/off every time an element
-  // crossed the intersection threshold, which caused rapid re-triggering
-  // (looked like glitching) on fast scrolls. Now each element reveals once
-  // and is then unobserved, so it can't flicker back out.
+  // will-change is applied only for the duration of the reveal transition,
+  // then stripped back to "auto" once the transition finishes. Leaving
+  // will-change on indefinitely for every .reveal element (stat cards,
+  // skill cards, all 15 tool cards, service cards, project cards, contact
+  // form) forces the browser to hold a standing compositor layer for each
+  // one even long after the animation is done. On desktop, where multiple
+  // grid columns put many .reveal elements in view at once, that layer
+  // buildup is what was causing scroll to get janky/stuck over time.
   if (window.innerWidth > 768 && "IntersectionObserver" in window) {
     const revealItems = document.querySelectorAll(".reveal");
 
@@ -123,8 +127,20 @@ document.addEventListener("DOMContentLoaded", () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            revealObserver.unobserve(entry.target);
+            const el = entry.target;
+
+            el.style.willChange = "transform, opacity";
+            el.classList.add("revealed");
+            revealObserver.unobserve(el);
+
+            const clearWillChange = () => {
+              el.style.willChange = "auto";
+            };
+            el.addEventListener("transitionend", clearWillChange, { once: true });
+
+            // Fallback in case transitionend doesn't fire (e.g. element
+            // already matched final state, reduced motion, etc.)
+            setTimeout(clearWillChange, 900);
           }
         });
       },
