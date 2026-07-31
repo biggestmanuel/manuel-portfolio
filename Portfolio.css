@@ -924,7 +924,7 @@ footer {
   cursor: pointer;
   padding: 0;
   flex-shrink: 0;
-  margin-right: -10px;
+  margin-right: -14px;
 }
 
 .hamburger span {
@@ -993,7 +993,7 @@ footer {
     top: 10px;
     width: calc(100% - 20px);
     border-radius: 20px;
-    padding: 10px 12px;
+    padding: 6px 8px;
   }
 
   .hamburger {
