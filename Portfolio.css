@@ -415,7 +415,7 @@ section {
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 22px 18px;
@@ -425,7 +425,6 @@ section {
     transform 0.38s var(--ease-out),
     box-shadow 0.38s var(--ease-out),
     border-color 0.38s var(--ease-out);
-  backdrop-filter: blur(12px);
 }
 
 .stat-card:hover {
@@ -494,7 +493,7 @@ section {
 }
 
 .skill-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px 22px;
@@ -504,7 +503,6 @@ section {
     transform 0.38s var(--ease-out),
     box-shadow 0.38s var(--ease-out),
     border-color 0.38s var(--ease-out);
-  backdrop-filter: blur(12px);
 }
 
 .skill-card:hover {
@@ -618,7 +616,7 @@ section {
 }
 
 .service-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 30px 24px;
@@ -627,7 +625,6 @@ section {
     transform 0.38s var(--ease-out),
     box-shadow 0.38s var(--ease-out),
     border-color 0.38s var(--ease-out);
-  backdrop-filter: blur(12px);
 }
 
 .service-card:hover {
@@ -679,7 +676,7 @@ section {
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: 0 0 24px;
@@ -689,7 +686,6 @@ section {
     transform 0.4s var(--ease-out),
     box-shadow 0.4s var(--ease-out),
     border-color 0.4s var(--ease-out);
-  backdrop-filter: blur(12px);
 }
 
 .project-card:hover {
