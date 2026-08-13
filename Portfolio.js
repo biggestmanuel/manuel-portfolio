@@ -16,15 +16,29 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.classList.remove("open");
     mobileNav.classList.remove("open");
     navBackdrop?.classList.remove("open");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "Open menu");
+  };
+
+  const openMobileNav = () => {
+    if (!hamburger || !mobileNav) return;
+    hamburger.classList.add("open");
+    mobileNav.classList.add("open");
+    navBackdrop?.classList.add("open");
+    hamburger.setAttribute("aria-expanded", "true");
+    hamburger.setAttribute("aria-label", "Close menu");
   };
 
   // ── Hamburger Menu ───────────────────────────────────────
   if (hamburger && mobileNav) {
     hamburger.addEventListener("click", (e) => {
       e.stopPropagation();
-      hamburger.classList.toggle("open");
-      mobileNav.classList.toggle("open");
-      navBackdrop?.classList.toggle("open");
+      const isOpen = hamburger.classList.contains("open");
+      if (isOpen) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
     });
 
     navBackdrop?.addEventListener("click", closeMobileNav);

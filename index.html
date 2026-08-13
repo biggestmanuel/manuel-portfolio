@@ -16,7 +16,7 @@
   <meta property="og:title" content="Biggest Manuel | Portfolio" />
   <meta property="og:description" content="Full stack developer building clean, deployed web projects." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="img/kindoku.png" />
+  <meta property="og:image" content="me.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,7 +39,7 @@
       <li><a href="#contact"><span class="nav-icon"><i data-lucide="mail"></i></span><span class="nav-label">Contact</span></a></li>
     </ul>
 
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -56,6 +56,11 @@
         <p class="hero-title">
           Welcome to my corner of the internet — a place where ideas turn into clean, deployed, real-world web products.
         </p>
+
+        <div class="hero-meta" aria-label="Professional status">
+          <span class="meta-pill">Available for freelance work</span>
+          <span class="meta-pill muted">Remote-ready • Nigeria</span>
+        </div>
 
         <div class="hero-btns">
           <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -347,7 +352,7 @@
             <input type="email" name="email" placeholder="Your Email" required />
             <textarea name="message" placeholder="Your Message" required></textarea>
             <button type="submit" class="btn btn-primary" style="border:none;">Send Message</button>
-            <p id="formStatus" class="form-status"></p>
+            <p id="formStatus" class="form-status" aria-live="polite"></p>
           </form>
         </div>
       </div>
