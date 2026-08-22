@@ -26,8 +26,10 @@ const CASE_STUDIES = {
     problem: "Starting a business means piecing together market research, budgeting, branding, and a roadmap, then separately hunting down trustworthy electricians, carpenters, and other professionals to actually execute it. Planning and execution live in two disconnected worlds.",
     approach: "Qerad closes that gap with two entry points on one platform. Personal Mode is for finding and hiring verified professionals directly. Business Mode turns an idea into a full launch plan (budget, branding, roadmap) built on real pricing instead of generic estimates. The moment a plan is generated, the platform surfaces exactly who's needed to build it, inside the same app. The coming-soon site is live with a working waitlist end to end, using a Vercel serverless function and Supabase, including full light and dark theme support.",
     gallery: [
-      { label: "Desktop view", src: "img/qerad.png", mode: "desktop" },
-      { label: "Mobile view", src: "img/qerad_mobile.png", mode: "mobile" }
+      { label: "Dark theme", src: "img/qerad.png", mode: "desktop" },
+      { label: "Light theme", src: "img/qerad_light.png", mode: "desktop" },
+      { label: "Dark theme", src: "img/qerad_mobile.png", mode: "mobile" },
+      { label: "light theme", src: "img/qerad_mobile_light.png", mode: "mobile" }
     ]
   },
 
@@ -102,6 +104,7 @@ const renderCaseStudy = () => {
           <h2>The problem</h2>
           <p>${escapeHtml(project.problem)}</p>
         </article>
+
         <article class="case-copy-card">
           <p class="case-eyebrow">Approach</p>
           <h2>The approach</h2>
@@ -119,16 +122,24 @@ const renderCaseStudy = () => {
       </section>
     `;
 
-  const stack = project.stack.map((item) => `<span class="case-stack-pill">${escapeHtml(item)}</span>`).join("");
+  const stack = project.stack
+    .map((item) => `<span class="case-stack-pill">${escapeHtml(item)}</span>`)
+    .join("");
 
-  const gallery = project.gallery.map((item) => `
-    <figure class="case-gallery-item ${item.mode === "mobile" ? "is-mobile" : "is-desktop"}">
-      <div class="case-gallery-frame">
-        <img src="${escapeHtml(item.src)}" alt="${escapeHtml(project.title)} ${escapeHtml(item.label)}" loading="lazy" />
-      </div>
-      <figcaption>${escapeHtml(item.label)}</figcaption>
-    </figure>
-  `).join("");
+  const gallery = project.gallery
+    .map((item) => `
+      <figure class="case-gallery-item ${item.mode === "mobile" ? "is-mobile" : "is-desktop"}">
+        <div class="case-gallery-frame">
+          <img
+            src="${escapeHtml(item.src)}"
+            alt="${escapeHtml(project.title)} ${escapeHtml(item.label)}"
+            loading="lazy"
+          />
+        </div>
+        <figcaption>${escapeHtml(item.label)}</figcaption>
+      </figure>
+    `)
+    .join("");
 
   root.innerHTML = `
     <section class="case-hero">
@@ -140,22 +151,41 @@ const renderCaseStudy = () => {
 
         <h1>${escapeHtml(project.title)}</h1>
 
-        <div class="case-stack">${stack}</div>
+        <div class="case-stack">
+          ${stack}
+        </div>
 
         <div class="case-hero-actions">
-          <a class="case-btn case-btn-primary" href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer">
+          <a
+            class="case-btn case-btn-primary"
+            href="${escapeHtml(project.liveUrl)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Visit live site
           </a>
-          <a class="case-btn case-btn-outline" href="index.html#projects">Back to projects</a>
+
+          <a
+            class="case-btn case-btn-outline"
+            href="index.html#projects"
+          >
+            Back to projects
+          </a>
         </div>
       </div>
 
       <div class="case-hero-shot">
         <div class="case-shot-window">
           <div class="case-window-bar">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-          <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)} desktop screenshot" />
+
+          <img
+            src="${escapeHtml(project.image)}"
+            alt="${escapeHtml(project.title)} desktop screenshot"
+          />
         </div>
       </div>
     </section>
@@ -168,6 +198,7 @@ const renderCaseStudy = () => {
         <h2>Project views</h2>
         <p>A closer look at the interface across larger and smaller layouts.</p>
       </div>
+
       <div class="case-gallery-grid">
         ${gallery}
       </div>
@@ -175,8 +206,17 @@ const renderCaseStudy = () => {
 
     <section class="case-final-cta">
       <p class="case-eyebrow">See it live</p>
+
       <h2>${escapeHtml(project.title)}</h2>
-      <a class="case-btn case-btn-primary" href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer">Visit live site</a>
+
+      <a
+        class="case-btn case-btn-primary"
+        href="${escapeHtml(project.liveUrl)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Visit live site
+      </a>
     </section>
   `;
 
