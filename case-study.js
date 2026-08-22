@@ -26,10 +26,8 @@ const CASE_STUDIES = {
     problem: "Starting a business means piecing together market research, budgeting, branding, and a roadmap, then separately hunting down trustworthy electricians, carpenters, and other professionals to actually execute it. Planning and execution live in two disconnected worlds.",
     approach: "Qerad closes that gap with two entry points on one platform. Personal Mode is for finding and hiring verified professionals directly. Business Mode turns an idea into a full launch plan (budget, branding, roadmap) built on real pricing instead of generic estimates. The moment a plan is generated, the platform surfaces exactly who's needed to build it, inside the same app. The coming-soon site is live with a working waitlist end to end, using a Vercel serverless function and Supabase, including full light and dark theme support.",
     gallery: [
-      { label: "Dark desktop", src: "img/qerad.png", mode: "desktop" },
       { label: "Light desktop", src: "img/qerad_light.png", mode: "desktop" },
-      { label: "Dark mobile", src: "img/qerad_mobile.png", mode: "mobile" },
-      { label: "light mobile", src: "img/qerad_mobile_light.png", mode: "mobile" }
+      { label: "Dark mobile", src: "img/qerad_mobile.png", mode: "mobile" }
     ]
   },
 
