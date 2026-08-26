@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Project case study by Biggest Manuel." />
+  <meta name="description" content="Detailed project case study by Nwuba Emmanuel (Biggest Manuel)." />
   <meta name="theme-color" content="#090d15" />
   <title>Case Study | Biggest Manuel</title>
 
@@ -11,21 +11,74 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="case-study.css" />
 </head>
 
-<body class="case-study-page">
+<body class="case-study-page dark">
+  <!-- Topbar Navigation -->
   <header class="case-topbar">
-    <a class="case-brand" href="index.html">Biggest Manuel</a>
-    <a class="case-nav-back" href="index.html#projects">Back to projects</a>
+    <a class="case-brand" href="index.html">
+      <span class="brand-logo-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </span>
+      <span>Biggest Manuel<span class="brand-dot">.</span></span>
+    </a>
+
+    <div class="case-topbar-actions">
+      <!-- Theme Toggle -->
+      <button id="caseThemeToggle" class="case-theme-btn" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="sun-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <a class="case-nav-back" href="index.html#projects">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back to projects</span>
+      </a>
+    </div>
   </header>
 
+  <!-- Main Case Study Content Root -->
   <main class="case-main case-shell" id="caseStudyRoot">
     <div class="case-error" aria-live="polite">
-      <p class="case-eyebrow">Loading case study</p>
+      <p class="case-eyebrow">Loading case study...</p>
     </div>
   </main>
 
+  <!-- Image Lightbox Modal -->
+  <div id="imageLightbox" class="lightbox-modal" hidden>
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button id="closeLightboxBtn" class="lightbox-close-btn" type="button" aria-label="Close image preview">×</button>
+      <img id="lightboxImg" src="" alt="Full preview" />
+      <p id="lightboxCaption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer class="case-footer case-shell">
     <p>© 2026 Nwuba Emmanuel Chukwuebuka. All Rights Reserved.</p>
   </footer>

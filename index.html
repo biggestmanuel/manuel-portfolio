@@ -3,253 +3,372 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Nwuba Emmanuel's portfolio, full stack web developer, designer, and builder of deployed digital products." />
-  <meta name="theme-color" content="#0b0f17" />
+  <meta name="description" content="Nwuba Emmanuel (Biggest Manuel) — Full-stack developer, product designer, and builder of modern, high-performance web applications." />
+  <meta name="theme-color" content="#090d15" />
 
-  <title>Nwuba Emmanuel | Portfolio</title>
+  <title>Nwuba Emmanuel | Full-Stack Developer & Product Builder</title>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
 
-  <meta property="og:title" content="Biggest Manuel | Portfolio" />
-  <meta property="og:description" content="Full stack developer building clean, deployed web projects." />
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Nwuba Emmanuel | Full-Stack Developer & Product Builder" />
+  <meta property="og:description" content="I build websites and applications that feel premium, perform smoothly, and deliver real value." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="me.jpg" />
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
 
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="./Portfolio.css" />
-
-  <style>
-    .project-card-link {
-      display: block;
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .project-card-link:focus-visible {
-      outline: 3px solid rgba(96, 165, 250, 0.82);
-      outline-offset: 4px;
-      border-radius: 28px;
-    }
-
-    .project-card-link .case-study-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 12px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text);
-      border: 1px solid rgba(139, 92, 246, 0.28);
-    }
-
-    .project-card-link:hover .case-study-cta {
-      background: rgba(139, 92, 246, 0.08);
-      border-color: rgba(139, 92, 246, 0.38);
-      color: var(--accent-2);
-    }
-  </style>
 </head>
 
-<body>
-  <nav>
-    <div class="logo">
-      <span>Biggest Manuel <span class="brand-mark">✦</span></span>
+<body class="dark">
+  <!-- Ambient background lighting -->
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <nav id="mainNav">
+    <div class="nav-container">
+      <a class="logo" href="#" aria-label="Biggest Manuel Home">
+        <div class="logo-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <span class="logo-text">Biggest Manuel<span class="brand-dot">.</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link"><span class="nav-label">About</span></a></li>
+        <li><a href="#skills" class="nav-link"><span class="nav-label">Skills & Stack</span></a></li>
+        <li><a href="#services" class="nav-link"><span class="nav-label">Services</span></a></li>
+        <li><a href="#projects" class="nav-link"><span class="nav-label">Projects</span></a></li>
+        <li><a href="#contact" class="nav-link"><span class="nav-label">Contact</span></a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="theme-toggle-btn" type="button" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="#contact" class="nav-cta-btn">
+          <span>Let's Talk</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
-
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about"><span class="nav-icon"><i data-lucide="user"></i></span><span class="nav-label">About</span></a></li>
-      <li><a href="#skills"><span class="nav-icon"><i data-lucide="sparkles"></i></span><span class="nav-label">Skills</span></a></li>
-      <li><a href="#services"><span class="nav-icon"><i data-lucide="briefcase"></i></span><span class="nav-label">Services</span></a></li>
-      <li><a href="#projects"><span class="nav-icon"><i data-lucide="folder-git-2"></i></span><span class="nav-label">Projects</span></a></li>
-      <li><a href="#contact"><span class="nav-icon"><i data-lucide="mail"></i></span><span class="nav-label">Contact</span></a></li>
-    </ul>
-
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
   </nav>
 
   <div class="nav-backdrop" id="navBackdrop"></div>
 
   <main>
+    <!-- Hero Section -->
     <header class="hero">
       <div class="hero-content">
-        <p class="hero-greeting">PRODUCT-MINDED DEVELOPER • DESIGNER • BUILDER</p>
-        <h1>Biggest Manuel</h1>
-        <p class="hero-title">
-          I build websites and apps that feel premium, work smoothly, and help people take action.
-        </p>
-        <p class="hero-subtitle">
-          I help brands and founders look sharper online with clean product thinking, modern interfaces, and dependable code.
-        </p>
-
-        <div class="hero-meta" aria-label="Professional status">
-          <span class="meta-pill">Available for freelance work</span>
-          <span class="meta-pill muted">Remote-ready • Nigeria</span>
+        <div class="hero-status-badge reveal">
+          <span class="status-dot"></span>
+          <span>Available for Freelance & Full-Time Roles</span>
         </div>
 
-        <div class="hero-btns">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <h1 class="hero-title reveal">
+          Hi, I'm <span class="gradient-text">Nwuba Emmanuel</span>
+        </h1>
+
+        <p class="hero-tagline reveal">
+          Product-Minded Full-Stack Developer & Designer
+        </p>
+
+        <p class="hero-subtitle reveal">
+          I build high-performance web applications and digital experiences that look sharp, run smoothly, and turn visitors into loyal users.
+        </p>
+
+        <div class="hero-btns reveal">
+          <a href="#projects" class="btn btn-primary">
+            <span>Explore My Work</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <button id="quickCopyEmailBtn" class="btn btn-secondary" type="button" title="Copy email address">
+            <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="copy-btn-label">Copy Email</span>
+          </button>
+
+          <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="GitHub Profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.477 2 2 6.512 2 12.02c0 4.425 2.865 8.18 6.839 9.495.501.094.684-.217.684-.484 0-.238-.009-1.027-.013-1.864-2.784.605-3.369-1.338-3.369-1.338-.455-1.156-1.111-1.464-1.111-1.464-.909-.621.069-.608.069-.608 1.005.071 1.534 1.032 1.534 1.032.893 1.532 2.341 1.089 2.911.833.091-.65.349-1.09.634-1.339-2.221-.252-4.556-1.111-4.556-4.94 0-1.091.39-1.984 1.03-2.682.0-.252-.446-1.272.098-2.649 0 0 .84-.269 2.75 1.026A9.56 9.56 0 0 1 12 7.382a9.57 9.57 0 0 1 2.5.338c1.91-1.295 2.75-1.026 2.75-1.026.545 1.377.202 2.397.1 2.649.64.698 1.03 1.591 1.03 2.682 0 3.836-2.338 4.686-4.566 4.933.359.31.678.912.678 1.836 0 1.326-.012 2.392-.012 2.718 0 .268.18.582.689.484A10.026 10.026 0 0 0 22 12.02C22 6.512 17.523 2 12 2Z"/>
             </svg>
-            GitHub
+            <span>GitHub</span>
           </a>
         </div>
 
-        <div class="hero-highlights" aria-label="Core strengths">
-          <span class="highlight-pill">UI/UX</span>
-          <span class="highlight-pill">Apps</span>
-          <span class="highlight-pill">Web development</span>
-          <span class="highlight-pill">Product thinking</span>
+        <div class="hero-highlights reveal" aria-label="Core competencies">
+          <span class="highlight-pill">⚡ React & Next.js</span>
+          <span class="highlight-pill">🛠️ Node & Python / Django</span>
+          <span class="highlight-pill">🎨 Modern UI/UX</span>
+          <span class="highlight-pill">🚀 Deployed & Scalable</span>
         </div>
       </div>
     </header>
 
-    <section id="about">
-      <p class="section-label reveal">Who I Am</p>
-      <h2 class="section-title reveal">About Me</h2>
+    <!-- About Section -->
+    <section class="section container" id="about">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">WHO I AM</span>
+        <h2 class="section-title reveal">About Me</h2>
+        <p class="section-desc reveal">Crafting deliberate, high-quality digital products with clean engineering and user-first design.</p>
+      </div>
 
       <div class="about-grid">
         <div class="about-text">
-          <p class="reveal">
-            I'm a full-stack developer based in Port Harcourt, Nigeria. I like building digital products that are not just beautiful, but useful, dependable, and easy to trust.
-          </p>
-          <p class="reveal">
-            My approach is simple: understand the problem, build with clarity, and ship something people actually want to use again.
-          </p>
-          <p class="reveal">
-            I care about product thinking, clean execution, and the kind of work that makes a brand feel real, sharp, and credible online.
-          </p>
+          <div class="about-bio-card reveal">
+            <p>
+              I'm a full-stack software engineer based in Port Harcourt, Nigeria. I specialize in turning complex problems and early concepts into clean, polished, and dependable digital products.
+            </p>
+            <p>
+              My philosophy centers around <strong>product clarity</strong>: understanding user behavior, eliminating friction in the UI, and architecting robust backends that scale without headache.
+            </p>
+            <p>
+              Whether partnering with startups to launch their flagship MVP or revamping established web platforms for modern performance, I bring relentless attention to detail, reliability, and speed.
+            </p>
+          </div>
 
-          <div class="about-stats">
+          <!-- Animated Stat Cards -->
+          <div class="about-stats-grid">
             <div class="stat-card reveal reveal-delay-1">
-              <h3>Build</h3>
-              <p>Web products</p>
+              <div class="stat-icon-wrap blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <h3>Production-Ready</h3>
+                <p>Deployed Web Apps</p>
+              </div>
             </div>
+
             <div class="stat-card reveal reveal-delay-2">
-              <h3>Design</h3>
-              <p>Clean UX</p>
+              <div class="stat-icon-wrap purple">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <h3>Human-Centered</h3>
+                <p>Clean UI/UX Design</p>
+              </div>
             </div>
+
             <div class="stat-card reveal reveal-delay-3">
-              <h3>Ship</h3>
-              <p>Live projects</p>
+              <div class="stat-icon-wrap green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <h3>Fast & Smooth</h3>
+                <p>Optimized Performance</p>
+              </div>
             </div>
+
             <div class="stat-card reveal reveal-delay-4">
-              <h3>Grow</h3>
-              <p>Business value</p>
+              <div class="stat-icon-wrap orange">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 14 14"></polyline>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <h3>Reliable Delivery</h3>
+                <p>On-Time Execution</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="photo-container reveal reveal-from-right">
-          <img src="me.jpg" alt="Nwuba Emmanuel" class="photo-3d" />
+        <div class="photo-wrapper reveal reveal-from-right">
+          <div class="photo-frame">
+            <div class="photo-inner">
+              <img src="me.jpg" alt="Nwuba Emmanuel" class="profile-photo" loading="lazy" />
+              <div class="photo-badge">
+                <span class="badge-dot"></span>
+                <span>Nwuba Emmanuel</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="skills-section" id="skills">
-      <div class="skills-wrapper">
-        <p class="section-label reveal">What I Care About</p>
+    <!-- Skills & Stack Section -->
+    <section class="section container" id="skills">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">TECH STACK & EXPERTISE</span>
         <h2 class="section-title reveal">Skills & Focus</h2>
+        <p class="section-desc reveal">A curated toolkit for building reliable, responsive, and maintainable software.</p>
+      </div>
 
-        <div class="skills-grid">
-          <div class="skill-card reveal reveal-delay-1">
-            <div class="skill-icon"><i data-lucide="layout-template"></i></div>
-            <h4>Product-first design</h4>
-            <p>Clean interfaces that feel intentional, clear, and easy to trust.</p>
+      <!-- Core Disciplines -->
+      <div class="skills-grid">
+        <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
           </div>
-
-          <div class="skill-card reveal reveal-delay-2">
-            <div class="skill-icon"><i data-lucide="code-2"></i></div>
-            <h4>Responsive web apps</h4>
-            <p>Fast frontends built with React, JavaScript, and modern UI patterns.</p>
-          </div>
-
-          <div class="skill-card reveal reveal-delay-3">
-            <div class="skill-icon"><i data-lucide="server-cog"></i></div>
-            <h4>Backend systems</h4>
-            <p>Node.js, Django, PostgreSQL, and API logic that hold the product together.</p>
-          </div>
-
-          <div class="skill-card reveal reveal-delay-4">
-            <div class="skill-icon"><i data-lucide="rocket"></i></div>
-            <h4>Launch & optimization</h4>
-            <p>Deploying real projects and refining them for better speed, clarity, and conversion.</p>
-          </div>
+          <h4>Frontend Engineering</h4>
+          <p>Modern React, Next.js, and TypeScript with responsive layouts, fluid animations, and strict web standards.</p>
         </div>
 
-        <p class="tools-label reveal">Tools I Build With</p>
+        <div class="skill-card reveal reveal-delay-2">
+          <div class="skill-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+          </div>
+          <h4>Backend & API Architecture</h4>
+          <p>Node.js, Express, Python, Django, REST APIs, GraphQL, authentication systems, and database schema design.</p>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-3">
+          <div class="skill-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+          </div>
+          <h4>Databases & Cloud</h4>
+          <p>PostgreSQL, Supabase, Neon DB, Vercel deployments, automated CI/CD workflows, and performance caching.</p>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-4">
+          <div class="skill-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <h4>Product Design & UI/UX</h4>
+          <p>Design systems in Figma, micro-interactions, accessibility compliance (a11y), and user journey mapping.</p>
+        </div>
+      </div>
+
+      <!-- Tools Grid -->
+      <div class="tools-container">
+        <p class="tools-heading reveal">Technologies & Tools I Work With Daily</p>
         <div class="tools-grid">
-          <div class="tool-card reveal" style="--brand: #e34f26;">
+          <div class="tool-card reveal" style="--brand: #e34f26;" title="HTML5">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/html5.svg" alt="HTML5" class="tool-logo" />
             <span>HTML5</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #1572b6;">
+          <div class="tool-card reveal" style="--brand: #1572b6;" title="CSS3">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/css3.svg" alt="CSS3" class="tool-logo" />
             <span>CSS3</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #38bdf8;">
+          <div class="tool-card reveal" style="--brand: #38bdf8;" title="Tailwind CSS">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/tailwindcss.svg" alt="Tailwind CSS" class="tool-logo" />
             <span>Tailwind</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #f7df1e;">
+          <div class="tool-card reveal" style="--brand: #f7df1e;" title="JavaScript (ES6+)">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/javascript.svg" alt="JavaScript" class="tool-logo" />
             <span>JavaScript</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #61dafb;">
+          <div class="tool-card reveal" style="--brand: #61dafb;" title="React">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/react.svg" alt="React" class="tool-logo" />
             <span>React</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #a1a1aa;">
+          <div class="tool-card reveal" style="--brand: #ffffff;" title="Next.js">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nextdotjs.svg" alt="Next.js" class="tool-logo" />
             <span>Next.js</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #3c873a;">
+          <div class="tool-card reveal" style="--brand: #339933;" title="Node.js">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nodedotjs.svg" alt="Node.js" class="tool-logo" />
             <span>Node.js</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #0c4b33;">
+          <div class="tool-card reveal" style="--brand: #092e20;" title="Django">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/django.svg" alt="Django" class="tool-logo" />
             <span>Django</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #4169e1;">
+          <div class="tool-card reveal" style="--brand: #4169e1;" title="PostgreSQL">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postgresql.svg" alt="PostgreSQL" class="tool-logo" />
             <span>PostgreSQL</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #3776ab;">
+          <div class="tool-card reveal" style="--brand: #3ecf8e;" title="Supabase">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/supabase.svg" alt="Supabase" class="tool-logo" />
+            <span>Supabase</span>
+          </div>
+          <div class="tool-card reveal" style="--brand: #3776ab;" title="Python">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/python.svg" alt="Python" class="tool-logo" />
             <span>Python</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #f05033;">
+          <div class="tool-card reveal" style="--brand: #f05032;" title="Git">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/git.svg" alt="Git" class="tool-logo" />
             <span>Git</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #a1a1aa;">
+          <div class="tool-card reveal" style="--brand: #ffffff;" title="GitHub">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" alt="GitHub" class="tool-logo" />
             <span>GitHub</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #a1a1aa;">
+          <div class="tool-card reveal" style="--brand: #ffffff;" title="Vercel">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/vercel.svg" alt="Vercel" class="tool-logo" />
             <span>Vercel</span>
           </div>
-          <div class="tool-card reveal" style="--brand: #cb3837;">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/npm.svg" alt="npm" class="tool-logo" />
-            <span>npm</span>
-          </div>
-          <div class="tool-card reveal" style="--brand: #f24e1e;">
+          <div class="tool-card reveal" style="--brand: #f24e1e;" title="Figma">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/figma.svg" alt="Figma" class="tool-logo" />
             <span>Figma</span>
           </div>
@@ -257,174 +376,427 @@
       </div>
     </section>
 
-    <section id="services">
-      <p class="section-label reveal">How I Can Help</p>
-      <h2 class="section-title reveal">Services</h2>
+    <!-- Services Section -->
+    <section class="section container" id="services">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">WHAT I DELIVER</span>
+        <h2 class="section-title reveal">Services & Solutions</h2>
+        <p class="section-desc reveal">Tailored development and design services to turn your vision into high-impact software.</p>
+      </div>
 
       <div class="services-grid">
         <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon"><i data-lucide="monitor"></i></div>
-          <h3>Web Development</h3>
-          <p>From landing pages to full-stack apps with working backends and databases, built clean, fast, and responsive on any device.</p>
+          <div class="service-icon-box cyan">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3>Full-Stack Web Apps</h3>
+          <p>Custom web applications built with modern frontend frameworks and robust backend architectures. Scalable, secure, and intuitive.</p>
+          <ul class="service-features">
+            <li><span>✓</span> Custom React / Next.js Frontends</li>
+            <li><span>✓</span> RESTful APIs & PostgreSQL Databases</li>
+            <li><span>✓</span> Authentication & Security</li>
+          </ul>
         </div>
 
         <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon"><i data-lucide="pen-tool"></i></div>
-          <h3>Web & UI Design</h3>
-          <p>Clean, modern interfaces with thoughtful layouts, color, and typography, designed to look good and actually convert visitors.</p>
+          <div class="service-icon-box purple">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </div>
+          <h3>UI/UX & Web Design</h3>
+          <p>Pixel-perfect, engaging visual designs created in Figma and coded with high fidelity to give your product a high-end feel.</p>
+          <ul class="service-features">
+            <li><span>✓</span> Responsive Mobile-First Design</li>
+            <li><span>✓</span> Design Systems & Component Libraries</li>
+            <li><span>✓</span> Interactive Animations & Micro-Interactions</li>
+          </ul>
         </div>
 
         <div class="service-card reveal reveal-delay-3">
-          <div class="service-icon"><i data-lucide="wrench"></i></div>
-          <h3>Maintenance & Fixes</h3>
-          <p>Bug fixes, feature additions, performance tweaks, or general upkeep for existing sites, keeping things running smoothly.</p>
+          <div class="service-icon-box green">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          </div>
+          <h3>Maintenance & Optimization</h3>
+          <p>Auditing existing applications for page speed, SEO, accessibility, bug fixes, and seamless deployment workflows.</p>
+          <ul class="service-features">
+            <li><span>✓</span> Lighthouse 90+ Speed Optimization</li>
+            <li><span>✓</span> Cross-Browser Compatibility Fixes</li>
+            <li><span>✓</span> CI/CD Setup & Vercel Hosting</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="projects">
-      <p class="section-label reveal">What I've Built</p>
-      <h2 class="section-title reveal">Projects</h2>
+    <!-- Projects Section -->
+    <section class="section container" id="projects">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">FEATURED WORK</span>
+        <h2 class="section-title reveal">Selected Projects</h2>
+        <p class="section-desc reveal">A showcase of deployed web apps, platforms, and client solutions.</p>
 
-      <div class="projects-grid">
-        <a class="project-card project-card-link reveal" href="case-study.html?project=kindoku" aria-label="Open Kindoku case study">
-          <img src="img/kindoku.png" alt="Kindoku screenshot" class="project-img" />
-          <span class="project-tag">AI / Web App</span>
-          <h3>Kindoku</h3>
-          <p>Kindoku helps readers cut through the noise. AI-powered recommendations tailor results to what users actually filter for, then route them to a verified, credible site to read manga, manhwa, manhua, or light novels.</p>
-          <div class="project-stack">
-            <span class="stack-tag">JavaScript</span>
-            <span class="stack-tag">Groq API</span>
-            <span class="stack-tag">AniList GraphQL</span>
-            <span class="stack-tag">Vercel</span>
-          </div>
-          <div class="project-links">
-            <span class="case-study-cta">Explore Project</span>
-          </div>
-        </a>
+        <!-- Category Filter Tabs -->
+        <div class="project-filters reveal">
+          <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+          <button type="button" class="filter-btn" data-filter="ai-web">AI & Web Apps</button>
+          <button type="button" class="filter-btn" data-filter="client">Client Work</button>
+          <button type="button" class="filter-btn" data-filter="building">Currently Building</button>
+        </div>
+      </div>
 
-        <!---
-        <article class="project-card reveal reveal-delay-1">
-          <img src="img/unimap.png" alt="UniMap screenshot" class="project-img" />
-          <span class="project-tag">Web App</span>
-          <h3>UniMap</h3>
-          <p>UniMap is a campus navigation app for Rivers State University, an interactive map with real routing so students can actually find their way around campus. Actively shipping new routes and features.</p>
-          <div class="project-stack">
-            <span class="stack-tag">Leaflet.js</span>
-            <span class="stack-tag">OpenStreetMap</span>
-            <span class="stack-tag">OSRM</span>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Project 1: Kindoku -->
+        <article class="project-card reveal" data-category="ai-web">
+          <div class="project-img-wrapper">
+            <img src="img/kindoku.png" alt="Kindoku AI manga & novel reader recommendation app" class="project-img" loading="lazy" />
+            <div class="project-overlay">
+              <a href="case-study.html?project=kindoku" class="overlay-btn primary">
+                <span>View Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="https://kindoku.vercel.app" target="_blank" rel="noopener noreferrer" class="overlay-btn secondary">
+                <span>Live Site ↗</span>
+              </a>
+            </div>
           </div>
-          <div class="project-links">
-            <span class="case-study-cta">Explore Project</span>
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-tag">AI / Web App</span>
+              <span class="project-status-tag green">Live</span>
+            </div>
+            <h3>Kindoku</h3>
+            <p>AI-powered recommendation engine for manga, manhwa, and novels. Solves generic discovery and routes readers directly to verified, reliable reading sources with PWA capabilities.</p>
+            <div class="project-stack">
+              <span class="stack-tag">JavaScript</span>
+              <span class="stack-tag">Groq AI API</span>
+              <span class="stack-tag">AniList GraphQL</span>
+              <span class="stack-tag">Vercel</span>
+            </div>
+            <div class="project-footer-actions">
+              <a href="case-study.html?project=kindoku" class="case-study-cta">
+                <span>Explore Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+              <a href="https://kindoku.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link-icon" title="Open live site">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
           </div>
         </article>
-        -->
 
-        <a class="project-card project-card-link reveal reveal-delay-1" href="case-study.html?project=qerad" aria-label="Open Qerad case study">
-          <img src="img/qerad.png" alt="Qerad coming soon site screenshot" class="project-img" />
-          <span class="project-tag">Currently Building</span>
-          <h3>Qerad</h3>
-          <p>Qerad connects business creation with real-world execution through one platform for verified professionals and guided business launch plans.</p>
-          <div class="project-stack">
-            <span class="stack-tag">JavaScript</span>
-            <span class="stack-tag">Supabase</span>
-            <span class="stack-tag">Vercel</span>
+        <!-- Project 2: Qerad -->
+        <article class="project-card reveal reveal-delay-1" data-category="building">
+          <div class="project-img-wrapper">
+            <img src="img/qerad.png" alt="Qerad business launch platform screenshot" class="project-img" loading="lazy" />
+            <div class="project-overlay">
+              <a href="case-study.html?project=qerad" class="overlay-btn primary">
+                <span>View Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="https://qerad.vercel.app" target="_blank" rel="noopener noreferrer" class="overlay-btn secondary">
+                <span>Live Site ↗</span>
+              </a>
+            </div>
           </div>
-          <div class="project-links">
-            <span class="case-study-cta">Explore Project</span>
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-tag">Product Platform</span>
+              <span class="project-status-tag purple">In Active Dev</span>
+            </div>
+            <h3>Qerad</h3>
+            <p>Unified platform connecting business creation with real-world execution. Generates actionable launch plans backed by verified pricing and on-demand trade professionals.</p>
+            <div class="project-stack">
+              <span class="stack-tag">JavaScript</span>
+              <span class="stack-tag">Supabase</span>
+              <span class="stack-tag">Serverless Functions</span>
+              <span class="stack-tag">Vercel</span>
+            </div>
+            <div class="project-footer-actions">
+              <a href="case-study.html?project=qerad" class="case-study-cta">
+                <span>Explore Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+              <a href="https://qerad.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link-icon" title="Open live site">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
 
-        <a class="project-card project-card-link reveal reveal-delay-2" href="case-study.html?project=flugos-logistics" aria-label="Open Flugos Logistics case study">
-          <img src="img/flugos-logistics.jpeg" alt="Flugos Logistics screenshot" class="project-img" />
-          <span class="project-tag">Website</span>
-          <h3>Flugos Logistics</h3>
-          <p>Flugos Logistics is a web application for managing and tracking shipments as well as supply chain optimization.</p>
-          <div class="project-stack">
-            <span class="stack-tag">React</span>
-            <span class="stack-tag">Tailwind CSS</span>
+        <!-- Project 3: Flugos Logistics -->
+        <article class="project-card reveal reveal-delay-2" data-category="client">
+          <div class="project-img-wrapper">
+            <img src="img/flugos-logistics.jpeg" alt="Flugos Logistics shipment tracking portal" class="project-img" loading="lazy" />
+            <div class="project-overlay">
+              <a href="case-study.html?project=flugos-logistics" class="overlay-btn primary">
+                <span>View Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="https://flugos-logistics.vercel.app" target="_blank" rel="noopener noreferrer" class="overlay-btn secondary">
+                <span>Live Site ↗</span>
+              </a>
+            </div>
           </div>
-          <div class="project-links">
-            <span class="case-study-cta">Explore Project</span>
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-tag">Client Website</span>
+              <span class="project-status-tag green">Delivered</span>
+            </div>
+            <h3>Flugos Logistics</h3>
+            <p>International freight forwarding and supply chain management web platform with high-contrast branding, shipment tracking, and instant quote requests.</p>
+            <div class="project-stack">
+              <span class="stack-tag">React</span>
+              <span class="stack-tag">Tailwind CSS</span>
+              <span class="stack-tag">Vercel</span>
+            </div>
+            <div class="project-footer-actions">
+              <a href="case-study.html?project=flugos-logistics" class="case-study-cta">
+                <span>Explore Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+              <a href="https://flugos-logistics.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link-icon" title="Open live site">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
 
-        <a class="project-card project-card-link reveal reveal-delay-3" href="case-study.html?project=the-cosmetics-company-store" aria-label="Open The Cosmetics Company Store case study">
-          <img src="img/thecosmeticscompany.jpeg" alt="The Cosmetics Company Store screenshot" class="project-img" />
-          <span class="project-tag">Website</span>
-          <h3>The Cosmetics Company Store</h3>
-          <p>A modern e-commerce platform for the cosmetics company, featuring a sleek design and seamless shopping experience.</p>
-          <div class="project-stack">
-            <span class="stack-tag">React</span>
-            <span class="stack-tag">Tailwind CSS</span>
+        <!-- Project 4: The Cosmetics Company Store -->
+        <article class="project-card reveal reveal-delay-3" data-category="client">
+          <div class="project-img-wrapper">
+            <img src="img/thecosmeticscompany.jpeg" alt="The Cosmetics Company Store e-commerce frontend" class="project-img" loading="lazy" />
+            <div class="project-overlay">
+              <a href="case-study.html?project=the-cosmetics-company-store" class="overlay-btn primary">
+                <span>View Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="https://the-cosmetics-company.vercel.app" target="_blank" rel="noopener noreferrer" class="overlay-btn secondary">
+                <span>Live Site ↗</span>
+              </a>
+            </div>
           </div>
-          <div class="project-links">
-            <span class="case-study-cta">Explore Project</span>
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-tag">E-Commerce</span>
+              <span class="project-status-tag green">Delivered</span>
+            </div>
+            <h3>The Cosmetics Company Store</h3>
+            <p>Prestige beauty brand e-commerce storefront delivering luxury visual aesthetics at outlet prices with optimized shopping flows and catalog browsing.</p>
+            <div class="project-stack">
+              <span class="stack-tag">React</span>
+              <span class="stack-tag">Tailwind CSS</span>
+              <span class="stack-tag">Vercel</span>
+            </div>
+            <div class="project-footer-actions">
+              <a href="case-study.html?project=the-cosmetics-company-store" class="case-study-cta">
+                <span>Explore Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+              <a href="https://the-cosmetics-company.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link-icon" title="Open live site">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
-      <div class="contact-wrapper">
-        <p class="section-label reveal">Reach Out</p>
-        <h2 class="section-title reveal">Contact Me</h2>
+    <!-- Contact Section -->
+    <section class="section container" id="contact">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">GET IN TOUCH</span>
+        <h2 class="section-title reveal">Let's Build Something Great</h2>
+        <p class="section-desc reveal">Have a project in mind, need a frontend/backend engineer, or want to say hi? Send me a message!</p>
+      </div>
 
-        <div class="contact-grid">
-          <div class="contact-info reveal reveal-from-left">
-            <h3>Let's Build Something Real</h3>
-            <p>Need a website, app, or product fix? Let's talk about what you want to build and how to make it stronger online.</p>
+      <div class="contact-grid">
+        <!-- Contact Info Cards -->
+        <div class="contact-info reveal reveal-from-left">
+          <div class="contact-card-highlight">
+            <h3>Ready to level up your digital product?</h3>
+            <p>I'm currently taking on freelance projects, contracting opportunities, and full-time software engineering roles.</p>
+          </div>
 
-            <div class="contact-item">
-              <div class="contact-icon"><i data-lucide="mail"></i></div>
-              <a href="mailto:emmanuelnwuba1@gmail.com">emmanuelnwuba1@gmail.com</a>
-            </div>
-
+          <div class="contact-links-list">
+            <!-- Email Item with Copy Trigger -->
             <div class="contact-item">
               <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-item-content">
+                <span class="contact-item-label">Direct Email</span>
+                <a href="mailto:emmanuelnwuba1@gmail.com" class="contact-item-link" id="emailLink">emmanuelnwuba1@gmail.com</a>
+              </div>
+              <button type="button" class="copy-email-icon-btn" id="copyEmailLinkBtn" title="Copy Email">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- X / Twitter -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117Z"/>
                 </svg>
               </div>
-              <a href="https://x.com/biggestmanuel" target="_blank" rel="noopener noreferrer">@biggestmanuel</a>
+              <div class="contact-item-content">
+                <span class="contact-item-label">X / Twitter</span>
+                <a href="https://x.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="contact-item-link">@biggestmanuel</a>
+              </div>
             </div>
 
+            <!-- GitHub -->
             <div class="contact-item">
               <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.477 2 2 6.512 2 12.02c0 4.425 2.865 8.18 6.839 9.495.501.094.684-.217.684-.484 0-.238-.009-1.027-.013-1.864-2.784.605-3.369-1.338-3.369-1.338-.455-1.156-1.111-1.464-1.111-1.464-.909-.621.069-.608.069-.608 1.005.071 1.534 1.032 1.534 1.032.893 1.532 2.341 1.089 2.911.833.091-.65.349-1.09.634-1.339-2.221-.252-4.556-1.111-4.556-4.94 0-1.091.39-1.984 1.03-2.682.0-.252-.446-1.272.098-2.649 0 0 .84-.269 2.75 1.026A9.56 9.56 0 0 1 12 7.382a9.57 9.57 0 0 1 2.5.338c1.91-1.295 2.75-1.026 2.75-1.026.545 1.377.202 2.397.1 2.649.64.698 1.03 1.591 1.03 2.682 0 3.836-2.338 4.686-4.566 4.933.359.31.678.912.678 1.836 0 .268.18.582.689.484A10.026 10.026 0 0 0 22 12.02C22 6.512 17.523 2 12 2Z"/>
                 </svg>
               </div>
-              <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer">github.com/biggestmanuel</a>
+              <div class="contact-item-content">
+                <span class="contact-item-label">GitHub</span>
+                <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="contact-item-link">github.com/biggestmanuel</a>
+              </div>
             </div>
 
+            <!-- WhatsApp Direct -->
             <div class="contact-item">
-              <div class="contact-icon"><i data-lucide="phone"></i></div>
-              <a href="tel:+2348116920093">+(234) 811 692 0093</a>
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.18 8.18 0 0 1-5.82 2.41h-.01c-1.42 0-2.82-.37-4.04-1.08l-.29-.17-3.11.82.83-3.03-.19-.3a8.216 8.216 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.12-.22-.19-.47-.32"/>
+                </svg>
+              </div>
+              <div class="contact-item-content">
+                <span class="contact-item-label">WhatsApp / Phone</span>
+                <a href="https://wa.me/2348116920093?text=Hi%20Emmanuel%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="contact-item-link">+(234) 811 692 0093</a>
+              </div>
             </div>
           </div>
+        </div>
 
-          <form class="contact-form reveal reveal-from-right" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Contact Form Card -->
+        <div class="contact-form-card reveal reveal-from-right">
+          <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="e5cb40f0-d582-455d-ae47-91942243fc54" />
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn btn-primary" style="border:none;">Send Message</button>
-            <p id="formStatus" class="form-status" aria-live="polite"></p>
+            <input type="hidden" name="from_name" value="Portfolio Visitor" />
+            
+            <div class="form-group">
+              <label for="nameInput">Your Name</label>
+              <input type="text" id="nameInput" name="name" placeholder="Alex Johnson" required autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="emailInput">Your Email</label>
+              <input type="email" id="emailInput" name="email" placeholder="alex@example.com" required autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="messageInput">Your Message</label>
+              <textarea id="messageInput" name="message" rows="4" placeholder="Tell me about your project, timeline, or idea..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full" id="submitContactBtn">
+              <span class="btn-text">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                Send Message
+              </span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+
+            <div id="formStatus" class="form-status" aria-live="polite"></div>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="reveal">
-    <p>© 2026 Nwuba Emmanuel Chukwuebuka. All Rights Reserved.</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">Biggest Manuel<span class="brand-dot">.</span></span>
+        <p>Built with attention to detail and modern web engineering.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Nwuba Emmanuel Chukwuebuka. All Rights Reserved.</p>
+      </div>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="Portfolio.js"></script>
-  <script>
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-  </script>
+  <!-- Floating Scroll-To-Top Button -->
+  <button id="scrollToTopBtn" class="scroll-to-top-btn" type="button" aria-label="Scroll to top" title="Scroll to top">
+    <svg class="progress-ring" width="44" height="44">
+      <circle class="progress-ring-circle" stroke="var(--accent)" stroke-width="3" fill="transparent" r="18" cx="22" cy="22"/>
+    </svg>
+    <svg class="arrow-up" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Toast Notification Stack -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- JavaScript -->
+  <script src="./Portfolio.js"></script>
 </body>
 </html>
