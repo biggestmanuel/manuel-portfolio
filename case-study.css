@@ -543,9 +543,13 @@ body:not(.dark) .moon-icon { display: block; }
   position: fixed;
   inset: 0;
   z-index: 2000;
-  display: grid;
+  display: none;
   place-items: center;
   padding: 20px;
+}
+
+.lightbox-modal:not([hidden]) {
+  display: grid;
 }
 
 .lightbox-backdrop {
