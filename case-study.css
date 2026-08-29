@@ -5,6 +5,12 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap");
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   /* Light Theme */
   --case-bg: #f8fafc;
@@ -46,6 +52,7 @@ body.dark {
 html {
   scroll-behavior: smooth;
   background: var(--case-bg);
+  overflow-x: hidden;
 }
 
 body.case-study-page {
