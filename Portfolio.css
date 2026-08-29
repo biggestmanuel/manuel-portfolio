@@ -786,6 +786,7 @@ body:not(.dark) .moon-icon { display: block; }
 }
 
 .tool-card {
+  min-width: 0;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
