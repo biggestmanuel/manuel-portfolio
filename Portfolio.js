@@ -1,6 +1,7 @@
 /**
  * Biggest Manuel — Personal Portfolio Application Script
- * Theme Toggle, Project Category Filters, Micro-interactions, Web3Forms & Scroll Spy
+ * Apple Liquid Glass Interactive Engine (VisionOS / iOS Fluid Glass)
+ * Theme Toggle, Project Category Filters, Dynamic Specular Cursor Tracking, Web3Forms & Scroll Spy
  */
 
 (function () {
@@ -13,6 +14,7 @@
   // --- DOM Elements ---
   const themeToggleBtn = document.getElementById('themeToggle');
   const mainNav = document.getElementById('mainNav');
+  const navContainer = document.querySelector('.nav-container');
   const navLinks = document.querySelectorAll('.nav-links a');
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('navLinks');
@@ -60,10 +62,45 @@
       if (saved) return saved;
     } catch {}
     const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return systemPrefersDark ? 'dark' : 'dark'; // Default dark
+    return systemPrefersDark ? 'dark' : 'dark';
   })();
 
   applyTheme(initialTheme);
+
+  // =========================================================================
+  // Apple Liquid Glass: Interactive Specular Cursor Tracking & 3D Tilt Engine
+  // =========================================================================
+  function initLiquidGlassTracking() {
+    const glassElements = document.querySelectorAll(
+      '.project-card, .skill-card, .service-card, .stat-card, .tools-container, .contact-form-card, .about-bio-card, .contact-card-highlight, .contact-item, .nav-container, .photo-frame, .hero-status-badge'
+    );
+
+    glassElements.forEach((el) => {
+      let isHovered = false;
+
+      el.addEventListener('pointerenter', () => {
+        isHovered = true;
+      });
+
+      el.addEventListener('pointermove', (e) => {
+        if (!isHovered) return;
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        el.style.setProperty('--mouse-x', `${x}px`);
+        el.style.setProperty('--mouse-y', `${y}px`);
+      });
+
+      el.addEventListener('pointerleave', () => {
+        isHovered = false;
+        el.style.removeProperty('--mouse-x');
+        el.style.removeProperty('--mouse-y');
+      });
+    });
+  }
+
+  initLiquidGlassTracking();
 
   // =========================================================================
   // Toast Notifications
@@ -184,7 +221,7 @@
   }
 
   // =========================================================================
-  // Scroll Spy & Navigation Highlighting
+  // Scroll Spy & Dynamic Island Active State
   // =========================================================================
   const sections = document.querySelectorAll('header.hero, section.section');
   if ('IntersectionObserver' in window && navLinks.length && sections.length) {
@@ -208,7 +245,7 @@
   }
 
   // =========================================================================
-  // Project Category Filters
+  // Project Category Filters with Smooth Scale Transitions
   // =========================================================================
   if (filterBtns.length && projectCards.length) {
     filterBtns.forEach(btn => {
