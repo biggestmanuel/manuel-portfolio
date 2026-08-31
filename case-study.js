@@ -284,12 +284,14 @@
     if (!lightbox || !lightboxImg) return;
     lightboxImg.src = src;
     if (lightboxCaption) lightboxCaption.textContent = caption || "";
+    lightbox.classList.add("active");
     lightbox.removeAttribute("hidden");
     document.body.style.overflow = "hidden";
   }
 
   function closeLightbox() {
     if (!lightbox) return;
+    lightbox.classList.remove("active");
     lightbox.setAttribute("hidden", "");
     document.body.style.overflow = "";
     if (lightboxImg) lightboxImg.src = "";
