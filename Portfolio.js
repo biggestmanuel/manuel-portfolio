@@ -1,7 +1,6 @@
 /**
  * Biggest Manuel — Personal Portfolio Application Script
- * Apple Liquid Glass Interactive Engine (VisionOS / iOS Fluid Glass)
- * Theme Toggle, Project Category Filters, Dynamic Specular Cursor Tracking, Web3Forms & Scroll Spy
+ * Apple Liquid Glass Interactive Engine (Performance-Tuned)
  */
 
 (function () {
@@ -14,7 +13,6 @@
   // --- DOM Elements ---
   const themeToggleBtn = document.getElementById('themeToggle');
   const mainNav = document.getElementById('mainNav');
-  const navContainer = document.querySelector('.nav-container');
   const navLinks = document.querySelectorAll('.nav-links a');
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('navLinks');
@@ -68,11 +66,16 @@
   applyTheme(initialTheme);
 
   // =========================================================================
-  // Apple Liquid Glass: Interactive Specular Cursor Tracking & 3D Tilt Engine
+  // Apple Liquid Glass: Pointer-Tracking (Desktop Only for Maximum Performance)
   // =========================================================================
   function initLiquidGlassTracking() {
+    // Only track cursor on mouse/desktop devices (avoids lag on mobile touchscreens)
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return;
+    }
+
     const glassElements = document.querySelectorAll(
-      '.project-card, .skill-card, .service-card, .stat-card, .tools-container, .contact-form-card, .about-bio-card, .contact-card-highlight, .contact-item, .nav-container, .photo-frame, .hero-status-badge'
+      '.project-card, .skill-card, .service-card, .stat-card, .tools-container, .contact-form-card, .about-bio-card, .contact-card-highlight, .contact-item, .nav-container'
     );
 
     glassElements.forEach((el) => {
@@ -120,9 +123,9 @@
 
     setTimeout(() => {
       toast.style.opacity = '0';
-      toast.style.transform = 'translateY(12px)';
-      setTimeout(() => toast.remove(), 250);
-    }, 2800);
+      toast.style.transform = 'translateY(10px)';
+      setTimeout(() => toast.remove(), 200);
+    }, 2600);
   }
 
   function escapeHtml(str) {
@@ -221,7 +224,7 @@
   }
 
   // =========================================================================
-  // Scroll Spy & Dynamic Island Active State
+  // Scroll Spy & Navigation
   // =========================================================================
   const sections = document.querySelectorAll('header.hero, section.section');
   if ('IntersectionObserver' in window && navLinks.length && sections.length) {
@@ -245,7 +248,7 @@
   }
 
   // =========================================================================
-  // Project Category Filters with Smooth Scale Transitions
+  // Project Category Filters
   // =========================================================================
   if (filterBtns.length && projectCards.length) {
     filterBtns.forEach(btn => {
@@ -261,16 +264,16 @@
 
           if (match) {
             card.style.display = 'flex';
-            setTimeout(() => {
+            requestAnimationFrame(() => {
               card.style.opacity = '1';
               card.style.transform = 'scale(1)';
-            }, 20);
+            });
           } else {
             card.style.opacity = '0';
-            card.style.transform = 'scale(0.96)';
+            card.style.transform = 'scale(0.97)';
             setTimeout(() => {
               card.style.display = 'none';
-            }, 200);
+            }, 180);
           }
         });
       });
@@ -373,8 +376,8 @@
         }
       });
     }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -30px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -20px 0px'
     });
 
     revealElements.forEach(el => revealObserver.observe(el));

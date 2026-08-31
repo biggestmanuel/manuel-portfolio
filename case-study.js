@@ -1,7 +1,6 @@
 /**
  * Biggest Manuel — Case Study Renderer & Interactive Engine
- * Apple Liquid Glass (VisionOS / iOS Fluid Glass Aesthetic)
- * Theme Sync, Dynamic Next/Prev Navigation, Image Lightbox & Specular Tracking
+ * Apple Liquid Glass (Performance-Tuned)
  */
 
 (function () {
@@ -124,9 +123,12 @@
   applyTheme(savedTheme);
 
   // =========================================================================
-  // Specular Cursor Tracking for Case Study Cards
+  // Specular Cursor Tracking (Desktop Only)
   // =========================================================================
   function attachSpecularListeners() {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return;
+    }
     const elements = document.querySelectorAll('.case-topbar, .case-card, .case-page-btn, .case-featured-img-wrap');
     elements.forEach(el => {
       el.addEventListener('pointermove', (e) => {
