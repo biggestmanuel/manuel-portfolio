@@ -117,6 +117,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -1102,6 +1103,7 @@ body:not(.dark) .moon-icon { display: block; }
 }
 
 .tool-card {
+  min-width: 0;
   background: var(--bg-surface-elevated);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
