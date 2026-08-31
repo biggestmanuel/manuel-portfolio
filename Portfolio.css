@@ -316,7 +316,7 @@ body:not(.dark) .liquid-blob {
   border: 1px solid var(--border-glass);
   box-shadow: var(--glass-specular), var(--shadow-md);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   transition: all var(--transition-normal);
 }
 
@@ -1969,12 +1969,25 @@ body:not(.dark) .moon-icon { display: block; }
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 80px;
+  #mainNav {
+    top: 14px;
     left: 16px;
     right: 16px;
-    background: var(--bg-surface);
+    width: auto;
+    transform: none;
+  }
+
+  .nav-container {
+    overflow: visible;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--bg-surface-elevated);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-glass);
@@ -1987,12 +2000,15 @@ body:not(.dark) .moon-icon { display: block; }
     visibility: hidden;
     transform: translateY(-12px);
     transition: all var(--transition-normal);
+    z-index: 1001;
+    pointer-events: none;
   }
 
   .nav-links.open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
   }
 
   .nav-cta-btn { display: none; }
