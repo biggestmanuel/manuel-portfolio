@@ -7,11 +7,9 @@
   'use strict';
 
   // --- Constants ---
-  const THEME_STORAGE_KEY = 'biggestmanuel_theme';
   const EMAIL_ADDRESS = 'emmanuelnwuba1@gmail.com';
 
   // --- DOM Elements ---
-  const themeToggleBtn = document.getElementById('themeToggle');
   const mainNav = document.getElementById('mainNav');
   const navLinks = document.querySelectorAll('.nav-links a');
   const hamburger = document.getElementById('hamburger');
@@ -33,37 +31,10 @@
   const progressCircle = document.querySelector('.progress-ring-circle');
 
   // =========================================================================
-  // Theme Management (Light & Dark)
+  // Dark Mode: Always On
   // =========================================================================
-  function applyTheme(theme) {
-    const isDark = theme === 'dark';
-    document.body.classList.toggle('dark', isDark);
-    if (themeToggleBtn) {
-      themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-      themeToggleBtn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
-    }
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, theme);
-    } catch {}
-  }
+  document.body.classList.add('dark');
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const currentDark = document.body.classList.contains('dark');
-      applyTheme(currentDark ? 'light' : 'dark');
-    });
-  }
-
-  const initialTheme = (function () {
-    try {
-      const saved = localStorage.getItem(THEME_STORAGE_KEY);
-      if (saved) return saved;
-    } catch {}
-    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return systemPrefersDark ? 'dark' : 'dark';
-  })();
-
-  applyTheme(initialTheme);
 
   // =========================================================================
   // Apple Liquid Glass: Pointer-Tracking (Desktop Only for Maximum Performance)

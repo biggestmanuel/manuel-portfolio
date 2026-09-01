@@ -11,30 +11,8 @@
   padding: 0;
 }
 
+/* --- Dark Glass Design Tokens (Always On) --- */
 :root {
-  /* Light Theme */
-  --case-bg: #f0f4fa;
-  --case-surface: rgba(255, 255, 255, 0.72);
-  --case-surface-2: rgba(255, 255, 255, 0.88);
-  --case-surface-hover: rgba(255, 255, 255, 0.95);
-  --case-text: #0c1222;
-  --case-muted: #475569;
-  --case-subtle: #8492a6;
-  --case-border: rgba(255, 255, 255, 0.55);
-  --case-border-strong: rgba(255, 255, 255, 0.85);
-  --case-accent: #7c3aed;
-  --case-accent-2: #0284c7;
-  --case-accent-soft: rgba(124, 58, 237, 0.1);
-  --case-accent-gradient: linear-gradient(135deg, #7c3aed 0%, #0284c7 100%);
-  --case-shadow: 0 10px 28px -4px rgba(15, 23, 42, 0.07);
-  --case-max: 1180px;
-  --ease: ease-out;
-  --glass-blur: blur(20px) saturate(160%);
-  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.75), inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-}
-
-body.dark {
-  /* Dark Theme */
   --case-bg: #070a12;
   --case-surface: rgba(15, 22, 38, 0.65);
   --case-surface-2: rgba(22, 32, 55, 0.78);
@@ -49,6 +27,8 @@ body.dark {
   --case-accent-soft: rgba(139, 92, 246, 0.16);
   --case-accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%);
   --case-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.6);
+  --case-max: 1180px;
+  --ease: ease-out;
   --glass-blur: blur(24px) saturate(180%);
   --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }

@@ -6,7 +6,6 @@
 (function () {
   'use strict';
 
-  const THEME_STORAGE_KEY = 'biggestmanuel_theme';
 
   const CASE_STUDIES = {
     kindoku: {
@@ -88,39 +87,10 @@
     }[char]));
 
   // =========================================================================
-  // Theme Toggle on Case Study Page
+  // Dark Mode: Always On
   // =========================================================================
-  const caseThemeBtn = document.getElementById("caseThemeToggle");
+  document.body.classList.add('dark');
 
-  function applyTheme(theme) {
-    const isDark = theme === "dark";
-    document.body.classList.toggle("dark", isDark);
-    if (caseThemeBtn) {
-      caseThemeBtn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-      caseThemeBtn.title = isDark ? "Switch to light mode" : "Switch to dark mode";
-    }
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, theme);
-    } catch {}
-  }
-
-  if (caseThemeBtn) {
-    caseThemeBtn.addEventListener("click", () => {
-      const isDark = document.body.classList.contains("dark");
-      applyTheme(isDark ? "light" : "dark");
-    });
-  }
-
-  const savedTheme = (function () {
-    try {
-      const s = localStorage.getItem(THEME_STORAGE_KEY);
-      if (s) return s;
-    } catch {}
-    const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return systemPrefersDark ? "dark" : "dark";
-  })();
-
-  applyTheme(savedTheme);
 
   // =========================================================================
   // Specular Cursor Tracking (Desktop Only)

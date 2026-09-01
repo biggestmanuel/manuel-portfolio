@@ -13,63 +13,8 @@
   padding: 0;
 }
 
-/* --- Apple Liquid Glass Theme Variables --- */
+/* --- Dark Glass Design Tokens (Always On) --- */
 :root {
-  /* Light Theme (Frosted Crystal Glass) */
-  --bg-main: #f0f4fa;
-  --bg-surface: rgba(255, 255, 255, 0.72);
-  --bg-surface-elevated: rgba(255, 255, 255, 0.88);
-  --bg-surface-subtle: rgba(255, 255, 255, 0.5);
-  --bg-surface-hover: rgba(255, 255, 255, 0.95);
-  --bg-input: rgba(255, 255, 255, 0.8);
-
-  --text-main: #0c1222;
-  --text-muted: #475569;
-  --text-subtle: #8492a6;
-
-  --border-subtle: rgba(255, 255, 255, 0.6);
-  --border-strong: rgba(255, 255, 255, 0.85);
-  --border-glass: rgba(255, 255, 255, 0.55);
-  --border-focus: #7c3aed;
-
-  --accent: #7c3aed;
-  --accent-2: #0284c7;
-  --accent-soft: rgba(124, 58, 237, 0.1);
-  --accent-border: rgba(124, 58, 237, 0.28);
-  --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #0284c7 100%);
-  --text-gradient: linear-gradient(135deg, #0c1222 0%, #6d28d9 50%, #0284c7 100%);
-
-  --success: #10b981;
-  --success-bg: rgba(16, 185, 129, 0.12);
-  --success-border: rgba(16, 185, 129, 0.3);
-  --danger: #ef4444;
-  --danger-bg: rgba(239, 68, 68, 0.12);
-  --danger-border: rgba(239, 68, 68, 0.3);
-
-  /* Performance-Tuned Glass Optics */
-  --glass-blur: blur(20px) saturate(160%);
-  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.75), inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 10px 28px -4px rgba(15, 23, 42, 0.07);
-  --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
-  --shadow-glow: 0 0 35px rgba(124, 58, 237, 0.18);
-
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 30px;
-  --radius-full: 9999px;
-
-  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  --transition-fast: 0.15s ease-out;
-  --transition-normal: 0.25s ease-out;
-}
-
-body.dark {
-  /* Dark Theme (VisionOS Smoked Liquid Glass) */
   --bg-main: #070a12;
   --bg-surface: rgba(15, 22, 38, 0.65);
   --bg-surface-elevated: rgba(22, 32, 55, 0.78);
@@ -100,13 +45,26 @@ body.dark {
   --danger-bg: rgba(239, 68, 68, 0.14);
   --danger-border: rgba(248, 113, 113, 0.28);
 
-  /* Performance-Tuned Smoked Glass */
+  /* Smoked Glass Optics */
   --glass-blur: blur(24px) saturate(180%);
   --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 12px 30px -4px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 22px 50px -10px rgba(0, 0, 0, 0.65);
   --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.25);
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.25s ease-out;
 }
 
 /* --- Base Body & Typography --- */
