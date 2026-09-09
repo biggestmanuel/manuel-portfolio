@@ -1,6 +1,6 @@
 /* ==========================================================================
    Biggest Manuel — Personal Portfolio Design System
-   Apple Liquid Glass (VisionOS / iOS Fluid Glass Aesthetic — Performance Optimized)
+   Editorial Dark Workspace — Near-Black Neutral + Burnt Orange Accent
    ========================================================================== */
 
 /* --- Fonts Import --- */
@@ -13,30 +13,30 @@
   padding: 0;
 }
 
-/* --- Dark Glass Design Tokens (Always On) --- */
+/* --- Near-Black Neutral Design Tokens (Always On) --- */
 :root {
-  --bg-main: #070a12;
-  --bg-surface: rgba(15, 22, 38, 0.65);
-  --bg-surface-elevated: rgba(22, 32, 55, 0.78);
-  --bg-surface-subtle: rgba(15, 22, 38, 0.45);
-  --bg-surface-hover: rgba(28, 40, 70, 0.8);
-  --bg-input: rgba(11, 16, 29, 0.7);
+  --bg-main: #0a0a09;
+  --bg-surface: #131211;
+  --bg-surface-elevated: #1a1917;
+  --bg-surface-subtle: #0f0e0d;
+  --bg-surface-hover: #201f1c;
+  --bg-input: #141312;
 
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-subtle: #64748b;
+  --text-main: #f2f0ec;
+  --text-muted: #a3a09a;
+  --text-subtle: #6e6b65;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  --border-glass: rgba(232, 147, 90, 0.12);
-  --border-focus: #f2c14e;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --border-glass: rgba(255, 255, 255, 0.10);
+  --border-focus: #be5103;
 
-  --accent: #e8935a;
-  --accent-2: #f2c14e;
-  --accent-soft: rgba(232, 147, 90, 0.16);
-  --accent-border: rgba(232, 147, 90, 0.38);
-  --accent-gradient: linear-gradient(135deg, #e8935a 0%, #f2c14e 100%);
-  --text-gradient: linear-gradient(135deg, #ffffff 0%, #f7c491 50%, #f2c14e 100%);
+  --accent: #be5103;
+  --accent-2: #8f3d05;
+  --accent-soft: rgba(190, 81, 3, 0.12);
+  --accent-border: rgba(190, 81, 3, 0.4);
+  --accent-gradient: #be5103;
+  --text-gradient: #be5103;
 
   --success: #34d399;
   --success-bg: rgba(16, 185, 129, 0.14);
@@ -45,19 +45,19 @@
   --danger-bg: rgba(239, 68, 68, 0.14);
   --danger-border: rgba(248, 113, 113, 0.28);
 
-  /* Smoked Glass Optics — warm-tinted to match the amber/gold identity */
-  --glass-blur: blur(24px) saturate(180%);
-  --glass-specular: inset 0 1px 1px 0 rgba(255, 238, 220, 0.26), inset 0 0 0 1px rgba(232, 147, 90, 0.10);
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 12px 30px -4px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 22px 50px -10px rgba(0, 0, 0, 0.65);
-  --shadow-glow: 0 0 40px rgba(232, 147, 90, 0.25);
+  /* Solid-surface shadows — no blur, no glow, no specular sheen */
+  --glass-blur: none;
+  --glass-specular: inset 0 0 0 0 rgba(0, 0, 0, 0);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 18px -4px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 14px 32px -8px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 0 rgba(0, 0, 0, 0);
 
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 30px;
-  --radius-full: 9999px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 8px;
 
   --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
@@ -227,7 +227,7 @@ input, textarea {
   border-radius: 11px;
   background: var(--accent-gradient);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(232, 147, 90, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   transition: transform var(--transition-fast);
 }
 
@@ -321,7 +321,7 @@ body:not(.dark) .moon-icon { display: block; }
   color: #ffffff;
   font-size: 0.85rem;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(232, 147, 90, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   transition: transform var(--transition-fast);
 }
 
@@ -474,12 +474,12 @@ body:not(.dark) .moon-icon { display: block; }
 .btn-primary {
   background: var(--accent-gradient);
   color: #ffffff;
-  box-shadow: 0 4px 18px rgba(232, 147, 90, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(232, 147, 90, 0.45);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .btn-primary:active {
@@ -709,7 +709,7 @@ body:not(.dark) .moon-icon { display: block; }
 .stat-icon-wrap.blue { background: rgba(59, 130, 246, 0.14); color: #38bdf8; }
 .stat-icon-wrap.purple { background: rgba(139, 92, 246, 0.14); color: #c084fc; }
 .stat-icon-wrap.green { background: rgba(16, 185, 129, 0.14); color: #34d399; }
-.stat-icon-wrap.orange { background: rgba(245, 158, 11, 0.14); color: #fbbf24; }
+.stat-icon-wrap.orange { background: var(--accent-soft); color: var(--accent); }
 
 .stat-info {
   position: relative;
@@ -727,7 +727,7 @@ body:not(.dark) .moon-icon { display: block; }
   color: var(--text-muted);
 }
 
-/* Photo Frame */
+/* Photo Frame — arched top, flat base (distinct from a plain rectangle) */
 .photo-wrapper {
   display: grid;
   place-items: center;
@@ -735,13 +735,11 @@ body:not(.dark) .moon-icon { display: block; }
 
 .photo-frame {
   position: relative;
-  border-radius: var(--radius-xl);
+  border-radius: 600px 600px var(--radius-sm) var(--radius-sm);
   padding: 10px;
   background: var(--bg-surface);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--border-glass);
-  box-shadow: var(--glass-specular), var(--shadow-glow), var(--shadow-lg);
+  box-shadow: var(--shadow-lg);
   transition: transform var(--transition-normal);
 }
 
@@ -751,7 +749,7 @@ body:not(.dark) .moon-icon { display: block; }
 
 .photo-inner {
   position: relative;
-  border-radius: calc(var(--radius-xl) - 10px);
+  border-radius: 600px 600px 2px 2px;
   overflow: hidden;
   background: var(--bg-main);
 }
@@ -771,10 +769,8 @@ body:not(.dark) .moon-icon { display: block; }
   left: 16px;
   right: 16px;
   background: var(--bg-surface-elevated);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--border-glass);
-  box-shadow: var(--glass-specular), var(--shadow-sm);
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius-md);
   padding: 10px 14px;
   display: flex;
@@ -1111,7 +1107,7 @@ body:not(.dark) .moon-icon { display: block; }
   background: var(--accent-gradient);
   color: #ffffff;
   border-color: transparent;
-  box-shadow: 0 4px 14px rgba(232, 147, 90, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .projects-grid {
@@ -1208,7 +1204,7 @@ body:not(.dark) .moon-icon { display: block; }
 .overlay-btn.primary {
   background: var(--accent-gradient);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(232, 147, 90, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .overlay-btn.secondary {
@@ -1787,10 +1783,10 @@ body:not(.dark) .moon-icon { display: block; }
 @media (max-width: 768px) {
   /* Mobile Performance Tuning: reduce filter intensity */
   :root {
-    --glass-blur: blur(12px) saturate(130%) !important;
+    --glass-blur: none !important;
   }
   body.dark {
-    --glass-blur: blur(14px) saturate(140%) !important;
+    --glass-blur: none !important;
   }
 
   #mainNav {
