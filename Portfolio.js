@@ -311,9 +311,15 @@
     progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
     progressCircle.style.strokeDashoffset = `${circumference}`;
 
-    const updateScrollProgress = () => {
-      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollProgress = scrollTotal > 0 ? window.scrollY / scrollTotal : 0;
+    let cachedScrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+    let scrollTicking = false;
+
+    const recalcScrollTotal = () => {
+      cachedScrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+    };
+
+    const applyScrollProgress = () => {
+      const scrollProgress = cachedScrollTotal > 0 ? window.scrollY / cachedScrollTotal : 0;
       const offset = circumference - scrollProgress * circumference;
       progressCircle.style.strokeDashoffset = offset;
 
@@ -324,10 +330,19 @@
           scrollToTopBtn.classList.remove('show');
         }
       }
+      scrollTicking = false;
     };
 
+    const updateScrollProgress = () => {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(applyScrollProgress);
+      }
+    };
+
+    window.addEventListener('resize', recalcScrollTotal, { passive: true });
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    updateScrollProgress();
+    applyScrollProgress();
 
     scrollToTopBtn?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
