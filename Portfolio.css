@@ -1090,6 +1090,12 @@ a.contact-row-value:hover {
 
   .section { scroll-margin-top: 0; scroll-margin-bottom: 90px; }
 
+  /* The file-icon field is tablet-and-up only. On a phone it is decoration
+     beside the accordion, and it costs 36 image requests for no benefit, so
+     it stays hidden below 768px. The hero marquee is a separate element and
+     is untouched. */
+  .code-wrap { display: none; }
+
   .toast-container { bottom: 88px; }
 }
 

@@ -46,7 +46,8 @@ Where the accent shows up:
   extension) scattered beside the accordion on a 6×6 grid, each bobbing up and down on its
   own phase, speed, distance and slight rotation. Icons come from [Seti UI](https://github.com/jesseweed/seti-ui)
   (MIT), vendored into `img/fileicons/` and pre-filled so they render standalone on the light
-  canvas. Motion stops under `prefers-reduced-motion`.
+  canvas. Motion stops under `prefers-reduced-motion`. Tablet and desktop only: below 768px it
+  is hidden in CSS *and* skipped in JS, so a phone makes none of the 36 requests.
 - **Status** — solid blue dot with a halo for *Live* / *Delivered*, hollow silver ring for
   *In active dev*.
 - **Focus rings, selection, scrollbar hover** — all blue.

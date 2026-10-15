@@ -240,6 +240,12 @@
     let tiles = [];
     let resizeTimer = null;
 
+    // The icon field is tablet-and-up only. CSS keeps it hidden below 768px,
+    // and this handle lets us skip building it there as well, so a phone never
+    // fires the 36 requests. Re-checked on change so rotating a tablet or
+    // dragging a window across the breakpoint fills or empties the panel.
+    const wide = window.matchMedia('(min-width: 768px)');
+
     // Shuffle so any four slots being skipped are scattered, not a hole in a row.
     function shuffled(list) {
       const a = list.slice();
@@ -252,12 +258,15 @@
 
     function build() {
       const rect = stage.getBoundingClientRect();
-      const W = Math.max(1, rect.width);
+      // Hidden below 768px, so the stage measures 0 and there is nothing to lay
+      // out against. Without this the layout maths runs on a 1px box.
+      if (!rect.width || !rect.height) return;
+      const W = rect.width;
       const H = Math.max(1, rect.height);
       const cellW = W / COLS;
       const cellH = H / ROWS;
 
-      // Shuffle all 30 slots, then place only as many as we have icons.
+      // Shuffle all 36 slots, then place only as many as we have icons.
       const slots = shuffled(
         Array.from({ length: COLS * ROWS }, (_, i) => i)
       ).slice(0, ICONS.length);
@@ -309,7 +318,7 @@
       return el;
     }
 
-    // Added a few at a time rather than all 26 at once: it keeps the request
+    // Added a few at a time rather than all 36 at once: it keeps the request
     // burst small enough that no host drops any, and the field fills in
     // gradually instead of popping in as one block. setTimeout rather than
     // rAF because rAF is suspended in background tabs, which would leave the
@@ -336,7 +345,16 @@
       renderTimer = setTimeout(step, 0);
     }
 
-    build();
+    if (wide.matches) build();
+
+    wide.addEventListener('change', () => {
+      if (wide.matches) {
+        build();
+      } else {
+        clearTimeout(renderTimer);
+        stage.textContent = '';
+      }
+    });
 
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
