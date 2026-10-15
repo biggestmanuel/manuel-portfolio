@@ -1,0 +1,26 @@
+# Dependencies / build output
+node_modules/
+dist/
+.astro/
+.vercel/
+
+# Local env files
+.env
+.env.local
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Reference template archives (not part of the site)
+dark-minimal-v1.0.2.zip
+folio-tailwind-v1.0.0.zip
+*.zip
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log

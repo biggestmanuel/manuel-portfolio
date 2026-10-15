@@ -1,0 +1,14 @@
+{
+  "name": "Biggest Manuel — Full-Stack Developer",
+  "short_name": "Biggest Manuel",
+  "description": "Portfolio of Nwuba Emmanuel (Biggest Manuel), a full-stack developer and product builder.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#0078d4",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Nothing here is private or staging-only, but be explicit for crawlers.
+Disallow: /img/icons-1/
+
+Sitemap: https://biggestmanuel.vercel.app/sitemap.xml

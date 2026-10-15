@@ -3,14 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Detailed project case study by Nwuba Emmanuel (Biggest Manuel)." />
-  <meta name="theme-color" content="#0a0a09" />
+  <meta name="description" content="Detailed project case study by Nwuba Emmanuel (Biggest Manuel) — full-stack developer and product builder." />
+  <meta name="author" content="Nwuba Emmanuel (Biggest Manuel)" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#f5f7fa" />
+
+  <link rel="canonical" href="https://biggestmanuel.vercel.app/case-study.html" />
   <title>Case Study | Biggest Manuel</title>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Biggest Manuel" />
+  <meta property="og:title" content="Case Study | Biggest Manuel" />
+  <meta property="og:description" content="A detailed look at how each project was built, the problems it solves, and the stack behind it." />
+  <meta property="og:image" content="https://biggestmanuel.vercel.app/og-cover.png" />
+  <meta property="og:url" content="https://biggestmanuel.vercel.app/case-study.html" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case Study | Biggest Manuel" />
+  <meta name="twitter:description" content="A detailed look at how each project was built, the problems it solves, and the stack behind it." />
+  <meta name="twitter:image" content="https://biggestmanuel.vercel.app/og-cover.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,38 +36,34 @@
   <link rel="stylesheet" href="case-study.css" />
 </head>
 
-<body class="case-study-page dark">
-  <!-- Ambient Background: subtle noise texture, no floating blobs -->
-  <div class="liquid-ambient-canvas" aria-hidden="true">
-    <div class="liquid-glass-texture"></div>
-  </div>
-
+<body class="case-study-page">
   <!-- Topbar Navigation -->
   <header class="case-topbar">
-    <a class="case-brand" href="index.html">
-      <span class="brand-logo-mark">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
-      </span>
-      <span>Biggest Manuel<span class="brand-dot">.</span></span>
-    </a>
-
-    <div class="case-topbar-actions">
-
-      <a class="case-nav-back" href="index.html#projects">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        <span>Back to projects</span>
+    <div class="shell">
+      <a class="case-brand" href="index.html">
+        <span class="case-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+        </span>
+        <span>Biggest Manuel<span class="brand-dot">.</span></span>
       </a>
+
+      <div class="case-topbar-actions">
+        <a href="index.html#projects" class="case-nav-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          <span>Back to projects</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- Main Case Study Content Root -->
-  <main class="case-main case-shell" id="caseStudyRoot">
+  <main class="case-main shell" id="caseStudyRoot">
     <div class="case-error" aria-live="polite">
       <p class="case-eyebrow">Loading case study...</p>
     </div>
@@ -60,15 +73,19 @@
   <div id="imageLightbox" class="lightbox-modal" hidden>
     <div class="lightbox-backdrop"></div>
     <div class="lightbox-content">
-      <button id="closeLightboxBtn" class="lightbox-close-btn" type="button" aria-label="Close image preview">×</button>
+      <button id="closeLightboxBtn" class="lightbox-close-btn" type="button" aria-label="Close image preview">&times;</button>
       <img id="lightboxImg" src="" alt="Full preview" />
       <p id="lightboxCaption" class="lightbox-caption"></p>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="case-footer case-shell">
-    <p>© 2026 Nwuba Emmanuel Chukwuebuka. All Rights Reserved.</p>
+  <footer class="case-footer">
+    <div class="shell">
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2026 Nwuba Emmanuel Chukwuebuka. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
   <script src="case-study.js"></script>

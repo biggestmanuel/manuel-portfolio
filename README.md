@@ -1,40 +1,138 @@
-# Nwuba Emmanuel (Biggest Manuel) — Personal Portfolio
+# Biggest Manuel — Personal Portfolio
 
-A modern, high-performance developer portfolio and project case study platform showcasing full-stack web applications, products, and UI/UX design.
+Portfolio and case study platform for **Nwuba Emmanuel (Biggest Manuel)** — full-stack
+developer and product builder.
 
----
-
-## ✨ Features & UI Upgrades
-
-- 🎨 **Modern SaaS Design System**: Glassmorphism navigation, ambient mesh gradient lighting, fluid card elevations, and dynamic **Dark / Light Theme Toggle** with persistent memory.
-- 📱 **Interactive Project Filters**: Real-time filtering by category (*All Projects*, *AI & Web Apps*, *Client Work*, *Currently Building*).
-- 📖 **Deep Case Study System**: Dynamic case studies (`case-study.html?project=...`) with problem/approach breakdowns, live site routing, next/prev project navigation, and interactive image lightbox modals.
-- ⚡ **1-Click Copy Micro-Interactions**: Instant email copy with animated checkmark and floating toast notification.
-- 📬 **Interactive Web3Forms Contact Form**: Fully functional asynchronous contact form with real-time validation and loading feedback.
-- 🚀 **Progress Scroll Ring**: Circular SVG progress ring tracking scroll position with smooth scroll-to-top behavior.
-- 🛠️ **Zero Build Step**: 100% vanilla HTML5, CSS3, and modern JavaScript (ES6+). Runs instantly with zero bundlers or build steps.
+Live: **https://biggestmanuel.vercel.app**
 
 ---
 
-## 📂 Project Structure
+## ✨ Design
+
+A soft-white canvas with a single blue accent — Windows 11 Bloom's atmosphere over a
+silver-laptop industrial palette. Minimal, contemporary, and structured by alternating
+section bands rather than a field of cards.
+
+### Colour
+
+All colour lives in tokens at the top of `Portfolio.css` and `case-study.css`.
+
+| Token | Value | Job |
+| --- | --- | --- |
+| `--background` | `#F5F7FA` | soft white canvas |
+| `--surface` | `#FFFFFF` | raised surface — cards, inputs, nav |
+| `--ink` | `#202938` | deep charcoal, primary text (13.6:1) |
+| `--ink-soft` | `#44474B` | iron grey, secondary text (8.7:1) |
+| `--ink-muted` | `#5F6773` | mono labels and tertiary text (5.3:1) |
+| `--line` | `#D9E0E8` | hairline borders |
+| `--silver` | `#C0C0C0` | structural detail, scrollbar thumb |
+| `--blue` | `#0078D4` | primary: borders, icons, focus, large text |
+| `--blue-bright` | `#4C8DFF` | decorative glows only |
+| `--blue-ink` | `#0A5C99` | accent **text** on soft white (6.5:1) |
+| `--blue-fill` | `#0067B8` | filled surfaces carrying white text (5.8:1) |
+
+Four blue tones rather than one, because a single blue cannot be both a hairline accent and
+a white-on-fill control while staying AA on a light canvas — `#0078D4` as body text is only
+4.2:1. `--blue-ink` and `--blue-fill` close those two gaps.
+
+Where the accent shows up:
+
+- **Section bands** — `About` and `Projects` sit on raised white, the rest on soft white, so
+  the page has rhythm without adding cards.
+- **Nav underline** — grows from the centre on hover, stays full when active.
+- **Shimmer sweep** — a skewed highlight crosses the primary actions on hover.
+- **Blue bloom** — a slow radial wash behind the hero, Bloom-wallpaper mood, not the wallpaper.
+- **Code icon field** — 36 VS Code / Seti file-type icons (the ones VS Code shows for a given
+  extension) scattered beside the accordion on a 6×6 grid, each bobbing up and down on its
+  own phase, speed, distance and slight rotation. Icons come from [Seti UI](https://github.com/jesseweed/seti-ui)
+  (MIT), vendored into `img/fileicons/` and pre-filled so they render standalone on the light
+  canvas. Motion stops under `prefers-reduced-motion`.
+- **Status** — solid blue dot with a halo for *Live* / *Delivered*, hollow silver ring for
+  *In active dev*.
+- **Focus rings, selection, scrollbar hover** — all blue.
+
+Deliberately absent: film grain, glassmorphism, blue-purple gradients, neon. Depth comes
+from banding and cool-tinted elevation shadows instead.
+
+Fonts: **Manrope** (body), **Space Grotesk** (display), **JetBrains Mono** (labels).
+
+### Structure
+
+- **Floating pill navigation** — fixed, centred, shrinks from 80% width to a compact pill as
+  you scroll; transparent at rest, frosted white once scrolling. Becomes a fixed bottom bar
+  with icons on mobile.
+- **Availability badge** — pulsing blue halo above the hero headline.
+- **Technology marquee** — scrolling logo wall in each brand's real colour, pausing on hover.
+  Marks that ship as white artwork are flipped to charcoal so they survive a light canvas.
+- **"What I do?" accordion** — one category open at a time, blue icon and border when open.
+- **Project grid** — mono index chips, status pills, case-study + live-site buttons, then a
+  full-width **"More projects on GitHub"** call to action.
+
+---
+
+## 🔍 SEO
+
+- Semantic headings (`h1` → `h2`) and a screen-reader-only brand name in the `h1`
+- **JSON-LD** `Person`, `WebSite` and `ProfilePage` schemas linking the brand aliases
+  ("Biggest Manuel", "biggestmanuel") to your GitHub / X profiles
+- Canonical URLs, `robots` directives, Open Graph + Twitter cards
+- `og-cover.png` (1200×630) share image and PWA icons
+- `robots.txt` and `sitemap.xml` covering the homepage and all four case studies
+- `site.webmanifest`
+
+**To actually rank in Google for "biggestmanuel"** you still need to (these live outside
+the codebase):
+
+1. Add the site to [Google Search Console](https://search.google.com/search-console) and
+   verify ownership.
+2. Submit `https://biggestmanuel.vercel.app/sitemap.xml` there.
+3. Use Search Console **URL Inspection → Request Indexing** on the homepage.
+4. Keep the GitHub, X and WhatsApp profiles linking back to the portfolio — those are the
+   signals that associate the name "biggestmanuel" with this site.
+
+---
+
+## 🧩 Features
+
+- 🎯 **Case study system** — `case-study.html?project=...` with problem/approach breakdowns,
+  live-site routing, prev/next navigation and an image lightbox.
+- 📋 **1-click copy email** with animated checkmark and toast notification.
+- 📬 **Web3Forms contact form** with async submission, inline validation and loading state.
+- 📱 **Fully responsive** — bottom-tab navigation on mobile, 2-up grids on desktop.
+- ♿ **Accessible** — keyboard-navigable accordion, aria states, visible focus rings,
+  AA colour contrast, `prefers-reduced-motion` support.
+- ⚡ **Zero build step** — vanilla HTML/CSS/JS. No bundler, no framework, no npm install.
+
+---
+
+## 📂 Structure
 
 ```text
-index.html          # Main portfolio layout (Hero, About, Skills, Services, Projects, Contact)
-Portfolio.css       # Complete design system, responsive grid, animations, theme vars
-Portfolio.js        # Theme toggle, filter logic, Web3Forms handling, scroll spy
-case-study.html     # Dedicated project case study layout with lightbox modal
-case-study.css      # Case study styling, visual gallery frames, responsive breakpoints
-case-study.js       # Case study data renderer, next/prev project links, lightbox logic
-me.jpg              # High-res profile photograph
-img/                # Project screenshots, desktop & mobile gallery assets
+index.html          # Main portfolio (Hero, About, Skills, Projects, Contact)
+Portfolio.css       # Design tokens, layout, components, animations
+Portfolio.js        # Nav, accordion, code icon field, clipboard, Web3Forms, reveals
+case-study.html     # Case study layout with lightbox modal
+case-study.css      # Case study styling
+case-study.js       # Case study data renderer + prev/next + lightbox
+robots.txt          # Crawler directives + sitemap pointer
+sitemap.xml         # Homepage + all case studies
+site.webmanifest    # PWA manifest
+og-cover.png        # Social share image
+me.webp             # Profile photo
+img/                # Project screenshots, gallery assets, tech icons
+img/fileicons/      # Seti UI file-type icons (MIT) used by the code icon field
 ```
 
 ---
 
-## 🚀 Live Preview & Deployment
+## 🚀 Running & deploying
 
-To run locally:
-Simply open `index.html` in any web browser.
+**Locally** — just open `index.html`, or serve the folder:
 
-To deploy:
-Drag and drop the folder into [Vercel](https://vercel.com), [GitHub Pages](https://pages.github.com), or [Netlify](https://www.netlify.com).
+```bash
+python -m http.server 4173
+```
+
+**Deploy** — connect the repo to [Vercel](https://vercel.com) (no build command needed),
+or drag the folder onto [Netlify](https://www.netlify.com) /
+[GitHub Pages](https://pages.github.com).

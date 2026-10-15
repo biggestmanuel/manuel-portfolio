@@ -1,6 +1,6 @@
 /**
  * Biggest Manuel — Case Study Renderer & Interactive Engine
- * Apple Liquid Glass (Performance-Tuned)
+ * Dark-minimal theme.
  */
 
 (function () {
@@ -87,33 +87,6 @@
     }[char]));
 
   // =========================================================================
-  // Dark Mode: Always On
-  // =========================================================================
-  document.body.classList.add('dark');
-
-
-  // =========================================================================
-  // Specular Cursor Tracking (Desktop Only)
-  // =========================================================================
-  function attachSpecularListeners() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      return;
-    }
-    const elements = document.querySelectorAll('.case-topbar, .case-card, .case-page-btn, .case-featured-img-wrap');
-    elements.forEach(el => {
-      el.addEventListener('pointermove', (e) => {
-        const rect = el.getBoundingClientRect();
-        el.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-        el.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-      });
-      el.addEventListener('pointerleave', () => {
-        el.style.removeProperty('--mouse-x');
-        el.style.removeProperty('--mouse-y');
-      });
-    });
-  }
-
-  // =========================================================================
   // Render Case Study Content
   // =========================================================================
   const root = document.getElementById("caseStudyRoot");
@@ -124,9 +97,9 @@
   if (!project) {
     if (root) {
       root.innerHTML = `
-        <div class="case-card" style="text-align: center; padding: 60px 20px;">
-          <h2 class="case-title">Case study not found</h2>
-          <p style="margin-bottom: 24px;">The case study you requested does not exist or has been moved.</p>
+        <div class="case-card" style="text-align: center;">
+          <h1 class="case-title">Case study not found</h1>
+          <p style="margin-bottom: 1.5rem;">The case study you requested does not exist or has been moved.</p>
           <a href="index.html#projects" class="case-hero-cta">Return to Projects</a>
         </div>
       `;
@@ -140,6 +113,7 @@
 
     let html = `
       <section class="case-hero">
+        <p class="case-eyebrow shiny-accent">Case study</p>
         <div class="case-badges-row">
           <span class="case-pill">${escapeHtml(project.tag)}</span>
           <span class="case-pill status">${escapeHtml(project.status)}</span>
@@ -167,19 +141,19 @@
     if (project.type === "own") {
       html += `
         <article class="case-card">
-          <h3>The Challenge & Context</h3>
+          <h2>The Challenge & Context</h2>
           <p>${escapeHtml(project.problem)}</p>
         </article>
 
         <article class="case-card">
-          <h3>Architecture & Engineering Approach</h3>
+          <h2>Architecture & Engineering Approach</h2>
           <p>${escapeHtml(project.approach)}</p>
         </article>
       `;
     } else {
       html += `
         <article class="case-card">
-          <h3>Why It Was Built & Project Scope</h3>
+          <h2>Why It Was Built & Project Scope</h2>
           <p>${escapeHtml(project.whyItWasBuilt)}</p>
         </article>
       `;
@@ -188,7 +162,7 @@
     if (project.stack && project.stack.length) {
       html += `
         <article class="case-card">
-          <h3>Core Technologies</h3>
+          <h2>Core Technologies</h2>
           <div class="case-stack-list">
             ${project.stack.map(s => `<span class="case-stack-item">${escapeHtml(s)}</span>`).join("")}
           </div>
@@ -199,7 +173,7 @@
     if (project.gallery && project.gallery.length) {
       html += `
         <article class="case-card">
-          <h3>Interface & Experience Gallery</h3>
+          <h2>Interface & Experience Gallery</h2>
           <div class="case-gallery-grid">
             ${project.gallery
               .map(
@@ -240,7 +214,6 @@
 
     if (root) {
       root.innerHTML = html;
-      attachSpecularListeners();
     }
   }
 

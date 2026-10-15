@@ -3,21 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Nwuba Emmanuel (Biggest Manuel) — Full-stack developer and builder of modern, high-performance web applications." />
-  <meta name="theme-color" content="#090d15" />
+  <meta name="description" content="Biggest Manuel (Nwuba Emmanuel) is a full-stack developer and product builder from Port Harcourt, Nigeria. He builds fast, scalable web apps with React, Next.js, Node.js, Django and PostgreSQL." />
+  <meta name="author" content="Nwuba Emmanuel (Biggest Manuel)" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="theme-color" content="#f5f7fa" />
 
-  <title>Nwuba Emmanuel | Full-Stack Developer & Product Builder</title>
+  <link rel="canonical" href="https://biggestmanuel.vercel.app/" />
+
+  <title>Biggest Manuel | Nwuba Emmanuel — Full-Stack Developer & Product Builder</title>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Nwuba Emmanuel | Full-Stack Developer & Product Builder" />
-  <meta property="og:description" content="I build websites and applications that feel premium, perform smoothly, and deliver real value." />
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="me.webp" />
+  <meta property="og:site_name" content="Biggest Manuel" />
+  <meta property="og:title" content="Biggest Manuel | Nwuba Emmanuel — Full-Stack Developer" />
+  <meta property="og:description" content="Full-stack developer and product builder crafting fast, scalable web apps with React, Next.js, Node.js, Django and PostgreSQL." />
+  <meta property="og:url" content="https://biggestmanuel.vercel.app/" />
+  <meta property="og:image" content="https://biggestmanuel.vercel.app/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Biggest Manuel — Full-Stack Developer" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Biggest Manuel | Nwuba Emmanuel — Full-Stack Developer" />
+  <meta name="twitter:description" content="Full-stack developer and product builder crafting fast, scalable web apps with React, Next.js, Node.js, Django and PostgreSQL." />
+  <meta name="twitter:image" content="https://biggestmanuel.vercel.app/og-cover.png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,793 +44,542 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="./Portfolio.css" />
+
+  <!-- Structured Data: helps Google understand who this site belongs to -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://biggestmanuel.vercel.app/#person",
+        "name": "Nwuba Emmanuel",
+        "alternateName": ["Biggest Manuel", "biggestmanuel"],
+        "jobTitle": "Full-Stack Developer & Product Builder",
+        "description": "Full-stack developer and product builder based in Port Harcourt, Nigeria, building fast, scalable web applications and digital products.",
+        "url": "https://biggestmanuel.vercel.app/",
+        "image": "https://biggestmanuel.vercel.app/me.webp",
+        "email": "mailto:emmanuelnwuba1@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Port Harcourt",
+          "addressCountry": "NG"
+        },
+        "knowsAbout": [
+          "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
+          "Python", "Django", "PostgreSQL", "Supabase", "Tailwind CSS", "Vercel"
+        ],
+        "sameAs": [
+          "https://github.com/biggestmanuel",
+          "https://x.com/biggestmanuel"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://biggestmanuel.vercel.app/#website",
+        "url": "https://biggestmanuel.vercel.app/",
+        "name": "Biggest Manuel",
+        "alternateName": "biggestmanuel",
+        "description": "Portfolio of Nwuba Emmanuel (Biggest Manuel), a full-stack developer and product builder.",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://biggestmanuel.vercel.app/#person" }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://biggestmanuel.vercel.app/#profilepage",
+        "url": "https://biggestmanuel.vercel.app/",
+        "name": "Biggest Manuel — Full-Stack Developer",
+        "about": { "@id": "https://biggestmanuel.vercel.app/#person" },
+        "isPartOf": { "@id": "https://biggestmanuel.vercel.app/#website" }
+      }
+    ]
+  }
+  </script>
 </head>
 
-<body class="dark">
-  <!-- Ambient Background: subtle noise + grid, no floating blobs -->
-  <div class="liquid-ambient-canvas" aria-hidden="true">
-    <div class="liquid-glass-texture"></div>
-    <div class="bg-grid-overlay"></div>
+<body>
+  <!-- ===================== Floating Pill Navigation ===================== -->
+  <div class="nav-shell">
+    <nav id="main-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li>
+          <a href="#home" class="nav-link is-active">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V9.48907C3 9.18048 3.14247 8.88917 3.38606 8.69972L11.3861 2.47749C11.7472 2.19663 12.2528 2.19663 12.6139 2.47749L20.6139 8.69972C20.8575 8.88917 21 9.18048 21 9.48907V20ZM19 19V9.97815L12 4.53371L5 9.97815V19H19Z"/></svg>
+            </span>
+            <span class="nav-label">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg>
+            </span>
+            <span class="nav-label">About</span>
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </span>
+            <span class="nav-label">Skills</span>
+          </a>
+        </li>
+        <li>
+          <a href="#projects" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 5V19H20V7H11.5858L9.58579 5H4ZM12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5Z"/></svg>
+            </span>
+            <span class="nav-label">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.7267 2.95694L16.2734 22.0432C16.1225 22.5716 15.7979 22.5956 15.5563 22.1126L11 13L1.9229 9.36919C1.41322 9.16532 1.41953 8.86022 1.95695 8.68108L21.0432 2.31901C21.5716 2.14285 21.8747 2.43866 21.7267 2.95694ZM19.0353 5.09647L6.81221 9.17085L12.4488 11.4255L15.4895 17.5068L19.0353 5.09647Z"/></svg>
+            </span>
+            <span class="nav-label">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 
-  <!-- Header / Navigation -->
-  <nav id="mainNav">
-    <div class="nav-container">
-      <a class="logo" href="#" aria-label="Biggest Manuel Home">
-        <div class="logo-mark">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
-        </div>
-        <span class="logo-text">Biggest Manuel<span class="brand-dot">.</span></span>
-      </a>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about" class="nav-link"><span class="nav-label">About</span></a></li>
-        <li><a href="#skills" class="nav-link"><span class="nav-label">Skills & Stack</span></a></li>
-        <li><a href="#services" class="nav-link"><span class="nav-label">Services</span></a></li>
-        <li><a href="#projects" class="nav-link"><span class="nav-label">Projects</span></a></li>
-        <li><a href="#contact" class="nav-link"><span class="nav-label">Contact</span></a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <a href="#contact" class="nav-cta-btn">
-          <span>Let's Talk</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <div class="nav-backdrop" id="navBackdrop"></div>
-
   <main>
-    <!-- Hero Section -->
-    <header class="hero">
-      <div class="hero-content">
-        <div class="hero-status-badge reveal">
-          <span class="status-dot"></span>
-          <span>Available for Freelance & Full-Time Roles</span>
-        </div>
+    <!-- ============================= Hero ============================= -->
+    <section class="section" id="home">
+      <div class="shell">
+        <div class="hero">
+          <p class="hero-status reveal"><span class="status-dot" aria-hidden="true"></span><span>Available for freelance &amp; full-time roles</span></p>
 
-        <h1 class="hero-title reveal">
-          Hi, I'm <span class="gradient-text">Nwuba Emmanuel</span>
-        </h1>
+          <p class="hero-eyebrow shiny-accent reveal">Hi, I'm Nwuba Emmanuel</p>
 
-        <p class="hero-tagline reveal">
-          Product-Minded Full-Stack Developer
-        </p>
-
-        <p class="hero-subtitle reveal">
-          I build high-performance applications and digital experiences that look sharp, run smoothly, and turn visitors into loyal users.
-        </p>
-
-        <div class="hero-btns reveal">
-          <a href="#projects" class="btn btn-primary">
-            <span>Explore My Work</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-
-          <button id="quickCopyEmailBtn" class="btn btn-secondary" type="button" title="Copy email address">
-            <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <span class="copy-btn-label">Copy Email</span>
-          </button>
-
-          <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="GitHub Profile">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.477 2 2 6.512 2 12.02c0 4.425 2.865 8.18 6.839 9.495.501.094.684-.217.684-.484 0-.238-.009-1.027-.013-1.864-2.784.605-3.369-1.338-3.369-1.338-.455-1.156-1.111-1.464-1.111-1.464-.909-.621.069-.608.069-.608 1.005.071 1.534 1.032 1.534 1.032.893 1.532 2.341 1.089 2.911.833.091-.65.349-1.09.634-1.339-2.221-.252-4.556-1.111-4.556-4.94 0-1.091.39-1.984 1.03-2.682.0-.252-.446-1.272.098-2.649 0 0 .84-.269 2.75 1.026A9.56 9.56 0 0 1 12 7.382a9.57 9.57 0 0 1 2.5.338c1.91-1.295 2.75-1.026 2.75-1.026.545 1.377.202 2.397.1 2.649.64.698 1.03 1.591 1.03 2.682 0 3.836-2.338 4.686-4.566 4.933.359.31.678.912.678 1.836 0 1.326-.012 2.392-.012 2.718 0 .268.18.582.689.484A10.026 10.026 0 0 0 22 12.02C22 6.512 17.523 2 12 2Z"/>
-            </svg>
-            <span>GitHub</span>
-          </a>
-        </div>
-
-        <div class="hero-highlights reveal" aria-label="Core competencies">
-          <span class="highlight-pill">⚡ React & Next.js</span>
-          <span class="highlight-pill">🛠️ Node & Python / Django</span>
-          <span class="highlight-pill">🚀 Deployed & Scalable</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- About Section -->
-    <section class="section container" id="about">
-      <div class="section-header">
-        <span class="section-eyebrow reveal">WHO I AM</span>
-        <h2 class="section-title reveal">About Me</h2>
-        <p class="section-desc reveal">Crafting deliberate, high-quality digital products with clean, reliable engineering.</p>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-text">
-          <div class="about-bio-card reveal">
-            <p>
-              I'm a full-stack software developer based in Port Harcourt, Nigeria. I specialize in turning complex problems and early concepts into clean, polished, and dependable digital products.
-            </p>
-            <p>
-              I focus on product clarity, thoughtful UX, and reliable backends built to scale.
-            </p>
-            <p>
-              Whether partnering with startups to launch their flagship MVP or revamping established platforms for modern performance, I bring relentless attention to detail, reliability, and speed.
+          <div class="hero-headline-row reveal">
+            <h1 class="hero-title"><span class="sr-only">Nwuba Emmanuel (Biggest Manuel) — </span>Full-Stack<br />Developer</h1>
+            <p class="hero-lede">
+              I build websites and applications that look sharp, run smoothly, and turn
+              visitors into loyal users — with cutting-edge
+              <span class="shiny-accent">frontend</span> and dependable
+              <span class="shiny-accent">backend</span> engineering.
             </p>
           </div>
 
-          <!-- Animated Stat Cards -->
-          <div class="about-stats-grid">
-            <div class="stat-card reveal reveal-delay-1">
-              <div class="stat-icon-wrap blue">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
-              </div>
-              <div class="stat-info">
-                <h3>Production-Ready</h3>
-                <p>Deployed Web Apps</p>
-              </div>
-            </div>
-
-            <div class="stat-card reveal reveal-delay-2">
-              <div class="stat-icon-wrap green">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                </svg>
-              </div>
-              <div class="stat-info">
-                <h3>Fast & Smooth</h3>
-                <p>Optimized Performance</p>
-              </div>
-            </div>
-
-            <div class="stat-card reveal reveal-delay-3">
-              <div class="stat-icon-wrap orange">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 14 14"></polyline>
-                </svg>
-              </div>
-              <div class="stat-info">
-                <h3>Reliable Delivery</h3>
-                <p>On-Time Execution</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="photo-wrapper reveal reveal-from-right">
-          <div class="id-card">
-            <img src="me.webp" alt="Nwuba Emmanuel" class="id-card-photo" loading="lazy" />
-            <div class="id-card-overlay">
-              <div class="id-card-name">
-                biggestmanuel.
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--bg-main)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 11 15 16 9" stroke="var(--bg-main)" fill="none"></polyline></svg>
-              </div>
-              <p class="id-card-bio">full-stack developer building useful products and reliable software.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills & Stack Section -->
-    <section class="section container" id="skills">
-      <div class="section-header">
-        <span class="section-eyebrow reveal">TECH STACK & EXPERTISE</span>
-        <h2 class="section-title reveal">Skills & Focus</h2>
-        <p class="section-desc reveal">A curated toolkit for building reliable, responsive, and maintainable software.</p>
-      </div>
-
-      <!-- Core Disciplines -->
-      <div class="skills-grid">
-        <div class="skill-card reveal reveal-delay-1">
-          <div class="skill-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </div>
-          <h3>Frontend Engineering</h3>
-          <p>Modern React, Next.js, and TypeScript with responsive layouts, fluid animations, and strict web standards.</p>
-        </div>
-
-        <div class="skill-card reveal reveal-delay-2">
-          <div class="skill-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-              <rect x="9" y="9" width="6" height="6"></rect>
-              <line x1="9" y1="1" x2="9" y2="4"></line>
-              <line x1="15" y1="1" x2="15" y2="4"></line>
-              <line x1="9" y1="20" x2="9" y2="23"></line>
-              <line x1="15" y1="20" x2="15" y2="23"></line>
-              <line x1="20" y1="9" x2="23" y2="9"></line>
-              <line x1="20" y1="14" x2="23" y2="14"></line>
-              <line x1="1" y1="9" x2="4" y2="9"></line>
-              <line x1="1" y1="14" x2="4" y2="14"></line>
-            </svg>
-          </div>
-          <h3>Backend & API Architecture</h3>
-          <p>Node.js, Express, Python, Django, REST APIs, GraphQL, authentication systems, and database schema design.</p>
-        </div>
-
-        <div class="skill-card reveal reveal-delay-3">
-          <div class="skill-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-            </svg>
-          </div>
-          <h3>Databases & Cloud</h3>
-          <p>PostgreSQL, Supabase, Neon DB, Vercel deployments, automated CI/CD workflows, and performance caching.</p>
-        </div>
-      </div>
-
-      <!-- Technologies & Tools Marquee -->
-      <div class="tools-container">
-        <p class="tools-heading reveal">Technologies & Tools I Work With Daily</p>
-        <div class="tools-marquee">
-          <div class="tools-track">
-            <div class="tools-track-set">
-              <div class="tool-pill" style="--brand: #61dafb;" title="React">
-                <img src="img/icons/react.svg" alt="" class="tool-pill-icon" />
-                <span>React</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="Next.js">
-                <img src="img/icons/nextdotjs.svg" alt="" class="tool-pill-icon" />
-                <span>Next.js</span>
-              </div>
-              <div class="tool-pill" style="--brand: #3178c6;" title="TypeScript">
-                <img src="img/icons/typescript.webp" alt="" class="tool-pill-icon" />
-                <span>TypeScript</span>
-              </div>
-              <div class="tool-pill" style="--brand: #f7df1e;" title="JavaScript">
-                <img src="img/icons/javascript.svg" alt="" class="tool-pill-icon" />
-                <span>JavaScript</span>
-              </div>
-              <div class="tool-pill" style="--brand: #38bdf8;" title="Tailwind CSS">
-                <img src="img/icons/tailwindcss.svg" alt="" class="tool-pill-icon" />
-                <span>Tailwind CSS</span>
-              </div>
-              <div class="tool-pill" style="--brand: #5fa04e;" title="Node.js">
-                <img src="img/icons/nodedotjs.svg" alt="" class="tool-pill-icon" />
-                <span>Node.js</span>
-              </div>
-              <div class="tool-pill" style="--brand: #3776ab;" title="Python">
-                <img src="img/icons/python.svg" alt="" class="tool-pill-icon" />
-                <span>Python</span>
-              </div>
-              <div class="tool-pill" style="--brand: #336791;" title="PostgreSQL">
-                <img src="img/icons/postgresql.webp" alt="" class="tool-pill-icon" />
-                <span>PostgreSQL</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="Fastify">
-                <img src="img/icons/fastify.webp" alt="" class="tool-pill-icon" />
-                <span>Fastify</span>
-              </div>
-              <div class="tool-pill" style="--brand: #5a67d8;" title="Prisma">
-                <img src="img/icons/prisma.svg" alt="" class="tool-pill-icon" />
-                <span>Prisma</span>
-              </div>
-              <div class="tool-pill" style="--brand: #dc382d;" title="Redis">
-                <img src="img/icons/redis.svg" alt="" class="tool-pill-icon" />
-                <span>Redis</span>
-              </div>
-              <div class="tool-pill" style="--brand: #f05032;" title="Git">
-                <img src="img/icons/git.svg" alt="" class="tool-pill-icon" />
-                <span>Git</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="GitHub">
-                <img src="img/icons/github.svg" alt="" class="tool-pill-icon" />
-                <span>GitHub</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="Vercel">
-                <img src="img/icons/vercel.svg" alt="" class="tool-pill-icon" />
-                <span>Vercel</span>
-              </div>
-              <div class="tool-pill" style="--brand: #61dafb;" title="React Native">
-                <img src="img/icons/react.svg" alt="" class="tool-pill-icon" />
-                <span>React Native</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="Expo">
-                <img src="img/icons/expo.webp" alt="" class="tool-pill-icon" />
-                <span>Expo</span>
-              </div>
-            </div>
-            <div class="tools-track-set" aria-hidden="true">
-              <div class="tool-pill" style="--brand: #61dafb;" title="React">
-                <img src="img/icons/react.svg" alt="" class="tool-pill-icon" />
-                <span>React</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="Next.js">
-                <img src="img/icons/nextdotjs.svg" alt="" class="tool-pill-icon" />
-                <span>Next.js</span>
-              </div>
-              <div class="tool-pill" style="--brand: #3178c6;" title="TypeScript">
-                <img src="img/icons/typescript.webp" alt="" class="tool-pill-icon" />
-                <span>TypeScript</span>
-              </div>
-              <div class="tool-pill" style="--brand: #f7df1e;" title="JavaScript">
-                <img src="img/icons/javascript.svg" alt="" class="tool-pill-icon" />
-                <span>JavaScript</span>
-              </div>
-              <div class="tool-pill" style="--brand: #38bdf8;" title="Tailwind CSS">
-                <img src="img/icons/tailwindcss.svg" alt="" class="tool-pill-icon" />
-                <span>Tailwind CSS</span>
-              </div>
-              <div class="tool-pill" style="--brand: #5fa04e;" title="Node.js">
-                <img src="img/icons/nodedotjs.svg" alt="" class="tool-pill-icon" />
-                <span>Node.js</span>
-              </div>
-              <div class="tool-pill" style="--brand: #3776ab;" title="Python">
-                <img src="img/icons/python.svg" alt="" class="tool-pill-icon" />
-                <span>Python</span>
-              </div>
-              <div class="tool-pill" style="--brand: #336791;" title="PostgreSQL">
-                <img src="img/icons/postgresql.webp" alt="" class="tool-pill-icon" />
-                <span>PostgreSQL</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="Fastify">
-                <img src="img/icons/fastify.webp" alt="" class="tool-pill-icon" />
-                <span>Fastify</span>
-              </div>
-              <div class="tool-pill" style="--brand: #5a67d8;" title="Prisma">
-                <img src="img/icons/prisma.svg" alt="" class="tool-pill-icon" />
-                <span>Prisma</span>
-              </div>
-              <div class="tool-pill" style="--brand: #dc382d;" title="Redis">
-                <img src="img/icons/redis.svg" alt="" class="tool-pill-icon" />
-                <span>Redis</span>
-              </div>
-              <div class="tool-pill" style="--brand: #f05032;" title="Git">
-                <img src="img/icons/git.svg" alt="" class="tool-pill-icon" />
-                <span>Git</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="GitHub">
-                <img src="img/icons/github.svg" alt="" class="tool-pill-icon" />
-                <span>GitHub</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="Vercel">
-                <img src="img/icons/vercel.svg" alt="" class="tool-pill-icon" />
-                <span>Vercel</span>
-              </div>
-              <div class="tool-pill" style="--brand: #61dafb;" title="React Native">
-                <img src="img/icons/react.svg" alt="" class="tool-pill-icon" />
-                <span>React Native</span>
-              </div>
-              <div class="tool-pill" style="--brand: #ffffff;" title="Expo">
-                <img src="img/icons/expo.webp" alt="" class="tool-pill-icon" />
-                <span>Expo</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section container" id="services">
-      <div class="section-header">
-        <span class="section-eyebrow reveal">WHAT I DELIVER</span>
-        <h2 class="section-title reveal">Services & Solutions</h2>
-        <p class="section-desc reveal">Tailored development services to turn your vision into high-impact software.</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon-box cyan">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </div>
-          <h3>Full-Stack Web Apps</h3>
-          <p>Custom web applications built with modern frontend frameworks and robust backend architectures. Scalable, secure, and intuitive.</p>
-          <ul class="service-features">
-            <li><span>✓</span> Custom React / Next.js Frontends</li>
-            <li><span>✓</span> RESTful APIs & PostgreSQL Databases</li>
-            <li><span>✓</span> Authentication & Security</li>
-          </ul>
-        </div>
-
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon-box green">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-              <polyline points="17 6 23 6 23 12"></polyline>
-            </svg>
-          </div>
-          <h3>Maintenance & Optimization</h3>
-          <p>Auditing existing applications for page speed, SEO, accessibility, bug fixes, and seamless deployment workflows.</p>
-          <ul class="service-features">
-            <li><span>✓</span> Lighthouse 90+ Speed Optimization</li>
-            <li><span>✓</span> Cross-Browser Compatibility Fixes</li>
-            <li><span>✓</span> CI/CD Setup & Vercel Hosting</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section container" id="projects">
-      <div class="section-header">
-        <span class="section-eyebrow reveal">FEATURED WORK</span>
-        <h2 class="section-title reveal">Selected Projects</h2>
-        <p class="section-desc reveal">A showcase of deployed web apps, platforms, and client solutions.</p>
-
-        <!-- Category Filter Tabs -->
-        <div class="project-filters reveal">
-          <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
-          <button type="button" class="filter-btn" data-filter="ai-web">AI & Web Apps</button>
-          <button type="button" class="filter-btn" data-filter="client">Client Work</button>
-          <button type="button" class="filter-btn" data-filter="building">Currently Building</button>
-        </div>
-      </div>
-
-      <div class="projects-grid" id="projectsGrid">
-        <!-- Project 1: Kindoku -->
-        <article class="project-card reveal" data-category="ai-web">
-          <div class="project-img-wrapper">
-            <img src="img/kindoku.webp" alt="Kindoku AI manga & novel reader recommendation app" class="project-img" loading="lazy" />
-            <div class="project-overlay">
-              <a href="case-study.html?project=kindoku" class="overlay-btn primary">
-                <span>View Case Study</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-              <a href="https://kindoku.vercel.app" target="_blank" rel="noopener noreferrer" class="overlay-btn secondary">
-                <span>Live Site ↗</span>
-              </a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-header-row">
-              <span class="project-tag">AI / Web App</span>
-              <span class="project-status-tag green">Live</span>
-            </div>
-            <h3>Kindoku</h3>
-            <p>AI-powered recommendation engine for manga, manhwa, and novels. Solves generic discovery and routes readers directly to verified, reliable reading sources with PWA capabilities.</p>
-            <div class="project-stack">
-              <span class="stack-tag">JavaScript</span>
-              <span class="stack-tag">Groq AI API</span>
-              <span class="stack-tag">AniList GraphQL</span>
-              <span class="stack-tag">Vercel</span>
-            </div>
-            <div class="project-footer-actions">
-              <a href="case-study.html?project=kindoku" class="case-study-cta">
-                <span>Explore Case Study</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </a>
-              <a href="https://kindoku.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link-icon" title="Open live site">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2: Qerad -->
-        <article class="project-card reveal reveal-delay-1" data-category="building">
-          <div class="project-img-wrapper">
-            <img src="img/qerad.webp" alt="Qerad business launch platform screenshot" class="project-img" loading="lazy" />
-            <div class="project-overlay">
-              <a href="case-study.html?project=qerad" class="overlay-btn primary">
-                <span>View Case Study</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-              <a href="https://qerad.vercel.app" target="_blank" rel="noopener noreferrer" class="overlay-btn secondary">
-                <span>Live Site ↗</span>
-              </a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-header-row">
-              <span class="project-tag">Product Platform</span>
-              <span class="project-status-tag purple">In Active Dev</span>
-            </div>
-            <h3>Qerad</h3>
-            <p>Unified platform connecting business creation with real-world execution. Generates actionable launch plans backed by verified pricing and on-demand trade professionals.</p>
-            <div class="project-stack">
-              <span class="stack-tag">JavaScript</span>
-              <span class="stack-tag">Supabase</span>
-              <span class="stack-tag">Serverless Functions</span>
-              <span class="stack-tag">Vercel</span>
-            </div>
-            <div class="project-footer-actions">
-              <a href="case-study.html?project=qerad" class="case-study-cta">
-                <span>Explore Case Study</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </a>
-              <a href="https://qerad.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link-icon" title="Open live site">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3: Flugos Logistics -->
-        <article class="project-card reveal reveal-delay-2" data-category="client">
-          <div class="project-img-wrapper">
-            <img src="img/flugos-logistics.webp" alt="Flugos Logistics shipment tracking portal" class="project-img" loading="lazy" />
-            <div class="project-overlay">
-              <a href="case-study.html?project=flugos-logistics" class="overlay-btn primary">
-                <span>View Case Study</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-              <a href="https://flugos-logistics.vercel.app" target="_blank" rel="noopener noreferrer" class="overlay-btn secondary">
-                <span>Live Site ↗</span>
-              </a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-header-row">
-              <span class="project-tag">Client Website</span>
-              <span class="project-status-tag green">Delivered</span>
-            </div>
-            <h3>Flugos Logistics</h3>
-            <p>International freight forwarding and supply chain management web platform with high-contrast branding, shipment tracking, and instant quote requests.</p>
-            <div class="project-stack">
-              <span class="stack-tag">React</span>
-              <span class="stack-tag">Tailwind CSS</span>
-              <span class="stack-tag">Vercel</span>
-            </div>
-            <div class="project-footer-actions">
-              <a href="case-study.html?project=flugos-logistics" class="case-study-cta">
-                <span>Explore Case Study</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </a>
-              <a href="https://flugos-logistics.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link-icon" title="Open live site">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4: The Cosmetics Company Store -->
-        <article class="project-card reveal reveal-delay-3" data-category="client">
-          <div class="project-img-wrapper">
-            <img src="img/thecosmeticscompany.webp" alt="The Cosmetics Company Store e-commerce frontend" class="project-img" loading="lazy" />
-            <div class="project-overlay">
-              <a href="case-study.html?project=the-cosmetics-company-store" class="overlay-btn primary">
-                <span>View Case Study</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-              <a href="https://the-cosmetics-company.vercel.app" target="_blank" rel="noopener noreferrer" class="overlay-btn secondary">
-                <span>Live Site ↗</span>
-              </a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-header-row">
-              <span class="project-tag">E-Commerce</span>
-              <span class="project-status-tag green">Delivered</span>
-            </div>
-            <h3>The Cosmetics Company Store</h3>
-            <p>Prestige beauty brand e-commerce storefront delivering luxury visual aesthetics at outlet prices with optimized shopping flows and catalog browsing.</p>
-            <div class="project-stack">
-              <span class="stack-tag">React</span>
-              <span class="stack-tag">Tailwind CSS</span>
-              <span class="stack-tag">Vercel</span>
-            </div>
-            <div class="project-footer-actions">
-              <a href="case-study.html?project=the-cosmetics-company-store" class="case-study-cta">
-                <span>Explore Case Study</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </a>
-              <a href="https://the-cosmetics-company.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link-icon" title="Open live site">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section container" id="contact">
-      <div class="section-header">
-        <span class="section-eyebrow reveal">GET IN TOUCH</span>
-        <h2 class="section-title reveal">Let's Build Something Great</h2>
-        <p class="section-desc reveal">Have a project in mind, need a frontend/backend engineer, or want to say hi? Send me a message!</p>
-      </div>
-
-      <div class="contact-grid">
-        <!-- Contact Info Cards -->
-        <div class="contact-info reveal reveal-from-left">
-          <div class="contact-card-highlight">
-            <h3>Ready to level up your digital product?</h3>
-            <p>I'm currently taking on freelance projects, contracting opportunities, and full-time software engineering roles.</p>
-          </div>
-
-          <div class="contact-links-list">
-            <!-- Email Item with Copy Trigger -->
-            <div class="contact-item">
-              <div class="contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <div class="contact-item-content">
-                <span class="contact-item-label">Direct Email</span>
-                <a href="mailto:emmanuelnwuba1@gmail.com" class="contact-item-link" id="emailLink">emmanuelnwuba1@gmail.com</a>
-              </div>
-              <button type="button" class="copy-email-icon-btn" id="copyEmailLinkBtn" title="Copy Email">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-              </button>
-            </div>
-
-            <!-- X / Twitter -->
-            <div class="contact-item">
-              <div class="contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117Z"/>
-                </svg>
-              </div>
-              <div class="contact-item-content">
-                <span class="contact-item-label">X / Twitter</span>
-                <a href="https://x.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="contact-item-link">@biggestmanuel</a>
-              </div>
-            </div>
-
-            <!-- GitHub -->
-            <div class="contact-item">
-              <div class="contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.477 2 2 6.512 2 12.02c0 4.425 2.865 8.18 6.839 9.495.501.094.684-.217.684-.484 0-.238-.009-1.027-.013-1.864-2.784.605-3.369-1.338-3.369-1.338-.455-1.156-1.111-1.464-1.111-1.464-.909-.621.069-.608.069-.608 1.005.071 1.534 1.032 1.534 1.032.893 1.532 2.341 1.089 2.911.833.091-.65.349-1.09.634-1.339-2.221-.252-4.556-1.111-4.556-4.94 0-1.091.39-1.984 1.03-2.682.0-.252-.446-1.272.098-2.649 0 0 .84-.269 2.75 1.026A9.56 9.56 0 0 1 12 7.382a9.57 9.57 0 0 1 2.5.338c1.91-1.295 2.75-1.026 2.75-1.026.545 1.377.202 2.397.1 2.649.64.698 1.03 1.591 1.03 2.682 0 3.836-2.338 4.686-4.566 4.933.359.31.678.912.678 1.836 0 .268.18.582.689.484A10.026 10.026 0 0 0 22 12.02C22 6.512 17.523 2 12 2Z"/>
-                </svg>
-              </div>
-              <div class="contact-item-content">
-                <span class="contact-item-label">GitHub</span>
-                <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="contact-item-link">github.com/biggestmanuel</a>
-              </div>
-            </div>
-
-            <!-- WhatsApp Direct -->
-            <div class="contact-item">
-              <div class="contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.18 8.18 0 0 1-5.82 2.41h-.01c-1.42 0-2.82-.37-4.04-1.08l-.29-.17-3.11.82.83-3.03-.19-.3a8.216 8.216 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.12-.22-.19-.47-.32"/>
-                </svg>
-              </div>
-              <div class="contact-item-content">
-                <span class="contact-item-label">WhatsApp / Phone</span>
-                <a href="https://wa.me/2348116920093?text=Hi%20Emmanuel%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="contact-item-link">+(234) 811 692 0093</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact Form Card -->
-        <div class="contact-form-card reveal reveal-from-right">
-          <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="e5cb40f0-d582-455d-ae47-91942243fc54" />
-            <input type="hidden" name="from_name" value="Portfolio Visitor" />
-            
-            <div class="form-group">
-              <label for="nameInput">Your Name</label>
-              <input type="text" id="nameInput" name="name" placeholder="Alex Johnson" required autocomplete="name" />
-            </div>
-
-            <div class="form-group">
-              <label for="emailInput">Your Email</label>
-              <input type="email" id="emailInput" name="email" placeholder="alex@example.com" required autocomplete="email" />
-            </div>
-
-            <div class="form-group">
-              <label for="messageInput">Your Message</label>
-              <textarea id="messageInput" name="message" rows="4" placeholder="Tell me about your project, timeline, or idea..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-full" id="submitContactBtn">
-              <span class="btn-text">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-                Send Message
-              </span>
-              <span class="btn-spinner" aria-hidden="true"></span>
+          <div class="hero-actions reveal">
+            <button id="quickCopyEmailBtn" class="icon-tile" type="button" title="Copy email address" aria-label="Copy email address">
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
 
+            <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="icon-tile" aria-label="GitHub Profile" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"/></svg>
+            </a>
+
+            <a href="https://x.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="icon-tile" aria-label="X / Twitter" title="X / Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117Z"/></svg>
+            </a>
+
+            <a href="https://wa.me/2348116920093?text=Hi%20Emmanuel%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="icon-tile" aria-label="WhatsApp" title="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.18 8.18 0 0 1-5.82 2.41h-.01c-1.42 0-2.82-.37-4.04-1.08l-.29-.17-3.11.82.83-3.03-.19-.3a8.216 8.216 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.12-.22-.19-.47-.32"/></svg>
+            </a>
+          </div>
+
+          <!-- Technology marquee -->
+          <div class="logo-wall reveal" aria-label="Technologies I work with">
+            <div class="logo-wall-fade logo-wall-fade--left" aria-hidden="true"></div>
+            <div class="logo-wall-fade logo-wall-fade--right" aria-hidden="true"></div>
+            <div class="logo-wall-track">
+              <!-- set A -->
+              <div class="logo-wall-set">
+                <div class="logo-wall-item"><img src="img/icons/react.svg" alt="React" loading="eager" width="30" height="30" /><span>React</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/nextdotjs.svg" alt="Next.js" loading="eager" width="30" height="30" /><span>Next.js</span></div>
+                <div class="logo-wall-item"><img src="img/icons/typescript.webp" alt="TypeScript" loading="eager" width="30" height="30" /><span>TypeScript</span></div>
+                <div class="logo-wall-item"><img src="img/icons/javascript.svg" alt="JavaScript" loading="eager" width="30" height="30" /><span>JavaScript</span></div>
+                <div class="logo-wall-item"><img src="img/icons/tailwindcss.svg" alt="Tailwind CSS" loading="eager" width="30" height="30" /><span>Tailwind CSS</span></div>
+                <div class="logo-wall-item"><img src="img/icons/nodedotjs.svg" alt="Node.js" loading="eager" width="30" height="30" /><span>Node.js</span></div>
+                <div class="logo-wall-item"><img src="img/icons/python.svg" alt="Python" loading="eager" width="30" height="30" /><span>Python</span></div>
+                <div class="logo-wall-item"><img src="img/icons/django.webp" alt="Django" loading="eager" width="30" height="30" /><span>Django</span></div>
+                <div class="logo-wall-item"><img src="img/icons/postgresql.webp" alt="PostgreSQL" loading="lazy" width="30" height="30" /><span>PostgreSQL</span></div>
+                <div class="logo-wall-item"><img src="img/icons/supabase.svg" alt="Supabase" loading="lazy" width="30" height="30" /><span>Supabase</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/prisma.svg" alt="Prisma" loading="lazy" width="30" height="30" /><span>Prisma</span></div>
+                <div class="logo-wall-item"><img src="img/icons/redis.svg" alt="Redis" loading="lazy" width="30" height="30" /><span>Redis</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/fastify.webp" alt="Fastify" loading="lazy" width="30" height="30" /><span>Fastify</span></div>
+                <div class="logo-wall-item"><img src="img/icons/git.svg" alt="Git" loading="lazy" width="30" height="30" /><span>Git</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/github.svg" alt="GitHub" loading="lazy" width="30" height="30" /><span>GitHub</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/vercel.svg" alt="Vercel" loading="lazy" width="30" height="30" /><span>Vercel</span></div>
+                <div class="logo-wall-item"><img src="img/icons/figma.svg" alt="Figma" loading="lazy" width="30" height="30" /><span>Figma</span></div>
+                <div class="logo-wall-item"><img src="img/icons/zustand.svg" alt="Zustand" loading="lazy" width="30" height="30" /><span>Zustand</span></div>
+                <div class="logo-wall-item"><img src="img/icons/html5.webp" alt="HTML5" loading="lazy" width="30" height="30" /><span>HTML5</span></div>
+                <div class="logo-wall-item"><img src="img/icons/css3.webp" alt="CSS3" loading="lazy" width="30" height="30" /><span>CSS3</span></div>
+              </div>
+              <!-- set B (duplicate for seamless loop) -->
+              <div class="logo-wall-set" aria-hidden="true">
+                <div class="logo-wall-item"><img src="img/icons/react.svg" alt="" loading="lazy" width="30" height="30" /><span>React</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/nextdotjs.svg" alt="" loading="lazy" width="30" height="30" /><span>Next.js</span></div>
+                <div class="logo-wall-item"><img src="img/icons/typescript.webp" alt="" loading="lazy" width="30" height="30" /><span>TypeScript</span></div>
+                <div class="logo-wall-item"><img src="img/icons/javascript.svg" alt="" loading="lazy" width="30" height="30" /><span>JavaScript</span></div>
+                <div class="logo-wall-item"><img src="img/icons/tailwindcss.svg" alt="" loading="lazy" width="30" height="30" /><span>Tailwind CSS</span></div>
+                <div class="logo-wall-item"><img src="img/icons/nodedotjs.svg" alt="" loading="lazy" width="30" height="30" /><span>Node.js</span></div>
+                <div class="logo-wall-item"><img src="img/icons/python.svg" alt="" loading="lazy" width="30" height="30" /><span>Python</span></div>
+                <div class="logo-wall-item"><img src="img/icons/django.webp" alt="" loading="lazy" width="30" height="30" /><span>Django</span></div>
+                <div class="logo-wall-item"><img src="img/icons/postgresql.webp" alt="" loading="lazy" width="30" height="30" /><span>PostgreSQL</span></div>
+                <div class="logo-wall-item"><img src="img/icons/supabase.svg" alt="" loading="lazy" width="30" height="30" /><span>Supabase</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/prisma.svg" alt="" loading="lazy" width="30" height="30" /><span>Prisma</span></div>
+                <div class="logo-wall-item"><img src="img/icons/redis.svg" alt="" loading="lazy" width="30" height="30" /><span>Redis</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/fastify.webp" alt="" loading="lazy" width="30" height="30" /><span>Fastify</span></div>
+                <div class="logo-wall-item"><img src="img/icons/git.svg" alt="" loading="lazy" width="30" height="30" /><span>Git</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/github.svg" alt="" loading="lazy" width="30" height="30" /><span>GitHub</span></div>
+                <div class="logo-wall-item logo-wall-item--dark"><img src="img/icons/vercel.svg" alt="" loading="lazy" width="30" height="30" /><span>Vercel</span></div>
+                <div class="logo-wall-item"><img src="img/icons/figma.svg" alt="" loading="lazy" width="30" height="30" /><span>Figma</span></div>
+                <div class="logo-wall-item"><img src="img/icons/zustand.svg" alt="" loading="lazy" width="30" height="30" /><span>Zustand</span></div>
+                <div class="logo-wall-item"><img src="img/icons/html5.webp" alt="" loading="lazy" width="30" height="30" /><span>HTML5</span></div>
+                <div class="logo-wall-item"><img src="img/icons/css3.webp" alt="" loading="lazy" width="30" height="30" /><span>CSS3</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= About ============================= -->
+    <section class="section section--raised section--bordered" id="about">
+      <div class="shell">
+        <h2 class="section-eyebrow shiny-accent reveal"><span class="eyebrow-num">01</span>About</h2>
+        <h3 class="section-title reveal">The person behind the code</h3>
+
+        <div class="about-grid reveal">
+          <div class="about-copy">
+            <p>
+              I'm a full-stack software developer based in Port Harcourt, Nigeria. I specialise in
+              turning complex problems and early concepts into clean, polished, and dependable
+              digital products.
+            </p>
+            <p>
+              I focus on product clarity, thoughtful UX, and reliable backends built to scale —
+              whether that's partnering with startups to launch a flagship MVP or revamping
+              established platforms for modern performance.
+            </p>
+
+            <ul class="about-stats">
+              <li><strong>Production-Ready</strong><span>Deployed web apps</span></li>
+              <li><strong>Fast &amp; Smooth</strong><span>Optimised performance</span></li>
+              <li><strong>Reliable Delivery</strong><span>On-time execution</span></li>
+            </ul>
+          </div>
+
+          <div class="about-media">
+            <div class="photo-frame">
+              <img src="me.webp" alt="Nwuba Emmanuel" loading="lazy" />
+            </div>
+            <div class="photo-caption">
+              <span class="photo-handle">biggestmanuel.</span>
+              <span class="photo-bio">Full-stack developer building useful products and reliable software.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Skills + Code Field ===================== -->
+    <section class="section section--bordered" id="skills">
+      <div class="shell">
+        <h2 class="section-eyebrow shiny-accent reveal"><span class="eyebrow-num">02</span>What I do</h2>
+        <h3 class="section-title reveal">What I do?</h3>
+
+        <div class="skills-layout reveal">
+          <div class="skills-list" id="skillsList">
+            <div class="skills-item">
+              <button class="skills-trigger" type="button" aria-expanded="false">
+                <span class="skills-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01"/></svg>
+                </span>
+                <span class="skills-name">Full-Stack Web Apps</span>
+                <svg class="skills-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"/></svg>
+              </button>
+              <div class="skills-panel">
+                <ul>
+                  <li>Custom React / Next.js frontends</li>
+                  <li>RESTful APIs &amp; PostgreSQL databases</li>
+                  <li>Authentication &amp; security hardening</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="skills-item">
+              <button class="skills-trigger" type="button" aria-expanded="false">
+                <span class="skills-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </span>
+                <span class="skills-name">Backend &amp; API Architecture</span>
+                <svg class="skills-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"/></svg>
+              </button>
+              <div class="skills-panel">
+                <ul>
+                  <li>Node.js, Express &amp; Fastify services</li>
+                  <li>Python / Django backends</li>
+                  <li>REST &amp; GraphQL, auth systems, schema design</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="skills-item">
+              <button class="skills-trigger" type="button" aria-expanded="false">
+                <span class="skills-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+                </span>
+                <span class="skills-name">Databases &amp; Cloud</span>
+                <svg class="skills-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"/></svg>
+              </button>
+              <div class="skills-panel">
+                <ul>
+                  <li>PostgreSQL, Supabase &amp; Neon DB</li>
+                  <li>Prisma ORM, Redis caching</li>
+                  <li>Vercel deployments &amp; automated CI/CD</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="skills-item">
+              <button class="skills-trigger" type="button" aria-expanded="false">
+                <span class="skills-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                </span>
+                <span class="skills-name">Maintenance &amp; Optimization</span>
+                <svg class="skills-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"/></svg>
+              </button>
+              <div class="skills-panel">
+                <ul>
+                  <li>Lighthouse 90+ speed optimisation</li>
+                  <li>Cross-browser compatibility fixes</li>
+                  <li>SEO, accessibility &amp; bug fixes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="code-wrap">
+            <div class="code-stage" id="codeStage" aria-hidden="true"></div>
+            <p class="sr-only">File types across the codebase: HTML, CSS, SCSS, JavaScript, JSX, TypeScript, JSON, Markdown, YAML, Python, Java, PHP, Go, Rust, C, C++, C#, SQL, GraphQL, Shell, Docker, Git, Node, Vue, Svelte and more.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= Projects ============================= -->
+    <section class="section section--raised section--bordered" id="projects">
+      <div class="shell">
+        <h2 class="section-eyebrow shiny-accent reveal"><span class="eyebrow-num">03</span>Featured work</h2>
+        <h3 class="section-title reveal">Projects</h3>
+
+        <div class="projects-grid reveal" id="projectsGrid">
+          <!-- Project 1 -->
+          <article class="project">
+            <div class="project-media-wrap">
+              <span class="project-index" aria-hidden="true">01</span>
+              <a href="case-study.html?project=kindoku" class="project-media" aria-label="View the Kindoku case study">
+                <img src="img/kindoku.webp" alt="Kindoku AI manga &amp; novel reader recommendation app" loading="lazy" />
+              </a>
+            </div>
+            <div class="project-meta">
+              <div class="project-text">
+                <h4>Kindoku</h4>
+                <span>AI / Web App</span>
+              </div>
+              <span class="project-status"><span class="status-dot status-dot--sm" aria-hidden="true"></span>Live</span>
+              <div class="project-links">
+                <a href="case-study.html?project=kindoku" class="icon-tile" title="View case study" aria-label="View the Kindoku case study">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </a>
+                <a href="https://kindoku.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-tile" title="Visit live site" aria-label="Visit the Kindoku live site">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project">
+            <div class="project-media-wrap">
+              <span class="project-index" aria-hidden="true">02</span>
+              <a href="case-study.html?project=qerad" class="project-media" aria-label="View the Qerad case study">
+                <img src="img/qerad.webp" alt="Qerad business launch platform" loading="lazy" />
+              </a>
+            </div>
+            <div class="project-meta">
+              <div class="project-text">
+                <h4>Qerad</h4>
+                <span>Product Platform</span>
+              </div>
+              <span class="project-status"><span class="status-dot status-dot--sm status-dot--dev" aria-hidden="true"></span>In active dev</span>
+              <div class="project-links">
+                <a href="case-study.html?project=qerad" class="icon-tile" title="View case study" aria-label="View the Qerad case study">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </a>
+                <a href="https://qerad.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-tile" title="Visit live site" aria-label="Visit the Qerad live site">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project">
+            <div class="project-media-wrap">
+              <span class="project-index" aria-hidden="true">03</span>
+              <a href="case-study.html?project=flugos-logistics" class="project-media" aria-label="View the Flugos Logistics case study">
+                <img src="img/flugos-logistics.webp" alt="Flugos Logistics shipment tracking portal" loading="lazy" />
+              </a>
+            </div>
+            <div class="project-meta">
+              <div class="project-text">
+                <h4>Flugos Logistics</h4>
+                <span>Client Website</span>
+              </div>
+              <span class="project-status"><span class="status-dot status-dot--sm" aria-hidden="true"></span>Delivered</span>
+              <div class="project-links">
+                <a href="case-study.html?project=flugos-logistics" class="icon-tile" title="View case study" aria-label="View the Flugos Logistics case study">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </a>
+                <a href="https://flugos-logistics.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-tile" title="Visit live site" aria-label="Visit the Flugos Logistics live site">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project">
+            <div class="project-media-wrap">
+              <span class="project-index" aria-hidden="true">04</span>
+              <a href="case-study.html?project=the-cosmetics-company-store" class="project-media" aria-label="View The Cosmetics Company Store case study">
+                <img src="img/thecosmeticscompany.webp" alt="The Cosmetics Company Store e-commerce frontend" loading="lazy" />
+              </a>
+            </div>
+            <div class="project-meta">
+              <div class="project-text">
+                <h4>The Cosmetics Company Store</h4>
+                <span>E-Commerce</span>
+              </div>
+              <span class="project-status"><span class="status-dot status-dot--sm" aria-hidden="true"></span>Delivered</span>
+              <div class="project-links">
+                <a href="case-study.html?project=the-cosmetics-company-store" class="icon-tile" title="View case study" aria-label="View The Cosmetics Company Store case study">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </a>
+                <a href="https://the-cosmetics-company.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-tile" title="Visit live site" aria-label="Visit The Cosmetics Company Store live site">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- More projects on GitHub -->
+        <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="github-cta reveal">
+          <span class="github-cta-text">More projects on</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"/></svg>
+          <span class="github-cta-text">GitHub</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================= Contact ============================= -->
+    <section class="section section--bordered" id="contact">
+      <div class="shell">
+        <h2 class="section-eyebrow shiny-accent reveal"><span class="eyebrow-num">04</span>Let's talk</h2>
+        <h3 class="section-title reveal">Contact</h3>
+
+        <div class="contact-grid reveal">
+          <div class="contact-info">
+            <p>
+              Currently taking on freelance projects, contracting opportunities, and full-time
+              software engineering roles. Have a question, an idea, or just want to say hi?
+            </p>
+
+            <div class="contact-rows">
+              <div class="contact-row">
+                <span class="contact-row-label">Email</span>
+                <a href="mailto:emmanuelnwuba1@gmail.com" class="contact-row-value">emmanuelnwuba1@gmail.com</a>
+                <button type="button" class="copy-btn" id="copyEmailLinkBtn" title="Copy email" aria-label="Copy email address">
+                  <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+              </div>
+
+              <div class="contact-row">
+                <span class="contact-row-label">Location</span>
+                <span class="contact-row-value">Port Harcourt, Nigeria</span>
+              </div>
+
+              <div class="contact-row">
+                <span class="contact-row-label">WhatsApp</span>
+                <a href="https://wa.me/2348116920093?text=Hi%20Emmanuel%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="contact-row-value">+(234) 811 692 0093</a>
+              </div>
+
+              <div class="contact-row">
+                <span class="contact-row-label">GitHub</span>
+                <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="contact-row-value">github.com/biggestmanuel</a>
+              </div>
+
+              <div class="contact-row">
+                <span class="contact-row-label">X / Twitter</span>
+                <a href="https://x.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="contact-row-value">@biggestmanuel</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <input type="hidden" name="access_key" value="e5cb40f0-d582-455d-ae47-91942243fc54" />
+              <input type="hidden" name="from_name" value="Portfolio Visitor" />
+
+              <input type="text" name="name" placeholder="Name" required autocomplete="name" />
+              <input type="email" name="email" placeholder="Email" required autocomplete="email" />
+              <textarea name="message" rows="6" placeholder="Tell me about your project, timeline, or idea..." required></textarea>
+
+              <button type="submit" class="form-submit" id="submitContactBtn">
+                <span class="btn-text">Submit</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+              </button>
+            </form>
             <div id="formStatus" class="form-status" aria-live="polite"></div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- ============================= Footer ============================= -->
   <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <span class="footer-logo">Biggest Manuel<span class="brand-dot">.</span></span>
-        <p>Built with attention to detail and modern web engineering.</p>
-      </div>
-
-      <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-col footer-col--center">
+          <div class="footer-socials">
+            <a href="https://github.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="GitHub" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"/></svg>
+            </a>
+            <a href="https://x.com/biggestmanuel" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="X / Twitter" title="X / Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117Z"/></svg>
+            </a>
+            <a href="mailto:emmanuelnwuba1@gmail.com" class="footer-social" aria-label="Email" title="Email">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64"/></svg>
+            </a>
+            <a href="https://wa.me/2348116920093" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="WhatsApp" title="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.18 8.18 0 0 1-5.82 2.41h-.01c-1.42 0-2.82-.37-4.04-1.08l-.29-.17-3.11.82.83-3.03-.19-.3a8.216 8.216 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.12-.22-.19-.47-.32"/></svg>
+            </a>
+          </div>
+          <p class="footer-note">Open to freelance, contract, and full-time roles.</p>
+        </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 Nwuba Emmanuel Chukwuebuka. All Rights Reserved.</p>
+        <p>Copyright &copy; 2026 Nwuba Emmanuel Chukwuebuka. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Scroll-To-Top Button -->
-  <button id="scrollToTopBtn" class="scroll-to-top-btn" type="button" aria-label="Scroll to top" title="Scroll to top">
-    <svg class="progress-ring" width="44" height="44">
-      <circle class="progress-ring-circle" stroke="var(--accent)" stroke-width="3" fill="transparent" r="18" cx="22" cy="22"/>
-    </svg>
-    <svg class="arrow-up" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
   <!-- Toast Notification Stack -->
   <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
-  <!-- JavaScript -->
   <script src="./Portfolio.js"></script>
 </body>
 </html>
