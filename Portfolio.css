@@ -632,15 +632,26 @@ ul { list-style: none; }
   to   { transform: translate3d(var(--x), calc(var(--y) + var(--lift)), 0) rotate(var(--r)); }
 }
 /* ============================================================== PROJECTS */
+/* minmax(0, 1fr) rather than 1fr: a bare 1fr is minmax(auto, 1fr), and the
+   `auto` floor lets the meta row's min-content width push the track wider
+   than the shell on a phone, which cropped the screenshot on the right. */
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
 }
 
-.project { display: flex; flex-direction: column; }
+.project {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Lets the meta row below react to the card's own width rather than the
+     viewport's: between 768px and ~920px the two-column grid makes cards
+     narrower than the meta row's minimum, and they squeeze the same way. */
+  container-type: inline-size;
+}
 
-.project-media-wrap { position: relative; }
+.project-media-wrap { position: relative; min-width: 0; }
 
 .project-media {
   position: relative;
@@ -675,7 +686,9 @@ ul { list-style: none; }
 }
 
 .project-media img {
+  display: block;
   width: 100%;
+  max-width: 100%;
   height: 12rem;
   object-fit: cover;
   transition: transform 0.5s var(--ease);
@@ -713,6 +726,17 @@ ul { list-style: none; }
 }
 
 .project-links { display: flex; gap: 0.5rem; margin-left: auto; }
+
+/* Below this a card cannot hold the title, the status and two 52px link tiles
+   without crushing the title. Measured: at a 385px card the long project title
+   had 107px and broke over four lines. Title and blurb take the full row;
+   status and the link tiles share the row beneath. Capped at 400px so the
+   widest desktop card (416px) keeps its original single-row layout. */
+@container (max-width: 400px) {
+  .project-meta { flex-wrap: wrap; gap: 0.75rem 1rem; }
+  .project-text { flex: 1 1 100%; }
+  .project-text h4 { font-size: 1.2rem; }
+}
 
 /* ------------------------------------------- More projects on GitHub CTA */
 .github-cta {
@@ -1029,7 +1053,7 @@ a.contact-row-value:hover {
   .skills-name { white-space: normal; }
   .code-wrap { flex: 0 1 290px; width: auto; min-width: 0; justify-content: flex-end; }
 
-  .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 2rem; }
+  .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 2rem; }
   .project-media img { height: 18rem; }
   .github-cta-text { font-size: 1.125rem; }
 
@@ -1067,6 +1091,13 @@ a.contact-row-value:hover {
   .section { scroll-margin-top: 0; scroll-margin-bottom: 90px; }
 
   .toast-container { bottom: 88px; }
+}
+
+/* Small phones only: 2.25rem of shell padding on each side leaves just 288px
+   of content at 360px wide, which is tight for a screenshot plus its metadata. */
+@media (max-width: 400px) {
+  .shell { padding-inline: 1.5rem; }
+  .section { padding-block: 2.5rem; }
 }
 
 /* ------------------------------------------------------ Reduced motion */
