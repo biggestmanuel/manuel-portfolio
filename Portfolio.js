@@ -196,8 +196,31 @@
 
   if (mainNav) {
     const MAX_SCROLL = 1000;
-    const MIN_WIDTH = 528;
     let navRaf = null;
+
+    /* The pill must never shrink below what its labels actually occupy.
+       Measuring beats a hardcoded constant: "Services" is wider than the
+       "Skills" it replaced, and a fixed floor goes stale the moment a label,
+       the font or the copy changes. The links are flex: none, so they do not
+       compress to fit, they spill outside the rounded background instead. */
+    const measureMinWidth = () => {
+      const list = mainNav.querySelector('.nav-list');
+      const links = list ? list.querySelectorAll('.nav-link') : [];
+      if (!links.length) return 528;
+
+      const cs = getComputedStyle(list);
+      const gap = parseFloat(cs.columnGap) || 0;
+      const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+
+      let natural = 0;
+      for (const a of links) natural += a.getBoundingClientRect().width;
+
+      return Math.ceil(natural + gap * (links.length - 1) + padX);
+    };
+
+    // Re-read on resize only. Measuring inside the scroll frame would mean
+    // reading layout and then writing style on every single frame.
+    let minWidth = measureMinWidth();
 
     const updateNav = () => {
       const scrolled = window.scrollY > 0;
@@ -214,8 +237,11 @@
           1024,
           window.innerWidth - TOGGLE_ZONE * 2
         );
+        // Never below the label footprint, and never wider than the room
+        // actually available at this viewport.
+        const floor = Math.min(minWidth, maxWidth);
         mainNav.style.width = scrolled
-          ? `${Math.max(MIN_WIDTH, maxWidth - (maxWidth - MIN_WIDTH) * eased)}px`
+          ? `${Math.max(floor, maxWidth - (maxWidth - floor) * eased)}px`
           : `${maxWidth}px`;
       } else {
         mainNav.style.width = '';
@@ -229,13 +255,14 @@
       if (!navRaf) navRaf = requestAnimationFrame(updateNav);
     }, { passive: true });
 
-    // Without this the inline width written on scroll goes stale when the
-    // window is resized, so the pill keeps the width it had at the old size.
+    // Also re-measures: without it the inline width written on scroll goes
+    // stale when the window is resized, so the pill keeps the width it had at
+    // the old size.
     window.addEventListener('resize', () => {
+      minWidth = measureMinWidth();
       if (!navRaf) navRaf = requestAnimationFrame(updateNav);
     }, { passive: true });
 
-    window.addEventListener('resize', updateNav, { passive: true });
     updateNav();
   }
 
