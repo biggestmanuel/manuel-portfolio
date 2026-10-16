@@ -856,26 +856,14 @@ ul { list-style: none; }
   .project-text h4 { font-size: 1.2rem; }
 }
 
-/* Half-width cards leave roughly 90px of usable text at 360px, so the trigger
-   chrome is tightened on phones: less padding, a smaller icon and chevron, and
-   a slightly smaller label. Without this the longest service names overflowed
-   their card and were clipped. */
-@media (max-width: 767px) {
-  .skills-trigger { padding: 0.8rem 0.6rem; gap: 0.45rem; }
-  .skills-icon svg { width: 1.1rem; height: 1.1rem; }
-  .skills-chevron { width: 1rem; height: 1rem; }
-  .skills-name { font-size: 0.95rem; }
-  .skills-panel { padding-left: 0.85rem; }
-  .skills-item.is-open .skills-panel { padding-left: 1.7rem; }
-}
-/* Below 400px a half-width card is under 175px, so trim the remaining chrome
-   and the label size to keep words on fewer lines. */
-@media (max-width: 400px) {
-  .skills-trigger { padding: 0.7rem 0.5rem; gap: 0.35rem; }
-  .skills-icon svg { width: 0.95rem; height: 0.95rem; }
-  .skills-chevron { width: 0.9rem; height: 0.9rem; }
-  .skills-name { font-size: 0.88rem; }
-  .skills-panel li { font-size: 0.82rem; }
+/* The zig zag is a tablet-and-up pattern. From 769px up each card gets roughly
+   300px or more, which comfortably holds a service name and its panel bullets.
+   Below that a half-width card is too narrow, so phones get a single full-width
+   column, which is why the phone tightening rules are gone rather than tuned
+   down further. */
+@media (max-width: 768px) {
+  .skills-item { width: 100%; }
+  .skills-item:nth-child(even) { margin-left: 0; }
 }
 /* ------------------------------------------- More projects on GitHub CTA */
 .github-cta {
