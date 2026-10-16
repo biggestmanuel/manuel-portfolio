@@ -205,6 +205,7 @@ function page(project, keys, studies) {
   <meta name="description" content="${escapeHtml(description)}" />
   <meta name="author" content="Nwuba Emmanuel (Biggest Manuel)" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="google-site-verification" content="U_vKMJwcogtemZi42I3_8hMwKubSanzyIhRfkG8V-g4" />
   <!-- Browser chrome follows the theme. Without the media pair the mobile
        address bar stays light while the page itself goes dark. -->
   <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
