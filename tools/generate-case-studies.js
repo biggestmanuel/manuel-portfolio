@@ -202,11 +202,12 @@ function page(project, keys, studies) {
   const title = `${p.title}, Case Study | Biggest Manuel`;
   const description = summarise(p.problem || p.whyItWasBuilt || '', 155);
 
-  // Each case study shares the real product screenshot rather than a generic
-  // branded card, so a link preview shows the actual work. Only og-cover.png
-  // is a true 1200x630; these are 1.78 to 2.15, so platforms crop the edges.
-  const shareImage = ORIGIN + '/' + p.image;
-  const share = SIZE_MAP[p.image] || { w: 1200, h: 630 };
+  // og:image points at the generated 1200x630 card, which platforms crop to
+  // exactly. The screenshots are 1.78 to 2.15, so linking those directly made
+  // X and Facebook slice content off the edges.
+  const cardPath = 'img/og/og-' + p.id + '.png';
+  const shareImage = ORIGIN + '/' + cardPath;
+  const share = { w: 1200, h: 630 };
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -218,7 +219,7 @@ function page(project, keys, studies) {
     url,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     inLanguage: 'en',
-    image: shareImage,
+    image: ORIGIN + '/' + p.image,
     author: { '@id': ORIGIN + '/#person' },
     publisher: { '@id': ORIGIN + '/#person' },
     creator: { '@id': ORIGIN + '/#person' },
@@ -263,7 +264,7 @@ function page(project, keys, studies) {
   <meta property="og:image" content="${shareImage}" />
   <meta property="og:image:width" content="${share.w}" />
   <meta property="og:image:height" content="${share.h}" />
-  <meta property="og:image:alt" content="${escapeHtml(p.title)} interface preview" />
+  <meta property="og:image:alt" content="${escapeHtml(p.title)} case study card" />
   <meta property="og:url" content="${url}" />
   <meta property="article:author" content="Nwuba Emmanuel" />
 
@@ -273,7 +274,7 @@ function page(project, keys, studies) {
   <meta name="twitter:title" content="${escapeHtml(title)}" />
   <meta name="twitter:description" content="${escapeHtml(description)}" />
   <meta name="twitter:image" content="${shareImage}" />
-  <meta name="twitter:image:alt" content="${escapeHtml(p.title)} interface preview" />
+  <meta name="twitter:image:alt" content="${escapeHtml(p.title)} case study card" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

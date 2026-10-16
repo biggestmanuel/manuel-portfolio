@@ -1,0 +1,21 @@
+{
+  "name": "manuel-portfolio-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build-time helpers for the portfolio. The site itself is static HTML, CSS and JavaScript with no build step; these scripts only generate and verify committed assets.",
+  "scripts": {
+    "cards": "node tools/generate-og-cards.js",
+    "case-studies": "node tools/generate-case-studies.js",
+    "dims": "node tools/scan-image-dimensions.js",
+    "check:pages": "node tools/check-pages.js",
+    "check:seo": "node tools/check-seo.js",
+    "check": "npm run check:pages && npm run check:seo"
+  },
+  "devDependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/manrope": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.8",
+    "@resvg/resvg-js": "^2.6.2",
+    "wawoff2": "^2.0.1"
+  }
+}

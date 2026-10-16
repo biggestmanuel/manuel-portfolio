@@ -657,7 +657,20 @@ ul { list-style: none; }
   gap: 2.5rem;
 }
 
-.skills-list { display: flex; flex-direction: column; gap: 1rem; }
+/* Zig zag: first card hard left, second inset to the right, third back to the
+   left, fourth right again. Cards are narrower than the column so the offset
+   reads as a deliberate stagger rather than two half-empty rows. The pattern
+   starts left and alternates, matching the reading order of the section. */
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.skills-item { width: min(88%, 44rem); }
+
+.skills-item:nth-child(even) { margin-left: auto; }
 
 .skills-item {
   background-color: var(--component-bg);
@@ -682,14 +695,14 @@ ul { list-style: none; }
 .skills-icon { display: flex; flex: 0 0 auto; color: var(--sec); }
 .skills-icon svg { width: 1.5rem; height: 1.5rem; }
 
+/* Wraps rather than truncating. The zig zag narrows these cards to 88% of the
+   column, which is not enough room for "Backend & API Architecture" on one
+   line at 360px. On a wide card it still fits on a single line naturally. */
 .skills-name {
   flex-grow: 1;
   min-width: 0;
   font-size: 1.05rem;
   color: var(--white-strong);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .skills-chevron {
@@ -1154,7 +1167,6 @@ a.contact-row-value:hover {
 
   .skills-layout { flex-direction: row; align-items: center; gap: 3rem; }
   .skills-list { flex: 1 1 0%; min-width: 0; }
-  .skills-name { white-space: normal; }
 
   .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 2rem; }
   .project-media img { height: 18rem; }

@@ -24,3 +24,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.log
+# Decompressed TrueType cache for the social card generator
+tools/.font-cache/
