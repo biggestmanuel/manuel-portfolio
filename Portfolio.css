@@ -644,7 +644,16 @@ ul { list-style: none; }
   background-color: var(--component-bg);
 }
 
-.photo-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.photo-frame img {
+  width: 100%;
+  /* height:auto is required, not decorative. aspect-ratio only derives the
+     height when it is auto. Without it the height="1200" attribute added for
+     layout shift becomes a definite height, aspect-ratio is ignored, and the
+     photo renders 300px wide by 1200px tall. */
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
 
 .photo-caption { display: flex; flex-direction: column; gap: 0.25rem; padding-inline: 0.25rem; }
 .photo-handle { font-family: var(--font-display); font-size: 1.25rem; color: var(--white-strong); }
