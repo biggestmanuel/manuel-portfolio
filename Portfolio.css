@@ -9,6 +9,10 @@
 
 /* --------------------------------------------------------------- Tokens */
 :root {
+  /* Tells the browser to render native widgets (scrollbars, form controls,
+     autofill) for the active theme rather than always for light. */
+  color-scheme: light;
+
   /* Surfaces */
   --background: #f5f7fa;   /* soft white canvas */
   --surface: #ffffff;      /* raised surface (cards, inputs) */
@@ -51,14 +55,110 @@
   --white-icon: var(--ink-muted);
   --white-icon-tr: var(--line);
 
+  /* Ink that sits ON an accent fill. Inverts in dark, where the accent is a
+     light colour and therefore needs dark text rather than white. */
+  --on-fill: #ffffff;
+  --on-fill-mute: rgba(255, 255, 255, 0.25);
+
+  --surface-hover: #fbfcfe;   /* barely-there lift on hover */
+  /* Derived accents and overlays. Each one needs its own value per theme:
+     a translucent white overlay over a screenshot, or a blue bloom tuned for
+     a white canvas, both stop reading the moment the ground flips. */
+  --blue-aura: rgba(0, 120, 212, 0.09);   /* hero bloom */
+  --blue-pulse: rgba(0, 120, 212, 0.4);   /* status dot halo */
+  --chip-overlay: rgba(255, 255, 255, 0.92);   /* index chip over a screenshot */
+  --sweep: rgba(255, 255, 255, 0.22);          /* shimmer sweep on the GitHub CTA */
+  --toast-bg: rgba(255, 255, 255, 0.96);
+  --nav-shadow: rgba(32, 41, 56, 0.25);
+
+  /* Scrollbar chrome. */
+  --scroll-track: #e8edf3;
+  --scroll-thumb: #c0c0c0;
+
   --success: #0078d4;
   --danger: #b4232a;
+
+  /* Shimmer sweep. Built from the accent tokens so it re-tints itself in
+     dark instead of being hardcoded. */
+  --shimmer: linear-gradient(105deg, var(--blue-ink) 22%, var(--blue) 50%, var(--blue-ink) 78%);
 
   --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-display: 'Space Grotesk', 'Manrope', -apple-system, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================================
+   Dark theme — Windows 11 dark, not an inverted light theme.
+
+   Two rules drive every value below.
+
+   1. Elevation runs the other way. Windows states it directly: "darker
+      colors indicate background surfaces of less importance. Important
+      surfaces are highlighted with lighter and brighter colors." So a card
+      is lighter than the canvas, never darker, and shadow alone cannot carry
+      the separation — shadows are near-invisible on a dark ground, so each
+      raised surface also carries a hairline border.
+
+   2. The accent inverts against text. #0078D4 measures 3.6:1 on #16191f —
+      worse than the 4.2:1 it manages on the light canvas — so it cannot be
+      reused. The dark accent is the lightened Windows blue at 8.8:1, which
+      means a filled accent button carries dark text (--on-fill), not white.
+
+   Measured contrast, worst pair first: accent text on card 9.4:1, text on
+   filled button 9.4:1, primary text on canvas 15.5:1, tertiary label 5.1:1.
+   ========================================================================= */
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces — cool charcoal, each step lighter than the one below it. */
+  --background: #16191f;
+  --surface: #1e222a;
+  --surface-alt: #252a33;
+  --glass: rgba(22, 25, 31, 0.78);
+
+  /* Ink */
+  --ink: #edf1f6;          /* primary text (15.5:1 on canvas) */
+  --ink-soft: #aeb9c6;     /* secondary text (8.9:1) */
+  --ink-muted: #8593a3;    /* tertiary + mono labels (5.6:1) */
+
+  /* Structure — a silver that actually reads on a dark ground (5.7:1). */
+  --line: #2e343e;
+  --silver: #8a939f;
+
+  /* Accent — the lightened Windows blue. */
+  --blue: #4cc2ff;
+  --blue-bright: #8ad9ff;
+  --blue-ink: #7fd0ff;
+  --blue-fill: #4cc2ff;
+  --blue-soft: rgba(76, 194, 255, 0.14);
+  --blue-ring: rgba(76, 194, 255, 0.38);
+
+  /* Dark ink on the light accent fill. */
+  --on-fill: #07131c;
+  --on-fill-mute: rgba(7, 19, 28, 0.3);
+
+  --surface-hover: #262c36;
+  --blue-aura: rgba(76, 194, 255, 0.11);
+  --blue-pulse: rgba(76, 194, 255, 0.45);
+  --chip-overlay: rgba(24, 27, 33, 0.9);
+  --sweep: rgba(76, 194, 255, 0.2);
+  --toast-bg: rgba(30, 34, 42, 0.97);
+  --nav-shadow: rgba(0, 0, 0, 0.5);
+
+  /* Scrollbar chrome */
+  --scroll-track: #14171c;
+  --scroll-thumb: #3a424e;
+
+  /* Deeper and harder-edged than the light set: on a dark canvas a shadow
+     reads as absence of light behind the surface, not as a soft halo. */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 8px 20px -6px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 40px -16px rgba(0, 0, 0, 0.65);
+
+  --success: #4cc2ff;
+  --danger: #ff9a9a;
 }
 
 /* --------------------------------------------------------------- Reset */
@@ -71,7 +171,7 @@
 
 ::selection {
   background-color: var(--blue);
-  color: #ffffff;
+  color: var(--on-fill);
 }
 
 html {
@@ -122,10 +222,10 @@ ul { list-style: none; }
 
 /* Scrollbars */
 ::-webkit-scrollbar { width: 12px; }
-::-webkit-scrollbar-track { background: #e8edf3; border-radius: 30px; }
-::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 10px; }
+::-webkit-scrollbar-track { background: var(--scroll-track); border-radius: 30px; }
+::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
-* { scrollbar-width: thin; scrollbar-color: #c0c0c0 #e8edf3; }
+* { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--scroll-track); }
 
 /* --------------------------------------------------------- Layout shell */
 .shell {
@@ -184,16 +284,16 @@ ul { list-style: none; }
 }
 
 @keyframes dot-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(0, 120, 212, 0.4); }
-  70%  { box-shadow: 0 0 0 7px rgba(0, 120, 212, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 120, 212, 0); }
+  0%   { box-shadow: 0 0 0 0 var(--blue-pulse); }
+  70%  { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
 }
 
 /* Specular band sweeping across the accent.
    No white stop — that would vanish on a soft-white canvas.
    Darkest stop holds 6.5:1 so it stays AA at label sizes. */
 .shiny-accent {
-  background: linear-gradient(105deg, #0a5c99 22%, #0078d4 50%, #0a5c99 78%);
+  background: var(--shimmer);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -238,6 +338,54 @@ ul { list-style: none; }
   top: 1rem;
   box-shadow: var(--shadow-md);
 }
+
+/* Theme toggle — a fixed control in the extreme top-right corner, entirely
+   outside the nav pill. The pill narrows, widens and re-centres as the page
+   scrolls; anchoring the toggle to the corner means none of that can move it
+   or knock the nav items out of alignment. On a phone it simply occupies the
+   empty space to the right of the centred pill and stays put.
+   The icon shows the theme it switches TO: a moon while light, a sun while dark. */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 110;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background-color: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: color 0.25s var(--ease), background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.theme-toggle:hover {
+  color: var(--blue-ink);
+  background-color: var(--blue-soft);
+  border-color: var(--line);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active { transform: translateY(0); }
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.theme-toggle svg { width: 1.15rem; height: 1.15rem; }
+
+.theme-icon--sun { display: none; }
+[data-theme='dark'] .theme-icon--sun { display: block; }
+[data-theme='dark'] .theme-icon--moon { display: none; }
 
 .nav-list {
   display: flex;
@@ -299,7 +447,7 @@ ul { list-style: none; }
   width: 46rem;
   height: 46rem;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(0, 120, 212, 0.09), transparent 62%);
+  background: radial-gradient(circle, var(--blue-aura), transparent 62%);
   pointer-events: none;
   z-index: 0;
   animation: bloom-drift 14s ease-in-out infinite;
@@ -371,7 +519,7 @@ ul { list-style: none; }
 .icon-tile svg { width: 100%; height: 100%; }
 
 .icon-tile:hover {
-  color: #ffffff;
+  color: var(--on-fill);
   background-color: var(--blue-fill);
   border-color: var(--blue-fill);
   transform: translateY(-2px);
@@ -519,7 +667,7 @@ ul { list-style: none; }
   transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 
-.skills-item:hover { background-color: #fbfcfe; border-color: var(--blue); }
+.skills-item:hover { background-color: var(--surface-hover); border-color: var(--blue); }
 .skills-item.is-open { border-color: var(--sec); }
 
 .skills-trigger {
@@ -672,7 +820,7 @@ ul { list-style: none; }
   padding: 0.25rem 0.55rem;
   border: 1px solid var(--line);
   border-radius: 0.45rem;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: var(--chip-overlay);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   font-family: var(--font-mono);
@@ -762,7 +910,7 @@ ul { list-style: none; }
 .github-cta svg { width: 1.5rem; height: 1.5rem; flex-shrink: 0; }
 
 .github-cta:hover {
-  color: #ffffff;
+  color: var(--on-fill);
   background-color: var(--blue-fill);
   border-color: var(--blue-fill);
   transform: translateY(-2px);
@@ -808,7 +956,7 @@ ul { list-style: none; }
 }
 
 a.contact-row-value:hover {
-  color: #ffffff;
+  color: var(--on-fill);
   background-color: var(--sec-fill);
 }
 
@@ -827,7 +975,7 @@ a.contact-row-value:hover {
 
 .copy-btn svg { width: 100%; height: 100%; }
 .copy-btn:hover {
-  color: #ffffff;
+  color: var(--on-fill);
   background-color: var(--sec-fill);
   border-color: var(--sec-fill);
 }
@@ -866,7 +1014,7 @@ a.contact-row-value:hover {
   width: 100%;
   padding: 0.9rem 1rem;
   background-color: var(--blue-fill);
-  color: #ffffff;
+  color: var(--on-fill);
   border: 1px solid var(--blue-fill);
   border-radius: 0.75rem;
   font-weight: 600;
@@ -884,7 +1032,7 @@ a.contact-row-value:hover {
   left: -100%;
   width: 55%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.22);
+  background: var(--sweep);
   transform: skewX(-20deg);
   transition: left 0.5s var(--ease);
   pointer-events: none;
@@ -895,7 +1043,7 @@ a.contact-row-value:hover {
 
 .form-submit:hover:not(:disabled) {
   opacity: 1;
-  color: #ffffff;
+  color: var(--on-fill);
   background-color: var(--blue);
   border-color: var(--blue);
   transform: translateY(-2px);
@@ -913,8 +1061,8 @@ a.contact-row-value:hover {
   margin: auto;
   width: 1.15rem;
   height: 1.15rem;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  border-top-color: #ffffff;
+  border: 2px solid var(--on-fill-mute);
+  border-top-color: var(--on-fill);
   border-radius: 9999px;
   animation: spin 0.7s linear infinite;
 }
@@ -995,7 +1143,7 @@ a.contact-row-value:hover {
   padding: 0.7rem 1.1rem;
   border-radius: 9999px;
   border: 1px solid var(--line);
-  background-color: rgba(255, 255, 255, 0.96);
+  background-color: var(--toast-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: var(--ink);
@@ -1079,7 +1227,7 @@ a.contact-row-value:hover {
     border-color: var(--line);
     border-radius: 1rem 1rem 0 0;
     border-bottom: none;
-    box-shadow: 0 -4px 20px -12px rgba(32, 41, 56, 0.25);
+    box-shadow: 0 -4px 20px -12px var(--nav-shadow);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
