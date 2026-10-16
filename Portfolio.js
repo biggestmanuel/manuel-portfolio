@@ -129,7 +129,7 @@
       if (!ok) {
         // Clipboard can be blocked (permissions, insecure context) — surface the
         // address so the visitor can still grab it manually.
-        showToast(`Copy blocked — email is ${EMAIL_ADDRESS}`, 'error');
+        showToast(`Copy failed. Email is ${EMAIL_ADDRESS}`, 'error');
         return;
       }
       btn.classList.add('copied');
@@ -266,160 +266,6 @@
       });
     });
   }
-  /* =======================================================================
-     Code icon field
-     VS Code style file chips that bob up and down in a scattered panel.
-     ======================================================================= */
-  (function initCodeField() {
-    const stage = document.getElementById('codeStage');
-    if (!stage) return;
-
-    // VS Code / Seti file-type icons — the ones VS Code shows for a given
-    // extension. Self-contained SVGs, each carrying its own fill, so they
-    // render standalone on a light chip with no theming needed.
-    // Source: Seti UI (MIT). Stored locally in img/fileicons/.
-    const ICONS = [
-      ['html', 'HTML'], ['css', 'CSS'], ['scss', 'SCSS'], ['less', 'Less'],
-      ['styl', 'Stylus'], ['javascript', 'JavaScript'], ['jsx', 'JSX'],
-      ['typescript', 'TypeScript'], ['json', 'JSON'], ['markdown', 'Markdown'],
-      ['yaml', 'YAML'], ['xml', 'XML'], ['python', 'Python'], ['java', 'Java'],
-      ['php', 'PHP'], ['go', 'Go'], ['rust', 'Rust'], ['ruby', 'Ruby'],
-      ['lua', 'Lua'], ['c', 'C'], ['cpp', 'C++'], ['csharp', 'C#'],
-      ['sql', 'SQL'], ['graphql', 'GraphQL'], ['shell', 'Shell'],
-      ['powershell', 'PowerShell'], ['docker', 'Docker'], ['git', 'Git'],
-      ['gitignore', 'Gitignore'], ['node', 'Node'], ['npm', 'npm'],
-      ['lock', 'Lockfile'], ['config', 'Config'], ['vue', 'Vue'],
-      ['svelte', 'Svelte'], ['kotlin', 'Kotlin']
-    ].map(([file, name]) => ({ file, name }));
-
-    const COLS = 6;
-    const ROWS = 6;          // 36 slots, 36 icons — a full grid reads as a file tree
-    const rand = (a, b) => a + Math.random() * (b - a);
-
-    let tiles = [];
-    let resizeTimer = null;
-
-    // The icon field is tablet-and-up only. CSS keeps it hidden below 768px,
-    // and this handle lets us skip building it there as well, so a phone never
-    // fires the 36 requests. Re-checked on change so rotating a tablet or
-    // dragging a window across the breakpoint fills or empties the panel.
-    const wide = window.matchMedia('(min-width: 768px)');
-
-    // Shuffle so any four slots being skipped are scattered, not a hole in a row.
-    function shuffled(list) {
-      const a = list.slice();
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = (Math.random() * (i + 1)) | 0;
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-    }
-
-    function build() {
-      const rect = stage.getBoundingClientRect();
-      // Hidden below 768px, so the stage measures 0 and there is nothing to lay
-      // out against. Without this the layout maths runs on a 1px box.
-      if (!rect.width || !rect.height) return;
-      const W = rect.width;
-      const H = Math.max(1, rect.height);
-      const cellW = W / COLS;
-      const cellH = H / ROWS;
-
-      // Shuffle all 36 slots, then place only as many as we have icons.
-      const slots = shuffled(
-        Array.from({ length: COLS * ROWS }, (_, i) => i)
-      ).slice(0, ICONS.length);
-
-      tiles = slots.map((slot, i) => {
-        const icon = ICONS[i];
-        const size = Math.min(cellW, cellH) * rand(0.62, 0.8);
-        const col = slot % COLS;
-        const row = (slot / COLS) | 0;
-
-        // Centre the chip in its cell, then jitter inside the slack.
-        const slackX = Math.max(0, cellW - size);
-        const slackY = Math.max(0, cellH - size);
-        const x = col * cellW + (slackX / 2) + rand(-0.35, 0.35) * slackX;
-        const y = row * cellH + (slackY / 2) + rand(-0.35, 0.35) * slackY;
-
-        return {
-          icon,
-          size: Math.round(size),
-          x: Math.round(x),
-          y: Math.round(y),
-          lift: Math.round(rand(6, 13)),
-          rot: rand(-5, 5).toFixed(1) + 'deg',
-          dur: rand(2.4, 4.8).toFixed(2) + 's',
-          delay: (-rand(0, 4.8)).toFixed(2) + 's'
-        };
-      });
-
-      render();
-    }
-
-    function makeTile(t) {
-      const el = document.createElement('div');
-      el.className = 'code-file';
-      el.style.setProperty('--size', t.size + 'px');
-      el.style.setProperty('--x', t.x + 'px');
-      el.style.setProperty('--y', t.y + 'px');
-      el.style.setProperty('--lift', t.lift + 'px');
-      el.style.setProperty('--r', t.rot);
-      el.style.setProperty('--dur', t.dur);
-      el.style.setProperty('--delay', t.delay);
-
-      const img = document.createElement('img');
-      img.src = 'img/fileicons/' + t.icon.file + '.svg';
-      img.alt = '';
-      img.decoding = 'async';
-
-      el.appendChild(img);
-      return el;
-    }
-
-    // Added a few at a time rather than all 36 at once: it keeps the request
-    // burst small enough that no host drops any, and the field fills in
-    // gradually instead of popping in as one block. setTimeout rather than
-    // rAF because rAF is suspended in background tabs, which would leave the
-    // panel empty until the tab was focused.
-    const BATCH = 4;
-    const BATCH_MS = 60;
-
-    let renderTimer = null;
-
-    function render() {
-      stage.textContent = '';
-      clearTimeout(renderTimer);
-      let i = 0;
-
-      const step = () => {
-        const frag = document.createDocumentFragment();
-        for (let n = 0; n < BATCH && i < tiles.length; n++, i++) {
-          frag.appendChild(makeTile(tiles[i]));
-        }
-        stage.appendChild(frag);
-        if (i < tiles.length) renderTimer = setTimeout(step, BATCH_MS);
-      };
-
-      renderTimer = setTimeout(step, 0);
-    }
-
-    if (wide.matches) build();
-
-    wide.addEventListener('change', () => {
-      if (wide.matches) {
-        build();
-      } else {
-        clearTimeout(renderTimer);
-        stage.textContent = '';
-      }
-    });
-
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(build, 200);
-    }, { passive: true });
-  })();
 
   /* =======================================================================
      Web3Forms contact submission
@@ -451,7 +297,7 @@
 
         if (response.ok && data && data.success !== false) {
           if (formStatus) {
-            formStatus.textContent = data.message || 'Thank you! Your message has been sent — I will get back to you soon.';
+            formStatus.textContent = data.message || 'Thank you! Your message has been sent. I will get back to you soon.';
             formStatus.className = 'form-status success';
           }
           showToast('Message sent successfully!', 'success');

@@ -42,12 +42,6 @@ Where the accent shows up:
 - **Nav underline** — grows from the centre on hover, stays full when active.
 - **Shimmer sweep** — a skewed highlight crosses the primary actions on hover.
 - **Blue bloom** — a slow radial wash behind the hero, Bloom-wallpaper mood, not the wallpaper.
-- **Code icon field** — 36 VS Code / Seti file-type icons (the ones VS Code shows for a given
-  extension) scattered beside the accordion on a 6×6 grid, each bobbing up and down on its
-  own phase, speed, distance and slight rotation. Icons come from [Seti UI](https://github.com/jesseweed/seti-ui)
-  (MIT), vendored into `img/fileicons/` and pre-filled so they render standalone on the light
-  canvas. Motion stops under `prefers-reduced-motion`. Tablet and desktop only: below 768px it
-  is hidden in CSS *and* skipped in JS, so a phone makes none of the 36 requests.
 - **Status** — solid blue dot with a halo for *Live* / *Delivered*, hollow silver ring for
   *In active dev*.
 - **Focus rings, selection, scrollbar hover** — all blue.
@@ -111,7 +105,7 @@ the codebase):
 ```text
 index.html          # Main portfolio (Hero, About, Skills, Projects, Contact)
 Portfolio.css       # Design tokens, layout, components, animations
-Portfolio.js        # Nav, accordion, code icon field, clipboard, Web3Forms, reveals
+Portfolio.js        # Theme toggle, nav, accordion, clipboard, Web3Forms, reveals
 case-study.html     # Case study layout with lightbox modal
 case-study.css      # Case study styling
 case-study.js       # Case study data renderer + prev/next + lightbox
@@ -121,7 +115,6 @@ site.webmanifest    # PWA manifest
 og-cover.png        # Social share image
 me.webp             # Profile photo
 img/                # Project screenshots, gallery assets, tech icons
-img/fileicons/      # Seti UI file-type icons (MIT) used by the code icon field
 ```
 
 ---

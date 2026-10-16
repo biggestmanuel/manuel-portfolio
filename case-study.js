@@ -67,7 +67,7 @@
       liveUrl: "https://the-cosmetics-company.vercel.app",
       stack: ["React", "Tailwind CSS", "Vercel"],
       type: "client",
-      whyItWasBuilt: "The brief was to make luxury feel accessible — a store that showcases prestige beauty brands at outlet pricing without looking discount or downmarket. The build leaned into an editorial, high-end visual style paired with a straightforward shopping flow, so the 'luxury at outlet prices' positioning came through in the design itself, not just the copy.",
+      whyItWasBuilt: "The brief was to make luxury feel accessible: a store that showcases prestige beauty brands at outlet pricing without looking discount or downmarket. The build leaned into an editorial, high-end visual style paired with a straightforward shopping flow, so the 'luxury at outlet prices' positioning came through in the design itself, not just the copy.",
       gallery: [
         { label: "Desktop Storefront View", src: "img/thecosmeticscompany.webp", mode: "desktop" },
         { label: "Mobile Browsing Experience", src: "img/thecosmeticscompany_mobile.webp", mode: "mobile" }
@@ -105,7 +105,7 @@
       `;
     }
   } else {
-    document.title = `${project.title} — Case Study | Biggest Manuel`;
+    document.title = `${project.title}, Case Study | Biggest Manuel`;
 
     const currentIndex = projectKeys.indexOf(requestedId);
     const prevKey = currentIndex > 0 ? projectKeys[currentIndex - 1] : null;

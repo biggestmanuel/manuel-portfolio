@@ -735,50 +735,6 @@ ul { list-style: none; }
   border-radius: 9999px;
   background-color: var(--sec);
 }
-
-/* ------------------------------------------------------- Code icon field */
-.code-wrap { display: flex; justify-content: center; width: 100%; }
-
-.code-stage {
-  position: relative;
-  width: 100%;
-  max-width: 290px;
-  height: 290px;
-  background-color: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 1.25rem;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-/* One VS Code style file chip per tool. Position, bob distance, speed and
-   phase all arrive as custom properties so every icon drifts on its own. */
-.code-file {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--size);
-  height: var(--size);
-  display: grid;
-  place-items: center;
-  background-color: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 0.55rem;
-  box-shadow: var(--shadow-sm);
-  animation: bob var(--dur) var(--ease) var(--delay) infinite alternate;
-  will-change: transform;
-}
-
-.code-file img {
-  width: 62%;
-  height: 62%;
-  object-fit: contain;
-}
-
-@keyframes bob {
-  from { transform: translate3d(var(--x), var(--y), 0) rotate(var(--r)); }
-  to   { transform: translate3d(var(--x), calc(var(--y) + var(--lift)), 0) rotate(var(--r)); }
-}
 /* ============================================================== PROJECTS */
 /* minmax(0, 1fr) rather than 1fr: a bare 1fr is minmax(auto, 1fr), and the
    `auto` floor lets the meta row's min-content width push the track wider
@@ -1199,7 +1155,6 @@ a.contact-row-value:hover {
   .skills-layout { flex-direction: row; align-items: center; gap: 3rem; }
   .skills-list { flex: 1 1 0%; min-width: 0; }
   .skills-name { white-space: normal; }
-  .code-wrap { flex: 0 1 290px; width: auto; min-width: 0; justify-content: flex-end; }
 
   .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 2rem; }
   .project-media img { height: 18rem; }
@@ -1238,12 +1193,6 @@ a.contact-row-value:hover {
 
   .section { scroll-margin-top: 0; scroll-margin-bottom: 90px; }
 
-  /* The file-icon field is tablet-and-up only. On a phone it is decoration
-     beside the accordion, and it costs 36 image requests for no benefit, so
-     it stays hidden below 768px. The hero marquee is a separate element and
-     is untouched. */
-  .code-wrap { display: none; }
-
   .toast-container { bottom: 88px; }
 }
 
@@ -1264,6 +1213,5 @@ a.contact-row-value:hover {
   }
   .logo-wall-track { animation: none; }
   .js-reveal .reveal { opacity: 1; transform: none; }
-  /* Code field keeps its arrangement; JS simply stops the drift. */
   .nav-link::after { transition: none; }
 }
