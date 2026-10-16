@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!--
-    Only canonical URLs belong here. The bare /case-study.html redirect stub and
-    the old case-study.html?project=... query strings are deliberately absent:
-    they all resolve to one of the four project pages below.
-    lastmod is the only date field Google actually reads. changefreq and priority
-    have been ignored since 2015 and have been removed.
-  -->
   <url>
     <loc>https://biggestmanuel.vercel.app/</loc>
     <lastmod>2026-10-16</lastmod>

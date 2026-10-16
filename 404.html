@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <!-- Browser chrome follows the theme. -->
+  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#16191f" media="(prefers-color-scheme: dark)" />
+
+  <title>Page not found | Biggest Manuel</title>
+  <meta name="description" content="That page does not exist. Head back to the portfolio homepage." />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/case-study.css" />
+
+  <script>
+    (function () {
+      var theme = 'light';
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          theme = stored;
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        }
+      } catch (e) { /* private mode */ }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+
+<body class="case-study-page">
+  <header class="case-topbar">
+    <div class="shell">
+      <a class="case-brand" href="/index.html">
+        <span class="case-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+        </span>
+        <span>Biggest Manuel<span class="brand-dot">.</span></span>
+      </a>
+
+      <div class="case-topbar-actions">
+        <a href="/index.html" class="case-nav-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          <span>Back to home</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="case-main shell">
+    <section class="case-hero">
+      <p class="case-eyebrow shiny-accent">Error 404</p>
+      <h1 class="case-title">That page is not here</h1>
+      <p style="margin-bottom: 1.5rem;">
+        The address you followed does not match anything on this site. It may have
+        been renamed, or the link that brought you here may have a typo.
+      </p>
+      <a href="/index.html" class="case-hero-cta">
+        <span>Go to the homepage</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </a>
+    </section>
+
+    <article class="case-card">
+      <h2>Or jump straight to a case study</h2>
+      <div class="case-stack-list">
+        <a class="case-stack-item" href="/case-study-kindoku.html">Kindoku</a>
+        <a class="case-stack-item" href="/case-study-qerad.html">Qerad</a>
+        <a class="case-stack-item" href="/case-study-flugos-logistics.html">Flugos Logistics</a>
+        <a class="case-stack-item" href="/case-study-the-cosmetics-company-store.html">The Cosmetics Company Store</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="case-footer">
+    <div class="shell">
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2026 Nwuba Emmanuel Chukwuebuka. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

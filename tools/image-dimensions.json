@@ -1,0 +1,282 @@
+[
+  {
+    "file": "img/apexmind.png",
+    "w": 1600,
+    "h": 900,
+    "type": "png",
+    "ratio": 1.778
+  },
+  {
+    "file": "img/apexmind.webp",
+    "w": 1600,
+    "h": 900,
+    "type": "webp",
+    "ratio": 1.778
+  },
+  {
+    "file": "img/flugos-logistics.jpeg",
+    "w": 1566,
+    "h": 731,
+    "type": "jpg",
+    "ratio": 2.142
+  },
+  {
+    "file": "img/flugos-logistics.webp",
+    "w": 1566,
+    "h": 731,
+    "type": "webp",
+    "ratio": 2.142
+  },
+  {
+    "file": "img/flugos-logistics_mobile.png",
+    "w": 825,
+    "h": 1536,
+    "type": "png",
+    "ratio": 0.537
+  },
+  {
+    "file": "img/flugos-logistics_mobile.webp",
+    "w": 825,
+    "h": 1536,
+    "type": "webp",
+    "ratio": 0.537
+  },
+  {
+    "file": "img/icons/css3.png",
+    "w": 174,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.967
+  },
+  {
+    "file": "img/icons/css3.webp",
+    "w": 174,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.967
+  },
+  {
+    "file": "img/icons/django.png",
+    "w": 167,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.928
+  },
+  {
+    "file": "img/icons/django.webp",
+    "w": 167,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.928
+  },
+  {
+    "file": "img/icons/expo.png",
+    "w": 153,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.85
+  },
+  {
+    "file": "img/icons/expo.webp",
+    "w": 153,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.85
+  },
+  {
+    "file": "img/icons/fastify.png",
+    "w": 168,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.933
+  },
+  {
+    "file": "img/icons/fastify.webp",
+    "w": 168,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.933
+  },
+  {
+    "file": "img/icons/html5.png",
+    "w": 163,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.906
+  },
+  {
+    "file": "img/icons/html5.webp",
+    "w": 163,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.906
+  },
+  {
+    "file": "img/icons/postgresql.png",
+    "w": 134,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.744
+  },
+  {
+    "file": "img/icons/postgresql.webp",
+    "w": 134,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.744
+  },
+  {
+    "file": "img/icons/typescript.png",
+    "w": 153,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.85
+  },
+  {
+    "file": "img/icons/typescript.webp",
+    "w": 153,
+    "h": 180,
+    "type": "webp",
+    "ratio": 0.85
+  },
+  {
+    "file": "img/kindoku.png",
+    "w": 1600,
+    "h": 900,
+    "type": "png",
+    "ratio": 1.778
+  },
+  {
+    "file": "img/kindoku.webp",
+    "w": 1600,
+    "h": 900,
+    "type": "webp",
+    "ratio": 1.778
+  },
+  {
+    "file": "img/kindoku_mobile.png",
+    "w": 776,
+    "h": 1536,
+    "type": "png",
+    "ratio": 0.505
+  },
+  {
+    "file": "img/kindoku_mobile.webp",
+    "w": 776,
+    "h": 1536,
+    "type": "webp",
+    "ratio": 0.505
+  },
+  {
+    "file": "img/qerad.png",
+    "w": 1338,
+    "h": 634,
+    "type": "png",
+    "ratio": 2.11
+  },
+  {
+    "file": "img/qerad.webp",
+    "w": 1338,
+    "h": 634,
+    "type": "webp",
+    "ratio": 2.11
+  },
+  {
+    "file": "img/qerad_light.png",
+    "w": 1335,
+    "h": 634,
+    "type": "png",
+    "ratio": 2.106
+  },
+  {
+    "file": "img/qerad_light.webp",
+    "w": 1335,
+    "h": 634,
+    "type": "webp",
+    "ratio": 2.106
+  },
+  {
+    "file": "img/qerad_mobile.png",
+    "w": 836,
+    "h": 1536,
+    "type": "png",
+    "ratio": 0.544
+  },
+  {
+    "file": "img/qerad_mobile.webp",
+    "w": 836,
+    "h": 1536,
+    "type": "webp",
+    "ratio": 0.544
+  },
+  {
+    "file": "img/qerad_mobile_light.png",
+    "w": 662,
+    "h": 1222,
+    "type": "jpg",
+    "ratio": 0.542
+  },
+  {
+    "file": "img/qerad_mobile_light.webp",
+    "w": 662,
+    "h": 1222,
+    "type": "webp",
+    "ratio": 0.542
+  },
+  {
+    "file": "img/thecosmeticscompany.jpeg",
+    "w": 1574,
+    "h": 731,
+    "type": "jpg",
+    "ratio": 2.153
+  },
+  {
+    "file": "img/thecosmeticscompany.webp",
+    "w": 1574,
+    "h": 731,
+    "type": "webp",
+    "ratio": 2.153
+  },
+  {
+    "file": "img/thecosmeticscompany_mobile.png",
+    "w": 834,
+    "h": 1536,
+    "type": "png",
+    "ratio": 0.543
+  },
+  {
+    "file": "img/thecosmeticscompany_mobile.webp",
+    "w": 834,
+    "h": 1536,
+    "type": "webp",
+    "ratio": 0.543
+  },
+  {
+    "file": "img/unimap.png",
+    "w": 1600,
+    "h": 900,
+    "type": "png",
+    "ratio": 1.778
+  },
+  {
+    "file": "img/unimap.webp",
+    "w": 1600,
+    "h": 900,
+    "type": "webp",
+    "ratio": 1.778
+  },
+  {
+    "file": "me.webp",
+    "w": 900,
+    "h": 1200,
+    "type": "webp",
+    "ratio": 0.75
+  },
+  {
+    "file": "og-cover.png",
+    "w": 1200,
+    "h": 630,
+    "type": "png",
+    "ratio": 1.905
+  }
+]

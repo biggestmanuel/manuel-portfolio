@@ -13,6 +13,11 @@
  *
  * and commit the regenerated files. No build step, no dependencies: the output
  * is plain static HTML that Vercel serves as-is.
+ *
+ * Intrinsic image sizes come from tools/image-dimensions.json, written by
+ * tools/scan-image-dimensions.js. Emitting width and height keeps the browser
+ * from reflowing the page as images arrive, which is what the Layout
+ * Shift score measures.
  */
 
 const fs = require('fs');
@@ -21,6 +26,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SOURCE = path.join(ROOT, 'case-study.js');
 const ORIGIN = 'https://biggestmanuel.vercel.app';
+const HANDLE = 'biggestmanuel';
 
 /* ------------------------------------------------------------------ data */
 
@@ -66,6 +72,24 @@ function summarise(text, limit) {
   return cut.slice(0, lastSpace > 40 ? lastSpace : limit).replace(/[,;:.]$/, '') + '.';
 }
 
+/* ------------------------------------------------- intrinsic image sizes */
+
+// key is the repo-relative path exactly as it appears in the markup
+let SIZE_MAP = {};
+try {
+  const scanned = JSON.parse(fs.readFileSync(path.join(__dirname, 'image-dimensions.json'), 'utf8'));
+  for (const row of scanned) SIZE_MAP[row.file] = row;
+} catch (e) {
+  console.warn('warning: image-dimensions.json not found, width/height will be omitted.');
+}
+
+/** Emits width/height attributes when the intrinsic size is known. */
+function sizeAttrs(src) {
+  const row = SIZE_MAP[src];
+  if (!row) return '';
+  return ` width="${row.w}" height="${row.h}"`;
+}
+
 /* ---------------------------------------------------------------- render */
 
 function renderBody(project) {
@@ -93,7 +117,7 @@ function renderBody(project) {
     </section>
 
     <div class="case-featured-img-wrap">
-      <img class="case-featured-img" src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)} preview" width="1200" height="630" loading="eager" />
+      <img class="case-featured-img" src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)} preview"${sizeAttrs(p.image)} loading="eager" decoding="async" />
     </div>`;
 
   if (p.type === 'own') {
@@ -134,7 +158,7 @@ function renderBody(project) {
           .map(
             (item) => `
         <div class="case-gallery-card${item.mode === 'mobile' ? ' mobile-shot' : ''}" data-src="${escapeHtml(item.src)}" data-caption="${escapeHtml(item.label)}">
-          <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.label)}" loading="lazy" />
+          <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.label)}"${sizeAttrs(item.src)} loading="lazy" decoding="async" />
           <div class="case-gallery-caption">${escapeHtml(item.label)}</div>
         </div>`
           )
@@ -176,26 +200,37 @@ function page(project, keys, studies) {
   const p = project;
   const url = metaFor(p.id);
   const title = `${p.title}, Case Study | Biggest Manuel`;
-  const description = summarise(
-    p.problem || p.whyItWasBuilt || '',
-    155
-  );
+  const description = summarise(p.problem || p.whyItWasBuilt || '', 155);
+
+  // Each case study shares the real product screenshot rather than a generic
+  // branded card, so a link preview shows the actual work. Only og-cover.png
+  // is a true 1200x630; these are 1.78 to 2.15, so platforms crop the edges.
+  const shareImage = ORIGIN + '/' + p.image;
+  const share = SIZE_MAP[p.image] || { w: 1200, h: 630 };
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
+    '@id': url + '#work',
     name: `${p.title} case study`,
     headline: p.title,
     description,
     url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     inLanguage: 'en',
-    image: ORIGIN + '/' + p.image,
-    author: { '@type': 'Person', name: 'Nwuba Emmanuel', alternateName: 'Biggest Manuel' },
+    image: shareImage,
+    author: { '@id': ORIGIN + '/#person' },
+    publisher: { '@id': ORIGIN + '/#person' },
     creator: { '@id': ORIGIN + '/#person' },
     keywords: (p.stack || []).join(', '),
+    isAccessibleForFree: true,
+    datePublished: '2026-10-16',
+    dateModified: new Date().toISOString().slice(0, 10),
     isPartOf: { '@id': ORIGIN + '/#website' },
   };
-  if (p.liveUrl) jsonLd.url = url;
+  if (p.liveUrl) {
+    jsonLd.subjectOf = { '@type': 'WebSite', name: p.title + ' live site', url: p.liveUrl };
+  }
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -204,8 +239,8 @@ function page(project, keys, studies) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="${escapeHtml(description)}" />
   <meta name="author" content="Nwuba Emmanuel (Biggest Manuel)" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="google-site-verification" content="U_vKMJwcogtemZi42I3_8hMwKubSanzyIhRfkG8V-g4" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <!-- Browser chrome follows the theme. Without the media pair the mobile
        address bar stays light while the page itself goes dark. -->
   <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
@@ -222,15 +257,23 @@ function page(project, keys, studies) {
 
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Biggest Manuel" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
-  <meta property="og:image" content="${ORIGIN}/og-cover.png" />
+  <meta property="og:image" content="${shareImage}" />
+  <meta property="og:image:width" content="${share.w}" />
+  <meta property="og:image:height" content="${share.h}" />
+  <meta property="og:image:alt" content="${escapeHtml(p.title)} interface preview" />
   <meta property="og:url" content="${url}" />
+  <meta property="article:author" content="Nwuba Emmanuel" />
 
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@${HANDLE}" />
+  <meta name="twitter:creator" content="@${HANDLE}" />
   <meta name="twitter:title" content="${escapeHtml(title)}" />
   <meta name="twitter:description" content="${escapeHtml(description)}" />
-  <meta name="twitter:image" content="${ORIGIN}/og-cover.png" />
+  <meta name="twitter:image" content="${shareImage}" />
+  <meta name="twitter:image:alt" content="${escapeHtml(p.title)} interface preview" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -319,12 +362,9 @@ ${renderPagination(p.id, keys, studies)}
 const studies = readCaseStudies();
 const keys = Object.keys(studies);
 
-let written = 0;
 for (const id of keys) {
-  const file = path.join(ROOT, slugFor(id));
-  fs.writeFileSync(file, page(studies[id], keys, studies), 'utf8');
-  written++;
+  fs.writeFileSync(path.join(ROOT, slugFor(id)), page(studies[id], keys, studies), 'utf8');
   console.log('wrote ' + slugFor(id) + '  (' + studies[id].title + ')');
 }
-console.log('\n' + written + ' static case study pages generated.');
+console.log('\n' + keys.length + ' static case study pages generated.');
 console.log('Also update index.html links and sitemap.xml if any project was added.');

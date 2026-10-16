@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Readers hunting for manga, manhwa, manhua, or light novels face two constant frustrations: generic recommendations that don't match what they actually." />
   <meta name="author" content="Nwuba Emmanuel (Biggest Manuel)" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="google-site-verification" content="U_vKMJwcogtemZi42I3_8hMwKubSanzyIhRfkG8V-g4" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <!-- Browser chrome follows the theme. Without the media pair the mobile
        address bar stays light while the page itself goes dark. -->
   <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
@@ -23,15 +23,23 @@
 
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Biggest Manuel" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Kindoku, Case Study | Biggest Manuel" />
   <meta property="og:description" content="Readers hunting for manga, manhwa, manhua, or light novels face two constant frustrations: generic recommendations that don't match what they actually." />
-  <meta property="og:image" content="https://biggestmanuel.vercel.app/og-cover.png" />
+  <meta property="og:image" content="https://biggestmanuel.vercel.app/img/kindoku.webp" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="900" />
+  <meta property="og:image:alt" content="Kindoku interface preview" />
   <meta property="og:url" content="https://biggestmanuel.vercel.app/case-study-kindoku.html" />
+  <meta property="article:author" content="Nwuba Emmanuel" />
 
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@biggestmanuel" />
+  <meta name="twitter:creator" content="@biggestmanuel" />
   <meta name="twitter:title" content="Kindoku, Case Study | Biggest Manuel" />
   <meta name="twitter:description" content="Readers hunting for manga, manhwa, manhua, or light novels face two constant frustrations: generic recommendations that don't match what they actually." />
-  <meta name="twitter:image" content="https://biggestmanuel.vercel.app/og-cover.png" />
+  <meta name="twitter:image" content="https://biggestmanuel.vercel.app/img/kindoku.webp" />
+  <meta name="twitter:image:alt" content="Kindoku interface preview" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,23 +51,37 @@
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
+    "@id": "https://biggestmanuel.vercel.app/case-study-kindoku.html#work",
     "name": "Kindoku case study",
     "headline": "Kindoku",
     "description": "Readers hunting for manga, manhwa, manhua, or light novels face two constant frustrations: generic recommendations that don't match what they actually.",
     "url": "https://biggestmanuel.vercel.app/case-study-kindoku.html",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://biggestmanuel.vercel.app/case-study-kindoku.html"
+    },
     "inLanguage": "en",
     "image": "https://biggestmanuel.vercel.app/img/kindoku.webp",
     "author": {
-      "@type": "Person",
-      "name": "Nwuba Emmanuel",
-      "alternateName": "Biggest Manuel"
+      "@id": "https://biggestmanuel.vercel.app/#person"
+    },
+    "publisher": {
+      "@id": "https://biggestmanuel.vercel.app/#person"
     },
     "creator": {
       "@id": "https://biggestmanuel.vercel.app/#person"
     },
     "keywords": "JavaScript, Groq AI API, AniList GraphQL, PWA, Vercel",
+    "isAccessibleForFree": true,
+    "datePublished": "2026-10-16",
+    "dateModified": "2026-10-16",
     "isPartOf": {
       "@id": "https://biggestmanuel.vercel.app/#website"
+    },
+    "subjectOf": {
+      "@type": "WebSite",
+      "name": "Kindoku live site",
+      "url": "https://kindoku.vercel.app"
     }
   }
   </script>
@@ -128,7 +150,7 @@
     </section>
 
     <div class="case-featured-img-wrap">
-      <img class="case-featured-img" src="img/kindoku.webp" alt="Kindoku preview" width="1200" height="630" loading="eager" />
+      <img class="case-featured-img" src="img/kindoku.webp" alt="Kindoku preview" width="1600" height="900" loading="eager" decoding="async" />
     </div>
     <article class="case-card">
       <h2>The Challenge &amp; Context</h2>
@@ -150,11 +172,11 @@
       <div class="case-gallery-grid">
         
         <div class="case-gallery-card" data-src="img/kindoku.webp" data-caption="Desktop Application View">
-          <img src="img/kindoku.webp" alt="Desktop Application View" loading="lazy" />
+          <img src="img/kindoku.webp" alt="Desktop Application View" width="1600" height="900" loading="lazy" decoding="async" />
           <div class="case-gallery-caption">Desktop Application View</div>
         </div>
         <div class="case-gallery-card mobile-shot" data-src="img/kindoku_mobile.webp" data-caption="Mobile Responsive Layout">
-          <img src="img/kindoku_mobile.webp" alt="Mobile Responsive Layout" loading="lazy" />
+          <img src="img/kindoku_mobile.webp" alt="Mobile Responsive Layout" width="776" height="1536" loading="lazy" decoding="async" />
           <div class="case-gallery-caption">Mobile Responsive Layout</div>
         </div>
       </div>
