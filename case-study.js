@@ -1,4 +1,17 @@
 /**
+ * Biggest Manuel — Case Study Data & Interactive Engine
+ *
+ * CASE_STUDIES below is the single source of truth for the project content.
+ * The four public pages (case-study-<id>.html) are pre-rendered from it by
+ *
+ *     node tools/generate-case-studies.js
+ *
+ * so search engines and anyone with JavaScript disabled get real static HTML.
+ * Re-run that script after editing anything in this file. Everything below
+ * the data block is progressive enhancement only: the gallery lightbox.
+ */
+
+/**
  * Biggest Manuel — Case Study Renderer & Interactive Engine
  * Dark-minimal theme.
  */
@@ -74,148 +87,6 @@
       ]
     }
   };
-
-  const projectKeys = Object.keys(CASE_STUDIES);
-
-  const escapeHtml = (val) =>
-    String(val).replace(/[&<>"']/g, (char) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#039;"
-    }[char]));
-
-  // =========================================================================
-  // Render Case Study Content
-  // =========================================================================
-  const root = document.getElementById("caseStudyRoot");
-  const params = new URLSearchParams(window.location.search);
-  const requestedId = params.get("project") || "kindoku";
-  const project = CASE_STUDIES[requestedId];
-
-  if (!project) {
-    if (root) {
-      root.innerHTML = `
-        <div class="case-card" style="text-align: center;">
-          <h1 class="case-title">Case study not found</h1>
-          <p style="margin-bottom: 1.5rem;">The case study you requested does not exist or has been moved.</p>
-          <a href="index.html#projects" class="case-hero-cta">Return to Projects</a>
-        </div>
-      `;
-    }
-  } else {
-    document.title = `${project.title}, Case Study | Biggest Manuel`;
-
-    const currentIndex = projectKeys.indexOf(requestedId);
-    const prevKey = currentIndex > 0 ? projectKeys[currentIndex - 1] : null;
-    const nextKey = currentIndex < projectKeys.length - 1 ? projectKeys[currentIndex + 1] : null;
-
-    let html = `
-      <section class="case-hero">
-        <p class="case-eyebrow shiny-accent">Case study</p>
-        <div class="case-badges-row">
-          <span class="case-pill">${escapeHtml(project.tag)}</span>
-          <span class="case-pill status">${escapeHtml(project.status)}</span>
-        </div>
-        <h1 class="case-title">${escapeHtml(project.title)}</h1>
-        ${
-          project.liveUrl
-            ? `<a class="case-hero-cta" href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer">
-                <span>Visit Live Platform</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>`
-            : ""
-        }
-      </section>
-
-      <div class="case-featured-img-wrap">
-        <img class="case-featured-img" src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)} Hero Preview" />
-      </div>
-    `;
-
-    if (project.type === "own") {
-      html += `
-        <article class="case-card">
-          <h2>The Challenge & Context</h2>
-          <p>${escapeHtml(project.problem)}</p>
-        </article>
-
-        <article class="case-card">
-          <h2>Architecture & Engineering Approach</h2>
-          <p>${escapeHtml(project.approach)}</p>
-        </article>
-      `;
-    } else {
-      html += `
-        <article class="case-card">
-          <h2>Why It Was Built & Project Scope</h2>
-          <p>${escapeHtml(project.whyItWasBuilt)}</p>
-        </article>
-      `;
-    }
-
-    if (project.stack && project.stack.length) {
-      html += `
-        <article class="case-card">
-          <h2>Core Technologies</h2>
-          <div class="case-stack-list">
-            ${project.stack.map(s => `<span class="case-stack-item">${escapeHtml(s)}</span>`).join("")}
-          </div>
-        </article>
-      `;
-    }
-
-    if (project.gallery && project.gallery.length) {
-      html += `
-        <article class="case-card">
-          <h2>Interface & Experience Gallery</h2>
-          <div class="case-gallery-grid">
-            ${project.gallery
-              .map(
-                (item) => `
-                <div class="case-gallery-card ${item.mode === "mobile" ? "mobile-shot" : ""}" data-src="${escapeHtml(item.src)}" data-caption="${escapeHtml(item.label)}">
-                  <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.label)}" loading="lazy" />
-                  <div class="case-gallery-caption">${escapeHtml(item.label)}</div>
-                </div>
-              `
-              )
-              .join("")}
-          </div>
-        </article>
-      `;
-    }
-
-    // Pagination
-    html += `
-      <div class="case-pagination">
-        ${
-          prevKey
-            ? `<a href="case-study.html?project=${prevKey}" class="case-page-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                <span>${escapeHtml(CASE_STUDIES[prevKey].title)}</span>
-              </a>`
-            : `<div></div>`
-        }
-        ${
-          nextKey
-            ? `<a href="case-study.html?project=${nextKey}" class="case-page-btn">
-                <span>${escapeHtml(CASE_STUDIES[nextKey].title)}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>`
-            : `<div></div>`
-        }
-      </div>
-    `;
-
-    if (root) {
-      root.innerHTML = html;
-    }
-  }
 
   // =========================================================================
   // Image Lightbox Modal

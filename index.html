@@ -6,7 +6,10 @@
   <meta name="description" content="Biggest Manuel (Nwuba Emmanuel) is a full-stack developer and product builder from Port Harcourt, Nigeria. He builds fast, scalable web apps with React, Next.js, Node.js, Django, PostgreSQL and Neon." />
   <meta name="author" content="Nwuba Emmanuel (Biggest Manuel)" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
-  <meta name="theme-color" content="#f5f7fa" />
+  <!-- Browser chrome follows the theme. Without the media pair the mobile
+       address bar stays light while the page itself goes dark. -->
+  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#16191f" media="(prefers-color-scheme: dark)" />
 
   <link rel="canonical" href="https://biggestmanuel.vercel.app/" />
 
@@ -394,7 +397,7 @@
           <article class="project">
             <div class="project-media-wrap">
               <span class="project-index" aria-hidden="true">01</span>
-              <a href="case-study.html?project=kindoku" class="project-media" aria-label="View the Kindoku case study">
+              <a href="case-study-kindoku.html" class="project-media" aria-label="View the Kindoku case study">
                 <img src="img/kindoku.webp" alt="Kindoku AI manga &amp; novel reader recommendation app" loading="lazy" />
               </a>
             </div>
@@ -405,7 +408,7 @@
               </div>
               <span class="project-status"><span class="status-dot status-dot--sm" aria-hidden="true"></span>Live</span>
               <div class="project-links">
-                <a href="case-study.html?project=kindoku" class="icon-tile" title="View case study" aria-label="View the Kindoku case study">
+                <a href="case-study-kindoku.html" class="icon-tile" title="View case study" aria-label="View the Kindoku case study">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </a>
                 <a href="https://kindoku.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-tile" title="Visit live site" aria-label="Visit the Kindoku live site">
@@ -419,7 +422,7 @@
           <article class="project">
             <div class="project-media-wrap">
               <span class="project-index" aria-hidden="true">02</span>
-              <a href="case-study.html?project=qerad" class="project-media" aria-label="View the Qerad case study">
+              <a href="case-study-qerad.html" class="project-media" aria-label="View the Qerad case study">
                 <img src="img/qerad.webp" alt="Qerad business launch platform" loading="lazy" />
               </a>
             </div>
@@ -430,7 +433,7 @@
               </div>
               <span class="project-status"><span class="status-dot status-dot--sm status-dot--dev" aria-hidden="true"></span>In active dev</span>
               <div class="project-links">
-                <a href="case-study.html?project=qerad" class="icon-tile" title="View case study" aria-label="View the Qerad case study">
+                <a href="case-study-qerad.html" class="icon-tile" title="View case study" aria-label="View the Qerad case study">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </a>
                 <a href="https://qerad.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-tile" title="Visit live site" aria-label="Visit the Qerad live site">
@@ -444,7 +447,7 @@
           <article class="project">
             <div class="project-media-wrap">
               <span class="project-index" aria-hidden="true">03</span>
-              <a href="case-study.html?project=flugos-logistics" class="project-media" aria-label="View the Flugos Logistics case study">
+              <a href="case-study-flugos-logistics.html" class="project-media" aria-label="View the Flugos Logistics case study">
                 <img src="img/flugos-logistics.webp" alt="Flugos Logistics shipment tracking portal" loading="lazy" />
               </a>
             </div>
@@ -455,7 +458,7 @@
               </div>
               <span class="project-status"><span class="status-dot status-dot--sm" aria-hidden="true"></span>Delivered</span>
               <div class="project-links">
-                <a href="case-study.html?project=flugos-logistics" class="icon-tile" title="View case study" aria-label="View the Flugos Logistics case study">
+                <a href="case-study-flugos-logistics.html" class="icon-tile" title="View case study" aria-label="View the Flugos Logistics case study">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </a>
                 <a href="https://flugos-logistics.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-tile" title="Visit live site" aria-label="Visit the Flugos Logistics live site">
@@ -469,7 +472,7 @@
           <article class="project">
             <div class="project-media-wrap">
               <span class="project-index" aria-hidden="true">04</span>
-              <a href="case-study.html?project=the-cosmetics-company-store" class="project-media" aria-label="View The Cosmetics Company Store case study">
+              <a href="case-study-the-cosmetics-company-store.html" class="project-media" aria-label="View The Cosmetics Company Store case study">
                 <img src="img/thecosmeticscompany.webp" alt="The Cosmetics Company Store e-commerce frontend" loading="lazy" />
               </a>
             </div>
@@ -480,7 +483,7 @@
               </div>
               <span class="project-status"><span class="status-dot status-dot--sm" aria-hidden="true"></span>Delivered</span>
               <div class="project-links">
-                <a href="case-study.html?project=the-cosmetics-company-store" class="icon-tile" title="View case study" aria-label="View The Cosmetics Company Store case study">
+                <a href="case-study-the-cosmetics-company-store.html" class="icon-tile" title="View case study" aria-label="View The Cosmetics Company Store case study">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </a>
                 <a href="https://the-cosmetics-company.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-tile" title="Visit live site" aria-label="Visit The Cosmetics Company Store live site">

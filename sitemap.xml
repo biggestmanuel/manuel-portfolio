@@ -1,39 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!--
+    Only canonical URLs belong here. The bare /case-study.html redirect stub and
+    the old case-study.html?project=... query strings are deliberately absent:
+    they all resolve to one of the four project pages below.
+    lastmod is the only date field Google actually reads. changefreq and priority
+    have been ignored since 2015 and have been removed.
+  -->
   <url>
     <loc>https://biggestmanuel.vercel.app/</loc>
-    <lastmod>2026-10-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
-    <loc>https://biggestmanuel.vercel.app/index.html</loc>
-    <lastmod>2026-10-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://biggestmanuel.vercel.app/case-study-kindoku.html</loc>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
-    <loc>https://biggestmanuel.vercel.app/case-study.html?project=kindoku</loc>
-    <lastmod>2026-10-14</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://biggestmanuel.vercel.app/case-study-qerad.html</loc>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
-    <loc>https://biggestmanuel.vercel.app/case-study.html?project=qerad</loc>
-    <lastmod>2026-10-14</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://biggestmanuel.vercel.app/case-study-flugos-logistics.html</loc>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
-    <loc>https://biggestmanuel.vercel.app/case-study.html?project=flugos-logistics</loc>
-    <lastmod>2026-10-14</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://biggestmanuel.vercel.app/case-study.html?project=the-cosmetics-company-store</loc>
-    <lastmod>2026-10-14</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://biggestmanuel.vercel.app/case-study-the-cosmetics-company-store.html</loc>
+    <lastmod>2026-10-16</lastmod>
   </url>
 </urlset>

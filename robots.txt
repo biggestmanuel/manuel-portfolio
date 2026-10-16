@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
 
-# Nothing here is private or staging-only, but be explicit for crawlers.
-Disallow: /img/icons-1/
+# img/icons-1/ held an early icon draft and is now empty and untracked, so
+# there is nothing left to keep crawlers out of. Do not re-add a Disallow for
+# a path that no longer exists.
 
 Sitemap: https://biggestmanuel.vercel.app/sitemap.xml

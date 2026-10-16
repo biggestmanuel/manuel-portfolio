@@ -3,41 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Detailed project case study by Nwuba Emmanuel (Biggest Manuel), full-stack developer and product builder." />
-  <meta name="author" content="Nwuba Emmanuel (Biggest Manuel)" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#f5f7fa" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#16191f" media="(prefers-color-scheme: dark)" />
 
-  <link rel="canonical" href="https://biggestmanuel.vercel.app/case-study.html" />
   <title>Case Study | Biggest Manuel</title>
+  <meta name="description" content="Case studies for projects by Nwuba Emmanuel (Biggest Manuel), full-stack developer and product builder." />
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
-  <link rel="manifest" href="site.webmanifest" />
 
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Biggest Manuel" />
-  <meta property="og:title" content="Case Study | Biggest Manuel" />
-  <meta property="og:description" content="A detailed look at how each project was built, the problems it solves, and the stack behind it." />
-  <meta property="og:image" content="https://biggestmanuel.vercel.app/og-cover.png" />
-  <meta property="og:url" content="https://biggestmanuel.vercel.app/case-study.html" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Case Study | Biggest Manuel" />
-  <meta name="twitter:description" content="A detailed look at how each project was built, the problems it solves, and the stack behind it." />
-  <meta name="twitter:image" content="https://biggestmanuel.vercel.app/og-cover.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <!--
+    Each case study now has its own pre-rendered page with a real title,
+    description and canonical URL. This file is kept only so that links of the
+    old shape, case-study.html?project=kindoku, still land somewhere sensible.
+    It is noindex and is not listed in the sitemap.
+  -->
+  <script>
+    (function () {
+      var SLUGS = {
+        kindoku: "case-study-kindoku.html",
+        qerad: "case-study-qerad.html",
+        "flugos-logistics": "case-study-flugos-logistics.html",
+        "the-cosmetics-company-store": "case-study-the-cosmetics-company-store.html"
+      };
+      var wanted = new URLSearchParams(window.location.search).get("project");
+      var target = SLUGS[wanted] || "case-study-kindoku.html";
+      window.location.replace(target);
+    })();
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=case-study-kindoku.html" />
+  </noscript>
 
   <link rel="stylesheet" href="case-study.css" />
 </head>
 
 <body class="case-study-page">
-  <!-- Topbar Navigation -->
   <header class="case-topbar">
     <div class="shell">
       <a class="case-brand" href="index.html">
@@ -49,37 +51,27 @@
         </span>
         <span>Biggest Manuel<span class="brand-dot">.</span></span>
       </a>
-
-      <div class="case-topbar-actions">
-        <a href="index.html#projects" class="case-nav-back">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          <span>Back to projects</span>
-        </a>
-      </div>
     </div>
   </header>
 
-  <!-- Main Case Study Content Root -->
-  <main class="case-main shell" id="caseStudyRoot">
-    <div class="case-error" aria-live="polite">
-      <p class="case-eyebrow">Loading case study...</p>
-    </div>
+  <main class="case-main shell">
+    <section class="case-hero">
+      <p class="case-eyebrow shiny-accent">Case studies</p>
+      <h1 class="case-title">Taking you to the case study</h1>
+      <p style="margin-bottom: 1.5rem;">
+        Each project now has its own page. If you are not redirected
+        automatically, pick one below.
+      </p>
+      <a href="case-study-kindoku.html" class="case-hero-cta">Kindoku</a>
+      <a href="case-study-qerad.html" class="case-hero-cta">Qerad</a>
+      <a href="case-study-flugos-logistics.html" class="case-hero-cta">Flugos Logistics</a>
+      <a href="case-study-the-cosmetics-company-store.html" class="case-hero-cta">The Cosmetics Company Store</a>
+      <div style="margin-top: 1.5rem;">
+        <a href="index.html#projects" class="case-nav-back">Back to projects</a>
+      </div>
+    </section>
   </main>
 
-  <!-- Image Lightbox Modal -->
-  <div id="imageLightbox" class="lightbox-modal" hidden>
-    <div class="lightbox-backdrop"></div>
-    <div class="lightbox-content">
-      <button id="closeLightboxBtn" class="lightbox-close-btn" type="button" aria-label="Close image preview">&times;</button>
-      <img id="lightboxImg" src="" alt="Full preview" />
-      <p id="lightboxCaption" class="lightbox-caption"></p>
-    </div>
-  </div>
-
-  <!-- Footer -->
   <footer class="case-footer">
     <div class="shell">
       <div class="footer-bottom">
@@ -87,7 +79,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="case-study.js"></script>
 </body>
 </html>
