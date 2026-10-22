@@ -67,7 +67,7 @@
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = menu.getAttribute('hidden') === null;
-      menu.hidden = !isOpen;
+      menu.hidden = isOpen;  // close if open, open if closed
       btn.setAttribute('aria-expanded', menu.getAttribute('hidden') === null);
     });
 
