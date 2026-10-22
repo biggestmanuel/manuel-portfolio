@@ -9,8 +9,7 @@
   <meta name="google-site-verification" content="U_vKMJwcogtemZi42I3_8hMwKubSanzyIhRfkG8V-g4" />
   <!-- Browser chrome follows the theme. Without the media pair the mobile
        address bar stays light while the page itself goes dark. -->
-  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#16191f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f5f7fa" id="theme-color-meta" />
 
   <link rel="canonical" href="https://biggestmanuel.vercel.app/" />
 
@@ -112,15 +111,33 @@
        light, then flips to dark a frame later, which reads as a glitch. -->
   <script>
     (function () {
-      var theme = 'light';
+      var theme = 'windows11';
       try {
         var stored = localStorage.getItem('theme');
-        if (stored === 'light' || stored === 'dark') {
+        if (stored === 'windows11' || stored === 'macos' || stored === 'ubuntu') {
           theme = stored;
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          theme = 'dark';
+        } else {
+          var ua = navigator.userAgent || '';
+          var plat = navigator.platform || '';
+          // Android â†’ windows11
+          if (/android/i.test(ua)) {
+            theme = 'windows11';
+          }
+          // iPhone/iPad â†’ macos
+          else if (/iphone|ipad|ipod/i.test(ua)) {
+            theme = 'macos';
+          }
+          // Mac desktop â†’ macos
+          else if (/macintosh|macintel/i.test(plat)) {
+            theme = 'macos';
+          }
+          // Linux desktop â†’ ubuntu
+          else if (/linux/i.test(plat)) {
+            theme = 'ubuntu';
+          }
+          // Everything else â†’ windows11
         }
-      } catch (e) { /* private mode: fall through to light */ }
+      } catch (e) { /* private mode: fall through to windows11 */ }
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
@@ -131,10 +148,16 @@
   <!-- Theme toggle, deliberately outside the nav pill. Fixed to the top-right
      corner so the pill's scroll shrink and re-centring can never shift it or
      knock the nav items out of alignment. -->
-<button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" title="Switch to dark theme">
-  <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A 9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-</button>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Select theme" aria-haspopup="menu" aria-expanded="false">
+        <span class="theme-dot"></span>
+        <span class="theme-name">Windows 11</span>
+        <span class="theme-arrow" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="theme-menu" id="theme-menu" hidden>
+        <button class="theme-opt" data-theme="windows11"><span class="opt-dot"></span>Windows 11</button>
+        <button class="theme-opt" data-theme="macos"><span class="opt-dot"></span>macOS</button>
+        <button class="theme-opt" data-theme="ubuntu"><span class="opt-dot"></span>Ubuntu</button>
+      </div>
 
 <div class="nav-shell">
     <nav id="main-nav" aria-label="Main navigation">

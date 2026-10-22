@@ -17,44 +17,85 @@
      this only has to wire up the button. A visitor's explicit choice is
      remembered; otherwise the OS preference still wins.
      ======================================================================= */
+  /* =======================================================================
+     Theme switching
+     The inline script in <head> has already put data-theme on <html>, so
+     this only has to wire up the dropdown button. A visitor's explicit choice
+     is remembered; otherwise the OS detection already ran.
+     ======================================================================= */
+  /* =======================================================================
+     Theme switching
+     The inline script in <head> has already put data-theme on <html>, so
+     this only has to wire up the dropdown button. A visitor's explicit choice
+     is remembered; otherwise the OS detection already ran.
+     ======================================================================= */
   (function initThemeToggle() {
     const root = document.documentElement;
     const btn = document.getElementById('themeToggle');
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const menu = document.getElementById('theme-menu');
+    const opts = document.querySelectorAll('.theme-opt');
 
-    const apply = (theme) => {
-      root.setAttribute('data-theme', theme);
-      // Only an explicit choice is stored. With nothing stored the OS keeps
-      // deciding, so a visitor who flips their system setting is followed.
-      if (btn) {
-        const toDark = theme === 'light';
-        btn.setAttribute('aria-label', toDark ? 'Switch to dark theme' : 'Switch to light theme');
-        btn.setAttribute('title', toDark ? 'Switch to dark theme' : 'Switch to light theme');
-      }
+    const THEMES = ['windows11', 'macos', 'ubuntu'];
+    const THEME_LABELS = {
+      'windows11': 'Windows 11',
+      'macos': 'macOS',
+      'ubuntu': 'Ubuntu'
+    };
+    const THEME_DOTS = {
+      'windows11': '#0078d4',
+      'macos': '#0071e3',
+      'ubuntu': '#e95420'
     };
 
-    apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+    const apply = (themeName) => {
+      root.setAttribute('data-theme', themeName);
+      if (btn) {
+        const dot = btn.querySelector('.theme-dot');
+        const name = btn.querySelector('.theme-name');
+        if (dot) dot.style.backgroundColor = THEME_DOTS[themeName] || '';
+        if (name) name.textContent = THEME_LABELS[themeName] || themeName;
+        btn.setAttribute('aria-label', 'Select theme (' + THEME_LABELS[themeName] + ')');
+      }
+      try { localStorage.setItem('theme', themeName); } catch (e) { /* ignore */ }
+    };
+
+    apply(root.getAttribute('data-theme') || 'windows11');
 
     if (!btn) return;
 
-    btn.addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      try {
-        localStorage.setItem('theme', next);
-      } catch (e) { /* private mode: the choice just won't persist */ }
-      apply(next);
+    // Toggle dropdown menu
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = menu.getAttribute('hidden') === null;
+      menu.hidden = !isOpen;
+      btn.setAttribute('aria-expanded', menu.getAttribute('hidden') === null);
     });
 
-    // Only follow the OS while the visitor has not expressed a preference.
-    const onSystemChange = (e) => {
-      let stored = null;
-      try {
-        stored = localStorage.getItem('theme');
-      } catch (err) { /* ignore */ }
-      if (stored !== 'light' && stored !== 'dark') apply(e.matches ? 'dark' : 'light');
-    };
-    if (systemDark.addEventListener) systemDark.addEventListener('change', onSystemChange);
-    else if (systemDark.addListener) systemDark.addListener(onSystemChange);
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Theme option clicks
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        const theme = opt.getAttribute('data-theme');
+        apply(theme);
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
   })();
 
   /* =======================================================================

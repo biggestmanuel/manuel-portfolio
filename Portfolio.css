@@ -8,9 +8,9 @@
    ========================================================================= */
 
 /* --------------------------------------------------------------- Tokens */
+/* --------------------------------------------------------------- Tokens */
+/* Windows 11 theme (default) */
 :root {
-  /* Tells the browser to render native widgets (scrollbars, form controls,
-     autofill) for the active theme rather than always for light. */
   color-scheme: light;
 
   /* Surfaces */
@@ -20,15 +20,25 @@
   --glass: rgba(245, 247, 250, 0.82);
 
   /* Ink */
-  --ink: #202938;          /* deep charcoal — primary text (13.6:1) */
-  --ink-soft: #44474b;     /* iron grey — secondary text (8.7:1) */
+  --ink: #202938;          /* deep charcoal - primary text (13.6:1) */
+  --ink-soft: #44474b;     /* iron grey - secondary text (8.7:1) */
   --ink-muted: #5f6773;    /* tertiary + mono labels (5.3:1) */
 
   /* Structure */
   --line: #d9e0e8;         /* hairline border */
   --silver: #c0c0c0;
 
-  /* Accent — four tones because one blue cannot serve every job on a
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  /* Blur */
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(12px);
+
+  /* Accent - four tones because one blue cannot serve every job on a
      light canvas while staying AA-compliant. */
   --blue: #0078d4;          /* primary: borders, icons, large text, fills */
   --blue-bright: #4c8dff;   /* secondary: decorative glows only */
@@ -37,12 +47,12 @@
   --blue-soft: rgba(0, 120, 212, 0.1);
   --blue-ring: rgba(0, 120, 212, 0.28);
 
-  /* Soft elevation for a light canvas — cool-tinted, never black. */
+  /* Soft elevation for a light canvas - cool-tinted, never black. */
   --shadow-sm: 0 1px 2px rgba(32, 41, 56, 0.05);
   --shadow-md: 0 6px 16px -6px rgba(32, 41, 56, 0.12);
   --shadow-lg: 0 18px 36px -16px rgba(32, 41, 56, 0.18);
 
-  /* Component aliases — keep the rules below reading consistently. */
+  /* Component aliases - keep the rules below reading consistently. */
   --component-bg: var(--surface);
   --component-bg-hover: var(--surface);
   --sec: var(--blue);
@@ -82,83 +92,184 @@
      dark instead of being hardcoded. */
   --shimmer: linear-gradient(105deg, var(--blue-ink) 22%, var(--blue) 50%, var(--blue-ink) 78%);
 
-  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-display: 'Space Grotesk', 'Manrope', -apple-system, system-ui, sans-serif;
+  /* Fonts */
+  --font-sans: 'Segoe UI', -apple-system, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Manrope', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
+/* macOS theme - Liquid glass */
+[data-theme='macos'] {
+  color-scheme: light;
 
-/* =========================================================================
-   Dark theme — Windows 11 dark, not an inverted light theme.
-
-   Two rules drive every value below.
-
-   1. Elevation runs the other way. Windows states it directly: "darker
-      colors indicate background surfaces of less importance. Important
-      surfaces are highlighted with lighter and brighter colors." So a card
-      is lighter than the canvas, never darker, and shadow alone cannot carry
-      the separation — shadows are near-invisible on a dark ground, so each
-      raised surface also carries a hairline border.
-
-   2. The accent inverts against text. #0078D4 measures 3.6:1 on #16191f —
-      worse than the 4.2:1 it manages on the light canvas — so it cannot be
-      reused. The dark accent is the lightened Windows blue at 8.8:1, which
-      means a filled accent button carries dark text (--on-fill), not white.
-
-   Measured contrast, worst pair first: accent text on card 9.4:1, text on
-   filled button 9.4:1, primary text on canvas 15.5:1, tertiary label 5.1:1.
-   ========================================================================= */
-[data-theme='dark'] {
-  color-scheme: dark;
-
-  /* Surfaces — cool charcoal, each step lighter than the one below it. */
-  --background: #16191f;
-  --surface: #1e222a;
-  --surface-alt: #252a33;
-  --glass: rgba(22, 25, 31, 0.78);
+  /* Surfaces */
+  --background: #f5f5f7;
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-alt: rgba(240, 240, 240, 0.6);
+  --glass: rgba(255, 255, 255, 0.65);
 
   /* Ink */
-  --ink: #edf1f6;          /* primary text (15.5:1 on canvas) */
-  --ink-soft: #aeb9c6;     /* secondary text (8.9:1) */
-  --ink-muted: #8593a3;    /* tertiary + mono labels (5.6:1) */
+  --ink: #1d1d1f;
+  --ink-soft: #424245;
+  --ink-muted: #86868d;
 
-  /* Structure — a silver that actually reads on a dark ground (5.7:1). */
-  --line: #2e343e;
-  --silver: #8a939f;
+  /* Structure */
+  --line: rgba(0, 0, 0, 0.12);
+  --silver: #a6a6a8;
 
-  /* Accent — the lightened Windows blue. */
-  --blue: #4cc2ff;
-  --blue-bright: #8ad9ff;
-  --blue-ink: #7fd0ff;
-  --blue-fill: #4cc2ff;
-  --blue-soft: rgba(76, 194, 255, 0.14);
-  --blue-ring: rgba(76, 194, 255, 0.38);
+  /* Border radius */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
 
-  /* Dark ink on the light accent fill. */
-  --on-fill: #07131c;
-  --on-fill-mute: rgba(7, 19, 28, 0.3);
+  /* Blur */
+  --blur-sm: blur(8px);
+  --blur-md: blur(20px);
+  --blur-lg: blur(30px);
 
-  --surface-hover: #262c36;
-  --blue-aura: rgba(76, 194, 255, 0.11);
-  --blue-pulse: rgba(76, 194, 255, 0.45);
-  --chip-overlay: rgba(24, 27, 33, 0.9);
-  --sweep: rgba(76, 194, 255, 0.2);
-  --toast-bg: rgba(30, 34, 42, 0.97);
-  --nav-shadow: rgba(0, 0, 0, 0.5);
+  /* Accent - Apple blue */
+  --blue: #0071e3;
+  --blue-bright: #3a9dff;
+  --blue-ink: #005bb5;
+  --blue-fill: #0071e3;
+  --blue-soft: rgba(0, 113, 227, 0.1);
+  --blue-ring: rgba(0, 113, 227, 0.3);
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+
+  /* Component aliases */
+  --component-bg: var(--surface);
+  --component-bg-hover: var(--surface);
+  --sec: var(--blue);
+  --sec-fill: var(--blue-fill);
+  --sec-hi: var(--blue-bright);
+  --sec-soft: var(--blue-soft);
+  --sec-ring: var(--blue-ring);
+  --white: var(--ink);
+  --white-strong: var(--ink);
+  --white-icon: var(--ink-muted);
+  --white-icon-tr: var(--line);
+
+  /* Ink that sits ON an accent fill. */
+  --on-fill: #ffffff;
+  --on-fill-mute: rgba(255, 255, 255, 0.3);
+
+  --surface-hover: rgba(255, 255, 255, 0.6);
+
+  /* Derived accents and overlays. */
+  --blue-aura: rgba(0, 113, 227, 0.1);
+  --blue-pulse: rgba(0, 113, 227, 0.35);
+  --chip-overlay: rgba(255, 255, 255, 0.8);
+  --sweep: rgba(255, 255, 255, 0.25);
+  --toast-bg: rgba(255, 255, 255, 0.85);
+  --nav-shadow: rgba(0, 0, 0, 0.1);
 
   /* Scrollbar chrome */
-  --scroll-track: #14171c;
-  --scroll-thumb: #3a424e;
+  --scroll-track: rgba(0, 0, 0, 0.05);
+  --scroll-thumb: rgba(0, 0, 0, 0.15);
 
-  /* Deeper and harder-edged than the light set: on a dark canvas a shadow
-     reads as absence of light behind the surface, not as a soft halo. */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 8px 20px -6px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 20px 40px -16px rgba(0, 0, 0, 0.65);
+  --success: #34c759;
+  --danger: #ff3b30;
 
-  --success: #4cc2ff;
-  --danger: #ff9a9a;
+  /* Shimmer sweep. Built from the accent tokens so it re-tints itself. */
+  --shimmer: linear-gradient(105deg, var(--blue-ink) 22%, var(--blue) 50%, var(--blue-ink) 78%);
+
+  /* Fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Ubuntu theme - Aubergine and orange palette */
+[data-theme='ubuntu'] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --background: #f3f0f4;
+  --surface: #ffffff;
+  --surface-alt: #eae2ec;
+  --glass: rgba(255, 255, 255, 0.8);
+
+  /* Ink */
+  --ink: #3b2940;
+  --ink-soft: #6d4a63;
+  --ink-muted: #8f6b85;
+
+  /* Structure */
+  --line: #d9cfe0;
+  --silver: #b39bb7;
+
+  /* Border radius */
+  --radius-sm: 0.4rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Blur */
+  --blur-sm: blur(2px);
+  --blur-md: blur(4px);
+  --blur-lg: blur(6px);
+
+  /* Accent - Ubuntu orange */
+  --blue: #e95420;
+  --blue-bright: #ff7a4a;
+  --blue-ink: #c23e12;
+  --blue-fill: #e95420;
+  --blue-soft: rgba(233, 84, 32, 0.12);
+  --blue-ring: rgba(233, 84, 32, 0.3);
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 16px -6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 18px 36px -16px rgba(0, 0, 0, 0.14);
+
+  /* Component aliases */
+  --component-bg: var(--surface);
+  --component-bg-hover: var(--surface);
+  --sec: var(--blue);
+  --sec-fill: var(--blue-fill);
+  --sec-hi: var(--blue-bright);
+  --sec-soft: var(--blue-soft);
+  --sec-ring: var(--blue-ring);
+  --white: var(--ink);
+  --white-strong: var(--ink);
+  --white-icon: var(--ink-muted);
+  --white-icon-tr: var(--line);
+
+  /* Ink that sits ON an accent fill. */
+  --on-fill: #ffffff;
+  --on-fill-mute: rgba(255, 255, 255, 0.2);
+
+  --surface-hover: #f5efee;
+
+  /* Derived accents and overlays. */
+  --blue-aura: rgba(233, 84, 32, 0.12);
+  --blue-pulse: rgba(233, 84, 32, 0.35);
+  --chip-overlay: rgba(255, 255, 255, 0.92);
+  --sweep: rgba(233, 84, 32, 0.2);
+  --toast-bg: rgba(255, 255, 255, 0.95);
+  --nav-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Scrollbar chrome */
+  --scroll-track: rgba(0, 0, 0, 0.04);
+  --scroll-thumb: rgba(0, 0, 0, 0.1);
+
+  --success: #2e7d32;
+  --danger: #d32f2f;
+
+  /* Shimmer sweep. Built from the accent tokens so it re-tints itself. */
+  --shimmer: linear-gradient(105deg, var(--blue-ink) 22%, var(--blue) 50%, var(--blue-ink) 78%);
+
+  /* Fonts */
+  --font-sans: 'Ubuntu', system-ui, sans-serif;
+  --font-display: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* --------------------------------------------------------------- Reset */
@@ -346,46 +457,75 @@ ul { list-style: none; }
    empty space to the right of the centred pill and stays put.
    The icon shows the theme it switches TO: a moon while light, a sun while dark. */
 .theme-toggle {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  z-index: 110;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 50%;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-md);
   border: 1px solid var(--line);
-  background-color: var(--glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-sm);
-  color: var(--ink-muted);
+  background-color: var(--surface);
+  color: var(--ink);
   cursor: pointer;
-  transition: color 0.25s var(--ease), background-color 0.25s var(--ease),
-    border-color 0.25s var(--ease), transform 0.25s var(--ease);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease);
 }
 
-.theme-toggle:hover {
-  color: var(--blue-ink);
-  background-color: var(--blue-soft);
-  border-color: var(--line);
-  transform: translateY(-1px);
+.theme-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
 }
 
-.theme-toggle:active { transform: translateY(0); }
-
-.theme-toggle:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
+.theme-name {
+  font-weight: 600;
 }
 
-.theme-toggle svg { width: 1.15rem; height: 1.15rem; }
+.theme-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 14rem;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0.25rem;
+  z-index: 50;
+}
 
-.theme-icon--sun { display: none; }
-[data-theme='dark'] .theme-icon--sun { display: block; }
-[data-theme='dark'] .theme-icon--moon { display: none; }
+.theme-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s var(--ease);
+}
+
+.theme-opt:hover {
+  background-color: var(--surface-hover);
+}
+
+.theme-opt .opt-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.theme-opt[data-theme='windows11'] .opt-dot { background-color: #0078d4; }
+.theme-opt[data-theme='macos'] .opt-dot { background-color: #0071e3; }
+.theme-opt[data-theme='ubuntu'] .opt-dot { background-color: #e95420; }
+
+
 
 .nav-list {
   display: flex;

@@ -3,38 +3,51 @@
    Shares the main portfolio's dark-minimal token set.
    ========================================================================= */
 
+/* --------------------------------------------------------------- Tokens */
+/* Windows 11 theme (default) */
 :root {
   color-scheme: light;
 
-  --background: #f5f7fa;
-  --surface: #ffffff;
-  --surface-alt: #edf1f6;
+  /* Surfaces */
+  --background: #f5f7fa;   /* soft white canvas */
+  --surface: #ffffff;      /* raised surface (cards, inputs) */
+  --surface-alt: #edf1f6;  /* subtle inset / image well */
   --glass: rgba(245, 247, 250, 0.85);
-  --ink: #202938;
-  --ink-soft: #44474b;
-  --ink-muted: #5f6773;
-  --line: #d9e0e8;
+
+  /* Ink */
+  --ink: #202938;          /* deep charcoal - primary text (13.6:1) */
+  --ink-soft: #44474b;     /* iron grey - secondary text (8.7:1) */
+  --ink-muted: #5f6773;    /* tertiary + mono labels (5.3:1) */
+
+  /* Structure */
+  --line: #d9e0e8;         /* hairline border */
   --silver: #c0c0c0;
-  --blue: #0078d4;
-  --blue-bright: #4c8dff;
-  --blue-ink: #0a5c99;
-  --blue-fill: #0067b8;
+
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  /* Blur */
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(12px);
+
+  /* Accent - four tones because one blue cannot serve every job on a
+     light canvas while staying AA-compliant. */
+  --blue: #0078d4;          /* primary: borders, icons, large text, fills */
+  --blue-bright: #4c8dff;   /* secondary: decorative glows only */
+  --blue-ink: #0a5c99;      /* accent TEXT on soft white (6.5:1) */
+  --blue-fill: #0067b8;     /* filled surfaces carrying white text (5.8:1) */
   --blue-soft: rgba(0, 120, 212, 0.1);
   --blue-ring: rgba(0, 120, 212, 0.28);
+
+  /* Soft elevation for a light canvas - cool-tinted, never black. */
   --shadow-sm: 0 1px 2px rgba(32, 41, 56, 0.05);
   --shadow-md: 0 6px 16px -6px rgba(32, 41, 56, 0.12);
   --shadow-lg: 0 18px 36px -16px rgba(32, 41, 56, 0.18);
 
-  --on-fill: #ffffff;
-  --on-fill-mute: rgba(255, 255, 255, 0.25);
-  --surface-hover: #fbfcfe;
-  --chip-overlay: rgba(255, 255, 255, 0.92);
-  --image-well: #eef2f7;
-  --scroll-track: #e8edf3;
-  --scrim: rgba(32, 41, 56, 0.62);          /* lightbox backdrop */
-  --scroll-thumb: #c0c0c0;
-  --shimmer: linear-gradient(105deg, var(--blue-ink) 22%, var(--blue) 50%, var(--blue-ink) 78%);
-
+  /* Component aliases - keep the rules below reading consistently. */
   --component-bg: var(--surface);
   --component-bg-hover: var(--surface);
   --sec: var(--blue);
@@ -46,46 +59,212 @@
   --white-strong: var(--ink);
   --white-icon: var(--ink-muted);
   --white-icon-tr: var(--line);
-  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-display: 'Space Grotesk', 'Manrope', -apple-system, system-ui, sans-serif;
+
+  /* Ink that sits ON an accent fill. Inverts in dark, where the accent is a
+     light colour and therefore needs dark text rather than white. */
+  --on-fill: #ffffff;
+  --on-fill-mute: rgba(255, 255, 255, 0.25);
+
+  --surface-hover: #fbfcfe;   /* barely-there lift on hover */
+  /* Derived accents and overlays. Each one needs its own value per theme:
+     a translucent white overlay over a screenshot, or a blue bloom tuned for
+     a white canvas, both stop reading the moment the ground flips. */
+  --blue-aura: rgba(0, 120, 212, 0.09);   /* hero bloom */
+  --blue-pulse: rgba(0, 120, 212, 0.4);   /* status dot halo */
+  --chip-overlay: rgba(255, 255, 255, 0.92);   /* index chip over a screenshot */
+  --sweep: rgba(255, 255, 255, 0.22);          /* shimmer sweep on the GitHub CTA */
+  --toast-bg: rgba(255, 255, 255, 0.96);
+  --nav-shadow: rgba(32, 41, 56, 0.25);
+
+  /* Scrollbar chrome. */
+  --scroll-track: #e8edf3;
+  --scroll-thumb: #c0c0c0;
+
+  --success: #0078d4;
+  --danger: #b4232a;
+
+  /* Shimmer sweep. Built from the accent tokens so it re-tints itself in
+     dark instead of being hardcoded. */
+  --shimmer: linear-gradient(105deg, var(--blue-ink) 22%, var(--blue) 50%, var(--blue-ink) 78%);
+
+  /* Fonts */
+  --font-sans: 'Segoe UI', -apple-system, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
+/* macOS theme - Liquid glass */
+[data-theme='macos'] {
+  color-scheme: light;
 
-/* Dark theme — see Portfolio.css for the full rationale. Mirrored here so the
-   case studies carry the same palette. */
-[data-theme='dark'] {
-  color-scheme: dark;
+  /* Surfaces */
+  --background: #f5f5f7;
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-alt: rgba(240, 240, 240, 0.6);
+  --glass: rgba(255, 255, 255, 0.65);
 
-  --background: #16191f;
-  --surface: #1e222a;
-  --surface-alt: #252a33;
-  --glass: rgba(22, 25, 31, 0.8);
+  /* Ink */
+  --ink: #1d1d1f;
+  --ink-soft: #424245;
+  --ink-muted: #86868d;
 
-  --ink: #edf1f6;
-  --ink-soft: #aeb9c6;
-  --ink-muted: #8593a3;
-  --line: #2e343e;
-  --silver: #8a939f;
+  /* Structure */
+  --line: rgba(0, 0, 0, 0.12);
+  --silver: #a6a6a8;
 
-  --blue: #4cc2ff;
-  --blue-bright: #8ad9ff;
-  --blue-ink: #7fd0ff;
-  --blue-fill: #4cc2ff;
-  --blue-soft: rgba(76, 194, 255, 0.14);
-  --blue-ring: rgba(76, 194, 255, 0.38);
+  /* Border radius */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 8px 20px -6px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 20px 40px -16px rgba(0, 0, 0, 0.65);
+  /* Blur */
+  --blur-sm: blur(8px);
+  --blur-md: blur(20px);
+  --blur-lg: blur(30px);
 
-  --on-fill: #07131c;
-  --on-fill-mute: rgba(7, 19, 28, 0.3);
-  --surface-hover: #262c36;
-  --chip-overlay: rgba(24, 27, 33, 0.9);
-  --image-well: #1a1e25;
-  --scroll-track: #14171c;
-  --scroll-thumb: #3a424e;
-  --scrim: rgba(0, 0, 0, 0.78);
+  /* Accent - Apple blue */
+  --blue: #0071e3;
+  --blue-bright: #3a9dff;
+  --blue-ink: #005bb5;
+  --blue-fill: #0071e3;
+  --blue-soft: rgba(0, 113, 227, 0.1);
+  --blue-ring: rgba(0, 113, 227, 0.3);
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+
+  /* Component aliases */
+  --component-bg: var(--surface);
+  --component-bg-hover: var(--surface);
+  --sec: var(--blue);
+  --sec-fill: var(--blue-fill);
+  --sec-hi: var(--blue-bright);
+  --sec-soft: var(--blue-soft);
+  --sec-ring: var(--blue-ring);
+  --white: var(--ink);
+  --white-strong: var(--ink);
+  --white-icon: var(--ink-muted);
+  --white-icon-tr: var(--line);
+
+  /* Ink that sits ON an accent fill. */
+  --on-fill: #ffffff;
+  --on-fill-mute: rgba(255, 255, 255, 0.3);
+
+  --surface-hover: rgba(255, 255, 255, 0.6);
+
+  /* Derived accents and overlays. */
+  --blue-aura: rgba(0, 113, 227, 0.1);
+  --blue-pulse: rgba(0, 113, 227, 0.35);
+  --chip-overlay: rgba(255, 255, 255, 0.8);
+  --sweep: rgba(255, 255, 255, 0.25);
+  --toast-bg: rgba(255, 255, 255, 0.85);
+  --nav-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Scrollbar chrome */
+  --scroll-track: rgba(0, 0, 0, 0.05);
+  --scroll-thumb: rgba(0, 0, 0, 0.15);
+
+  --success: #34c759;
+  --danger: #ff3b30;
+
+  /* Shimmer sweep. Built from the accent tokens so it re-tints itself. */
+  --shimmer: linear-gradient(105deg, var(--blue-ink) 22%, var(--blue) 50%, var(--blue-ink) 78%);
+
+  /* Fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Ubuntu theme - Aubergine and orange palette */
+[data-theme='ubuntu'] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --background: #f3f0f4;
+  --surface: #ffffff;
+  --surface-alt: #eae2ec;
+  --glass: rgba(255, 255, 255, 0.8);
+
+  /* Ink */
+  --ink: #3b2940;
+  --ink-soft: #6d4a63;
+  --ink-muted: #8f6b85;
+
+  /* Structure */
+  --line: #d9cfe0;
+  --silver: #b39bb7;
+
+  /* Border radius */
+  --radius-sm: 0.4rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Blur */
+  --blur-sm: blur(2px);
+  --blur-md: blur(4px);
+  --blur-lg: blur(6px);
+
+  /* Accent - Ubuntu orange */
+  --blue: #e95420;
+  --blue-bright: #ff7a4a;
+  --blue-ink: #c23e12;
+  --blue-fill: #e95420;
+  --blue-soft: rgba(233, 84, 32, 0.12);
+  --blue-ring: rgba(233, 84, 32, 0.3);
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 16px -6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 18px 36px -16px rgba(0, 0, 0, 0.14);
+
+  /* Component aliases */
+  --component-bg: var(--surface);
+  --component-bg-hover: var(--surface);
+  --sec: var(--blue);
+  --sec-fill: var(--blue-fill);
+  --sec-hi: var(--blue-bright);
+  --sec-soft: var(--blue-soft);
+  --sec-ring: var(--blue-ring);
+  --white: var(--ink);
+  --white-strong: var(--ink);
+  --white-icon: var(--ink-muted);
+  --white-icon-tr: var(--line);
+
+  /* Ink that sits ON an accent fill. */
+  --on-fill: #ffffff;
+  --on-fill-mute: rgba(255, 255, 255, 0.2);
+
+  --surface-hover: #f5efee;
+
+  /* Derived accents and overlays. */
+  --blue-aura: rgba(233, 84, 32, 0.12);
+  --blue-pulse: rgba(233, 84, 32, 0.35);
+  --chip-overlay: rgba(255, 255, 255, 0.92);
+  --sweep: rgba(233, 84, 32, 0.2);
+  --toast-bg: rgba(255, 255, 255, 0.95);
+  --nav-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Scrollbar chrome */
+  --scroll-track: rgba(0, 0, 0, 0.04);
+  --scroll-thumb: rgba(0, 0, 0, 0.1);
+
+  --success: #2e7d32;
+  --danger: #d32f2f;
+
+  /* Shimmer sweep. Built from the accent tokens so it re-tints itself. */
+  --shimmer: linear-gradient(105deg, var(--blue-ink) 22%, var(--blue) 50%, var(--blue-ink) 78%);
+
+  /* Fonts */
+  --font-sans: 'Ubuntu', system-ui, sans-serif;
+  --font-display: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *, *::before, *::after {

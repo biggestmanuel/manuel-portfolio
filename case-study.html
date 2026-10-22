@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, follow" />
-  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#16191f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f5f7fa" id="theme-color-meta" />
 
   <title>Case Study | Biggest Manuel</title>
   <meta name="description" content="Case studies for projects by Nwuba Emmanuel (Biggest Manuel), full-stack developer and product builder." />
@@ -38,6 +37,38 @@
   </noscript>
 
   <link rel="stylesheet" href="case-study.css" />
+  <script>
+    (function () {
+      var theme = 'windows11';
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'windows11' || stored === 'macos' || stored === 'ubuntu') {
+          theme = stored;
+        } else {
+          var ua = navigator.userAgent || '';
+          var plat = navigator.platform || '';
+          // Android â†’ windows11
+          if (/android/i.test(ua)) {
+            theme = 'windows11';
+          }
+          // iPhone/iPad â†’ macos
+          else if (/iphone|ipad|ipod/i.test(ua)) {
+            theme = 'macos';
+          }
+          // Mac desktop â†’ macos
+          else if (/macintosh|macintel/i.test(plat)) {
+            theme = 'macos';
+          }
+          // Linux desktop â†’ ubuntu
+          else if (/linux/i.test(plat)) {
+            theme = 'ubuntu';
+          }
+          // Everything else â†’ windows11
+        }
+      } catch (e) { /* private mode: fall through to windows11 */ }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 
 <body class="case-study-page">
