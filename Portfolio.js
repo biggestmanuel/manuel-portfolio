@@ -143,10 +143,8 @@
     const id = activeSectionId();
     if (!id) return;
 
-    const currentPage = location.pathname.split('/').pop().replace(/\.html$/, '') || 'index';
     navLinks.forEach((link) => {
-      const hrefPage = link.getAttribute('href').replace(/\.html$/, '');
-      link.classList.toggle('is-active', hrefPage === currentPage);
+      link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
     });
   }
 
@@ -185,7 +183,14 @@
       if (window.innerWidth >= 768) {
         const progress = Math.min(window.scrollY / MAX_SCROLL, 1);
         const eased = 1 - Math.pow(1 - progress, 4);
-        const maxWidth = Math.min(window.innerWidth * 0.8, 1024);
+        // The theme toggle is pinned to the top-right corner, so the centred
+        // pill has to leave room for it: 1.5rem offset + 2.4rem button + gap.
+        const TOGGLE_ZONE = 82;
+        const maxWidth = Math.min(
+          window.innerWidth * 0.8,
+          1024,
+          window.innerWidth - TOGGLE_ZONE * 2
+        );
         // Never below the label footprint, and never wider than the room
         // actually available at this viewport.
         const floor = Math.min(minWidth, maxWidth);
