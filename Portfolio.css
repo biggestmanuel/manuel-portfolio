@@ -28,14 +28,14 @@
   --line: #d9e0e8;         /* hairline border */
   --silver: #c0c0c0;
 
-  /* Accent — four tones because one blue cannot serve every job on a
-     light canvas while staying AA-compliant. */
-  --blue: #0078d4;          /* primary: borders, icons, large text, fills */
-  --blue-bright: #4c8dff;   /* secondary: decorative glows only */
-  --blue-ink: #0a5c99;      /* accent TEXT on soft white (6.5:1) */
-  --blue-fill: #0067b8;     /* filled surfaces carrying white text (5.8:1) */
-  --blue-soft: rgba(0, 120, 212, 0.1);
-  --blue-ring: rgba(0, 120, 212, 0.28);
+  /* Accent — mauve. Dusty purple-pink that reads as personal rather than
+     corporate, while staying compliant on the soft-white canvas. */
+  --blue: #B48AAD;          /* primary: borders, icons, large text, fills */
+  --blue-bright: #C9A9C6;   /* secondary: decorative glows only */
+  --blue-ink: #7A5A72;      /* accent TEXT on soft white */
+  --blue-fill: #8E6B7F;     /* filled surfaces carrying white text */
+  --blue-soft: rgba(180, 138, 173, 0.1);
+  --blue-ring: rgba(180, 138, 173, 0.28);
 
   /* Soft elevation for a light canvas — cool-tinted, never black. */
   --shadow-sm: 0 1px 2px rgba(32, 41, 56, 0.05);
@@ -75,7 +75,7 @@
   --scroll-track: #e8edf3;
   --scroll-thumb: #c0c0c0;
 
-  --success: #0078d4;
+  --success: #B48AAD;
   --danger: #b4232a;
 
   /* Shimmer sweep. Built from the accent tokens so it re-tints itself in
@@ -520,11 +520,20 @@ ul { list-style: none; }
 .photo-frame {
   border-radius: 1.25rem;
   overflow: hidden;
-  border: 1px solid var(--white-icon-tr);
+  border: 1px solid var(--blue);
   background-color: var(--component-bg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.photo-frame:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--blue-ink);
 }
 
 .photo-frame img { width: 100%; height: auto; display: block; }
+
+.photo-frame img:hover { transform: scale(1.02); }
 
 .photo-caption { display: flex; flex-direction: column; gap: 0.25rem; padding-inline: 0.25rem; }
 .photo-handle { font-family: var(--font-display); font-size: 1.25rem; color: var(--white-strong); }
