@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, follow" />
-  <!-- Browser chrome follows the theme. -->
-  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#16191f" media="(prefers-color-scheme: dark)" />
 
   <title>Page not found | Biggest Manuel</title>
   <meta name="description" content="That page does not exist. Head back to the portfolio homepage." />
@@ -21,20 +18,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/case-study.css" />
 
-  <script>
-    (function () {
-      var theme = 'light';
-      try {
-        var stored = localStorage.getItem('theme');
-        if (stored === 'light' || stored === 'dark') {
-          theme = stored;
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          theme = 'dark';
-        }
-      } catch (e) { /* private mode */ }
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
 </head>
 
 <body class="case-study-page">

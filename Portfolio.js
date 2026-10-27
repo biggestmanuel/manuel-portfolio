@@ -1,6 +1,6 @@
 /**
  * Biggest Manuel — Personal Portfolio
- * Vanilla JS engine: theme switching, pill navigation, accordion, code icon
+ * Vanilla JS engine: pill navigation, accordion, code icon
  * field, clipboard + toasts, Web3Forms submission, scroll reveals.
  */
 
@@ -10,52 +10,6 @@
   const EMAIL_ADDRESS = 'emmanuelnwuba1@gmail.com';
 
   document.documentElement.classList.add('js-reveal');
-
-  /* =======================================================================
-     Theme switching
-     The inline script in <head> has already put data-theme on <html>, so
-     this only has to wire up the button. A visitor's explicit choice is
-     remembered; otherwise the OS preference still wins.
-     ======================================================================= */
-  (function initThemeToggle() {
-    const root = document.documentElement;
-    const btn = document.getElementById('themeToggle');
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const apply = (theme) => {
-      root.setAttribute('data-theme', theme);
-      // Only an explicit choice is stored. With nothing stored the OS keeps
-      // deciding, so a visitor who flips their system setting is followed.
-      if (btn) {
-        const toDark = theme === 'light';
-        btn.setAttribute('aria-label', toDark ? 'Switch to dark theme' : 'Switch to light theme');
-        btn.setAttribute('title', toDark ? 'Switch to dark theme' : 'Switch to light theme');
-      }
-    };
-
-    apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
-
-    if (!btn) return;
-
-    btn.addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      try {
-        localStorage.setItem('theme', next);
-      } catch (e) { /* private mode: the choice just won't persist */ }
-      apply(next);
-    });
-
-    // Only follow the OS while the visitor has not expressed a preference.
-    const onSystemChange = (e) => {
-      let stored = null;
-      try {
-        stored = localStorage.getItem('theme');
-      } catch (err) { /* ignore */ }
-      if (stored !== 'light' && stored !== 'dark') apply(e.matches ? 'dark' : 'light');
-    };
-    if (systemDark.addEventListener) systemDark.addEventListener('change', onSystemChange);
-    else if (systemDark.addListener) systemDark.addListener(onSystemChange);
-  })();
 
   /* =======================================================================
      Scroll reveals
@@ -189,8 +143,10 @@
     const id = activeSectionId();
     if (!id) return;
 
+    const currentPage = location.pathname.split('/').pop().replace(/\.html$/, '') || 'index';
     navLinks.forEach((link) => {
-      link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+      const hrefPage = link.getAttribute('href').replace(/\.html$/, '');
+      link.classList.toggle('is-active', hrefPage === currentPage);
     });
   }
 
@@ -229,14 +185,7 @@
       if (window.innerWidth >= 768) {
         const progress = Math.min(window.scrollY / MAX_SCROLL, 1);
         const eased = 1 - Math.pow(1 - progress, 4);
-        // The theme toggle is pinned to the top-right corner, so the centred
-        // pill has to leave room for it: 1.5rem offset + 2.4rem button + gap.
-        const TOGGLE_ZONE = 82;
-        const maxWidth = Math.min(
-          window.innerWidth * 0.8,
-          1024,
-          window.innerWidth - TOGGLE_ZONE * 2
-        );
+        const maxWidth = Math.min(window.innerWidth * 0.8, 1024);
         // Never below the label footprint, and never wider than the room
         // actually available at this viewport.
         const floor = Math.min(minWidth, maxWidth);

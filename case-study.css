@@ -53,40 +53,6 @@
 
 /* Dark theme — see Portfolio.css for the full rationale. Mirrored here so the
    case studies carry the same palette. */
-[data-theme='dark'] {
-  color-scheme: dark;
-
-  --background: #16191f;
-  --surface: #1e222a;
-  --surface-alt: #252a33;
-  --glass: rgba(22, 25, 31, 0.8);
-
-  --ink: #edf1f6;
-  --ink-soft: #aeb9c6;
-  --ink-muted: #8593a3;
-  --line: #2e343e;
-  --silver: #8a939f;
-
-  --blue: #4cc2ff;
-  --blue-bright: #8ad9ff;
-  --blue-ink: #7fd0ff;
-  --blue-fill: #4cc2ff;
-  --blue-soft: rgba(76, 194, 255, 0.14);
-  --blue-ring: rgba(76, 194, 255, 0.38);
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 8px 20px -6px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 20px 40px -16px rgba(0, 0, 0, 0.65);
-
-  --on-fill: #07131c;
-  --on-fill-mute: rgba(7, 19, 28, 0.3);
-  --surface-hover: #262c36;
-  --chip-overlay: rgba(24, 27, 33, 0.9);
-  --image-well: #1a1e25;
-  --scroll-track: #14171c;
-  --scroll-thumb: #3a424e;
-  --scrim: rgba(0, 0, 0, 0.78);
-}
 
 *, *::before, *::after {
   box-sizing: border-box;

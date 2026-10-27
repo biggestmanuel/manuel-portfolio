@@ -7,10 +7,6 @@
   <meta name="author" content="Nwuba Emmanuel (Biggest Manuel)" />
   <meta name="google-site-verification" content="U_vKMJwcogtemZi42I3_8hMwKubSanzyIhRfkG8V-g4" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <!-- Browser chrome follows the theme. Without the media pair the mobile
-       address bar stays light while the page itself goes dark. -->
-  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#16191f" media="(prefers-color-scheme: dark)" />
 
   <link rel="canonical" href="https://biggestmanuel.vercel.app/case-study-qerad.html" />
   <title>Qerad, Case Study | Biggest Manuel</title>
@@ -86,23 +82,6 @@
   }
   </script>
 
-  <script>
-    /* Resolve the theme before first paint so a dark visitor never sees a
-       white flash. Matches the homepage: an explicit choice in localStorage
-       wins, otherwise follow the operating system. */
-    (function () {
-      var theme = 'light';
-      try {
-        var stored = localStorage.getItem('theme');
-        if (stored === 'light' || stored === 'dark') {
-          theme = stored;
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          theme = 'dark';
-        }
-      } catch (e) { /* private mode: fall through to light */ }
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
 </head>
 
 <body class="case-study-page">
@@ -119,7 +98,7 @@
       </a>
 
       <div class="case-topbar-actions">
-        <a href="index.html#projects" class="case-nav-back">
+        <a href="projects.html" class="case-nav-back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
